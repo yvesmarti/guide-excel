@@ -1,0 +1,53 @@
+[
+  { "touches": ["Ctrl", "Origine"], "action": "Aller au début", "description": "Atteindre la cellule A1, en haut à gauche de la feuille.", "categorie": "Navigation" },
+  { "touches": ["Ctrl", "Fin"], "action": "Aller à la fin", "description": "Atteindre la dernière cellule utilisée de la feuille.", "categorie": "Navigation" },
+  { "touches": ["Ctrl", "Flèche"], "action": "Saut aux extrémités", "description": "Sauter au bord de la zone de données dans la direction de la flèche.", "categorie": "Navigation" },
+  { "touches": ["Ctrl", "Page suiv."], "action": "Feuille suivante", "description": "Passer à l'onglet de feuille suivant du classeur.", "categorie": "Navigation" },
+  { "touches": ["Ctrl", "Page préc."], "action": "Feuille précédente", "description": "Passer à l'onglet de feuille précédent du classeur.", "categorie": "Navigation" },
+  { "touches": ["F5"], "action": "Atteindre", "description": "Ouvrir la boîte « Atteindre » pour aller directement à une cellule.", "categorie": "Navigation" },
+  { "touches": ["Ctrl", "F"], "action": "Rechercher", "description": "Ouvrir la fenêtre de recherche dans la feuille.", "categorie": "Navigation" },
+
+  { "touches": ["Ctrl", "Maj", "Flèche"], "action": "Sélectionner jusqu'au bord", "description": "Étendre la sélection jusqu'à la dernière cellule non vide.", "categorie": "Sélection" },
+  { "touches": ["Maj", "Flèche"], "action": "Étendre la sélection", "description": "Agrandir la sélection cellule par cellule.", "categorie": "Sélection" },
+  { "touches": ["Ctrl", "Espace"], "action": "Sélectionner la colonne", "description": "Sélectionner toute la colonne de la cellule active.", "categorie": "Sélection" },
+  { "touches": ["Maj", "Espace"], "action": "Sélectionner la ligne", "description": "Sélectionner toute la ligne de la cellule active.", "categorie": "Sélection" },
+  { "touches": ["Ctrl", "A"], "action": "Tout sélectionner", "description": "Sélectionner tout le tableau, ou toute la feuille.", "categorie": "Sélection" },
+  { "touches": ["Ctrl", "Maj", "Fin"], "action": "Sélectionner jusqu'à la fin", "description": "Sélectionner de la cellule active jusqu'à la dernière cellule utilisée.", "categorie": "Sélection" },
+
+  { "touches": ["F2"], "action": "Modifier la cellule", "description": "Passer en mode édition pour modifier le contenu de la cellule.", "categorie": "Édition" },
+  { "touches": ["Alt", "Entrée"], "action": "Saut de ligne", "description": "Insérer un retour à la ligne à l'intérieur d'une même cellule.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "Entrée"], "action": "Remplir la sélection", "description": "Valider la saisie dans toutes les cellules sélectionnées en une fois.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "Z"], "action": "Annuler", "description": "Annuler la dernière action effectuée.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "Y"], "action": "Rétablir", "description": "Rétablir l'action qui vient d'être annulée.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "C"], "action": "Copier", "description": "Copier la sélection dans le presse-papiers.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "X"], "action": "Couper", "description": "Couper la sélection.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "V"], "action": "Coller", "description": "Coller le contenu du presse-papiers.", "categorie": "Édition" },
+  { "touches": ["Ctrl", "Alt", "V"], "action": "Collage spécial", "description": "Coller uniquement les valeurs, formats ou formules au choix.", "categorie": "Édition" },
+  { "touches": ["Suppr"], "action": "Effacer le contenu", "description": "Effacer le contenu des cellules sélectionnées.", "categorie": "Édition" },
+
+  { "touches": ["Ctrl", "1"], "action": "Format de cellule", "description": "Ouvrir la boîte « Format de cellule » (nombres, bordures, alignement...).", "categorie": "Mise en forme" },
+  { "touches": ["Ctrl", "G"], "action": "Gras", "description": "Mettre en gras ou retirer le gras (G comme Gras).", "categorie": "Mise en forme" },
+  { "touches": ["Ctrl", "I"], "action": "Italique", "description": "Mettre en italique ou retirer l'italique.", "categorie": "Mise en forme" },
+  { "touches": ["Ctrl", "U"], "action": "Souligné", "description": "Souligner ou retirer le soulignement.", "categorie": "Mise en forme" },
+  { "touches": ["Ctrl", "Maj", "%"], "action": "Format pourcentage", "description": "Appliquer le format pourcentage à la sélection.", "categorie": "Mise en forme" },
+  { "touches": ["Ctrl", "Maj", "$"], "action": "Format monétaire", "description": "Appliquer le format monétaire (€) à la sélection.", "categorie": "Mise en forme" },
+  { "touches": ["Ctrl", "Maj", "&"], "action": "Ajouter une bordure", "description": "Encadrer les cellules sélectionnées d'une bordure.", "categorie": "Mise en forme" },
+
+  { "touches": ["Ctrl", "+"], "action": "Insérer", "description": "Insérer une ligne ou une colonne.", "categorie": "Lignes & colonnes" },
+  { "touches": ["Ctrl", "-"], "action": "Supprimer", "description": "Supprimer la ligne ou la colonne sélectionnée.", "categorie": "Lignes & colonnes" },
+  { "touches": ["F4"], "action": "Répéter / Figer ($)", "description": "Répéter la dernière action, ou figer une référence ($) en cours de saisie.", "categorie": "Lignes & colonnes" },
+
+  { "touches": ["Ctrl", "L"], "action": "Créer un tableau", "description": "Mettre la plage sélectionnée sous forme de tableau structuré.", "categorie": "Données" },
+  { "touches": ["Ctrl", "Maj", "L"], "action": "Filtrer", "description": "Activer ou désactiver les filtres automatiques.", "categorie": "Données" },
+  { "touches": ["Ctrl", "7"], "action": "Sélectionner les formules", "description": "Sélectionner uniquement les cellules contenant des formules.", "categorie": "Données" },
+  { "touches": ["Ctrl", ";"], "action": "Insérer la date", "description": "Insérer la date du jour (valeur figée).", "categorie": "Données" },
+
+  { "touches": ["Alt", "="], "action": "Somme automatique", "description": "Insérer une formule SOMME sur la plage adjacente.", "categorie": "Formules" },
+  { "touches": ["F9"], "action": "Recalculer", "description": "Forcer le recalcul de toutes les formules du classeur.", "categorie": "Formules" },
+  { "touches": ["Ctrl", "Maj", "Entrée"], "action": "Formule matricielle", "description": "Valider une formule en tant que formule matricielle (anciennes versions).", "categorie": "Formules" },
+
+  { "touches": ["Maj", "F11"], "action": "Nouvelle feuille", "description": "Insérer une nouvelle feuille de calcul dans le classeur.", "categorie": "Feuilles & classeur" },
+  { "touches": ["Ctrl", "S"], "action": "Enregistrer", "description": "Enregistrer le classeur en cours.", "categorie": "Feuilles & classeur" },
+  { "touches": ["Ctrl", "P"], "action": "Imprimer", "description": "Ouvrir l'aperçu et les options d'impression.", "categorie": "Feuilles & classeur" },
+  { "touches": ["Ctrl", "W"], "action": "Fermer le classeur", "description": "Fermer le classeur actif.", "categorie": "Feuilles & classeur" }
+]
