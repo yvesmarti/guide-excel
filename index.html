@@ -6,7 +6,6 @@
   <title>Excel Companion FR — Formules & raccourcis en français</title>
   <meta name="description" content="Le référentiel des formules Excel francisées et des raccourcis clavier AZERTY. Recherche instantanée, exemples copiables, favoris." />
 
-  <!-- Polices Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -15,9 +14,12 @@
 </head>
 <body>
 
-  <!-- En-tête fixe -->
-  <header class="entete">
-    <div class="entete-contenu">
+  <!-- Overlay mobile pour la sidebar -->
+  <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+  <!-- Volet latéral -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navigation principale">
+    <div class="sidebar-entete">
       <a href="#" class="logo" aria-label="Excel Companion FR — accueil">
         <span class="logo-marque" aria-hidden="true">
           <span class="cell"></span><span class="cell"></span>
@@ -25,56 +27,104 @@
         </span>
         <span class="logo-texte">Excel Companion <strong>FR</strong></span>
       </a>
-
-      <div class="recherche">
-        <svg class="recherche-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></svg>
-        <input
-          type="search"
-          id="champ-recherche"
-          placeholder="Rechercher une formule ou un raccourci…"
-          autocomplete="off"
-          aria-label="Rechercher" />
-        <button class="recherche-effacer" id="recherche-effacer" aria-label="Effacer la recherche" hidden>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
+      <button class="sidebar-fermer" id="sidebar-fermer" aria-label="Fermer le menu">&times;</button>
     </div>
-  </header>
 
-  <main class="conteneur">
-
-    <!-- Onglets -->
-    <nav class="onglets" role="tablist" aria-label="Sections">
-      <button class="onglet actif" data-onglet="formules" role="tab" aria-selected="true">Formules</button>
-      <button class="onglet" data-onglet="raccourcis" role="tab" aria-selected="false">Raccourcis</button>
-      <button class="onglet" data-onglet="favoris" role="tab" aria-selected="false">
-        Favoris <span class="compteur-favoris" id="compteur-favoris">0</span>
+    <div class="sidebar-recherche">
+      <svg class="recherche-icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/></svg>
+      <input
+        type="search"
+        id="champ-recherche"
+        placeholder="Rechercher…  (Ctrl+K)"
+        autocomplete="off"
+        aria-label="Rechercher" />
+      <button class="recherche-effacer" id="recherche-effacer" aria-label="Effacer la recherche" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
-    </nav>
-
-    <!-- Filtres par catégorie -->
-    <div class="filtres" id="filtres" aria-label="Filtrer par catégorie"></div>
-
-    <!-- Zone de résultats -->
-    <p class="resultat-info" id="resultat-info"></p>
-    <section class="grille" id="grille" aria-live="polite"></section>
-
-    <!-- Message si aucun résultat -->
-    <div class="vide" id="vide" hidden>
-      <p>Aucun résultat ne correspond à votre recherche.</p>
     </div>
 
-  </main>
+    <div class="sidebar-contenu">
 
+      <!-- Ma bibliothèque -->
+      <div class="sidebar-section">
+        <p class="sidebar-section-titre">Ma bibliothèque</p>
+        <button class="sidebar-lien actif" data-mode="tous">Tout</button>
+        <button class="sidebar-lien" data-mode="favoris">
+          Favoris <span class="compteur-favoris" id="compteur-favoris">0</span>
+        </button>
+        <button class="sidebar-lien" data-mode="recents">Récents</button>
+      </div>
+
+      <!-- Formules & fonctions -->
+      <div class="sidebar-section">
+        <p class="sidebar-section-titre">Formules &amp; fonctions</p>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Mathématiques">Mathématiques</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Logiques">Logiques</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Recherche">Recherche</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Texte">Texte</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Date/Heure">Date/Heure</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Financières">Financières</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Statistiques">Statistiques</button>
+        <button class="sidebar-lien" data-type="formules" data-categorie="Information">Information</button>
+      </div>
+
+      <!-- Raccourcis clavier -->
+      <div class="sidebar-section">
+        <p class="sidebar-section-titre">Raccourcis clavier</p>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Navigation">Navigation</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Sélection">Sélection</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Édition">Édition</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Mise en forme">Mise en forme</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Lignes &amp; colonnes">Lignes &amp; colonnes</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Données">Données</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Formules">Formules</button>
+        <button class="sidebar-lien" data-type="raccourcis" data-categorie="Feuilles &amp; classeur">Feuilles &amp; classeur</button>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- Zone principale -->
+  <div class="zone-principale">
+
+    <header class="entete">
+      <div class="entete-contenu">
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="#" class="logo" aria-label="Excel Companion FR — accueil">
+          <span class="logo-marque" aria-hidden="true">
+            <span class="cell"></span><span class="cell"></span>
+            <span class="cell"></span><span class="cell actif"></span>
+          </span>
+          <span class="logo-texte">Excel Companion <strong>FR</strong></span>
+        </a>
+      </div>
+    </header>
+
+    <main class="conteneur">
+      <div class="conteneur-entete">
+        <h1 class="titre-section" id="titre-section">Toutes les fiches</h1>
+        <p class="resultat-info" id="resultat-info"></p>
+      </div>
+      <section class="grille" id="grille" aria-live="polite"></section>
+      <div class="vide" id="vide" hidden>
+        <p>Aucun résultat ne correspond à votre recherche.</p>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Pied -->
   <footer class="pied">
     <p>Excel Companion <strong>FR</strong> — référentiel des formules et raccourcis Excel en français. Séparateur d'arguments&nbsp;: le point-virgule «&nbsp;;&nbsp;».</p>
     <p class="pied-lien"><a href="https://yvesmarti.github.io" target="_blank" rel="noopener">par <strong>Yves Marti</strong></a></p>
   </footer>
 
-  <!-- Notification de copie -->
+  <!-- Toast -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- Fiche détaillée (fenêtre modale) -->
+  <!-- Fiche modale -->
   <div class="fiche-overlay" id="fiche-overlay" hidden>
     <div class="fiche" role="dialog" aria-modal="true" aria-labelledby="fiche-titre">
       <button class="fiche-fermer" id="fiche-fermer" aria-label="Fermer la fiche">&times;</button>

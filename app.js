@@ -1,32 +1,28 @@
-/* =========================================================
-   Excel Companion FR — logique de l'application
-   Aucune dépendance, aucun backend. Charge les données depuis
-   formulas.json et shortcuts.json, puis affiche des cartes.
-   ========================================================= */
-
-/* ---------- État global ---------- */
 const etat = {
   formules: [],
   raccourcis: [],
-  ongletActif: "formules",      // "formules" | "raccourcis" | "favoris"
-  categorieActive: "Toutes",
+  mode: "tous",
+  type: null,
+  categorie: null,
   recherche: "",
-  favoris: chargerFavoris(),     // ensemble (Set) d'identifiants uniques
+  favoris: chargerFavoris(),
+  recents: chargerRecents(),
+  formulesParNom: {},
 };
 
-/* ---------- Sélecteurs ---------- */
 const elGrille    = document.getElementById("grille");
-const elFiltres   = document.getElementById("filtres");
 const elVide      = document.getElementById("vide");
 const elInfo      = document.getElementById("resultat-info");
 const elRecherche = document.getElementById("champ-recherche");
 const elEffacer   = document.getElementById("recherche-effacer");
 const elCompteur  = document.getElementById("compteur-favoris");
 const elToast     = document.getElementById("toast");
+const elSidebar   = document.getElementById("sidebar");
+const elOverlay   = document.getElementById("sidebar-overlay");
+const elHamburger = document.getElementById("hamburger");
+const elFermer    = document.getElementById("sidebar-fermer");
+const elTitre     = document.getElementById("titre-section");
 
-/* =========================================================
-   Démarrage : on récupère les deux fichiers JSON
-   ========================================================= */
 async function demarrer() {
   try {
     const [formules, raccourcis] = await Promise.all([
@@ -46,27 +42,20 @@ async function demarrer() {
 }
 
 function initialiser() {
-  // Index des formules par nom (pour la navigation « Voir aussi »)
   etat.formulesParNom = {};
   etat.formules.forEach((f) => { etat.formulesParNom[f.nom] = f; });
-
   majCompteurFavoris();
   brancherEvenements();
   afficher();
 }
 
-/* =========================================================
-   Événements
-   ========================================================= */
 function brancherEvenements() {
-  // Recherche en temps réel
   elRecherche.addEventListener("input", (e) => {
     etat.recherche = e.target.value.trim().toLowerCase();
     elEffacer.hidden = !e.target.value;
     afficher();
   });
 
-  // Effacement du champ recherche
   elEffacer.addEventListener("click", () => {
     elRecherche.value = "";
     elRecherche.focus();
@@ -75,41 +64,67 @@ function brancherEvenements() {
     afficher();
   });
 
-  // Changement d'onglet
-  document.querySelectorAll(".onglet").forEach((btn) => {
+  document.querySelectorAll(".sidebar-lien").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".onglet").forEach((b) => {
-        b.classList.remove("actif");
-        b.setAttribute("aria-selected", "false");
-      });
+      document.querySelectorAll(".sidebar-lien").forEach((b) => b.classList.remove("actif"));
       btn.classList.add("actif");
-      btn.setAttribute("aria-selected", "true");
-      etat.ongletActif = btn.dataset.onglet;
-      etat.categorieActive = "Toutes"; // on réinitialise le filtre
+
+      const mode = btn.dataset.mode;
+      if (mode) {
+        etat.mode = mode;
+        etat.type = null;
+        etat.categorie = null;
+      } else {
+        etat.mode = "categorie";
+        etat.type = btn.dataset.type;
+        etat.categorie = btn.dataset.categorie;
+      }
+      etat.recherche = "";
+      elRecherche.value = "";
+      elEffacer.hidden = true;
+      fermerSidebarMobile();
       afficher();
     });
   });
 
-  // Fermeture de la fiche détaillée
   document.getElementById("fiche-fermer").addEventListener("click", fermerFiche);
-  elOverlay.addEventListener("click", (e) => {
-    if (e.target === elOverlay) fermerFiche(); // clic sur le fond
+  const ficheOverlay = document.getElementById("fiche-overlay");
+  ficheOverlay.addEventListener("click", (e) => {
+    if (e.target === ficheOverlay) fermerFiche();
   });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !elOverlay.hidden) fermerFiche();
+    if (e.key === "Escape") {
+      const ficheOverlay = document.getElementById("fiche-overlay");
+      if (!ficheOverlay.hidden) { fermerFiche(); return; }
+      if (!elOverlay.hidden) { fermerSidebarMobile(); }
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+      e.preventDefault();
+      elRecherche.focus();
+    }
   });
+
+  elHamburger.addEventListener("click", () => {
+    const ouverte = elSidebar.classList.toggle("ouverte");
+    elHamburger.setAttribute("aria-expanded", ouverte);
+    elOverlay.hidden = !ouverte;
+  });
+
+  elFermer.addEventListener("click", fermerSidebarMobile);
+  elOverlay.addEventListener("click", fermerSidebarMobile);
 }
 
-/* =========================================================
-   Affichage principal
-   ========================================================= */
+function fermerSidebarMobile() {
+  elSidebar.classList.remove("ouverte");
+  elHamburger.setAttribute("aria-expanded", "false");
+  elOverlay.hidden = true;
+}
+
 function afficher() {
-  construireFiltres();
+  let elements = elementsCourants();
+  elements = filtrerParRecherche(elements);
 
-  let elements = elementsCourants();          // selon l'onglet
-  elements = filtrerParCategorie(elements);   // selon la catégorie
-  elements = filtrerParRecherche(elements);   // selon la recherche
-
+  majTitre();
   elGrille.innerHTML = "";
 
   if (elements.length === 0) {
@@ -119,16 +134,14 @@ function afficher() {
   }
   elVide.hidden = true;
 
-  const motType = etat.ongletActif === "raccourcis" ? "raccourci" : "élément";
-  elInfo.textContent =
-    elements.length + " " + (etat.ongletActif === "raccourcis"
-      ? (elements.length > 1 ? "raccourcis" : "raccourci")
-      : (elements.length > 1 ? "formules" : "formule")) + " affiché" +
-      (elements.length > 1 ? "s" : "");
+  const stats = compterTypes(elements);
+  const parties = [];
+  if (stats.formules > 0) parties.push(stats.formules + " " + (stats.formules > 1 ? "formules" : "formule"));
+  if (stats.raccourcis > 0) parties.push(stats.raccourcis + " " + (stats.raccourcis > 1 ? "raccourcis" : "raccourci"));
+  elInfo.textContent = parties.join(" et ") + " affiché" + (elements.length > 1 ? "s" : "");
 
-  // Petit délai d'animation échelonné
   elements.forEach((item, i) => {
-    const carte = item._type === "raccourci"
+    const carte = typeElement(item) === "raccourci"
       ? carteRaccourci(item)
       : carteFormule(item);
     carte.style.animationDelay = Math.min(i * 18, 300) + "ms";
@@ -136,47 +149,67 @@ function afficher() {
   });
 }
 
-/* Renvoie la liste de base selon l'onglet sélectionné */
+function typeElement(item) {
+  return item._type || (item.touches ? "raccourci" : "formule");
+}
+
+function compterTypes(elements) {
+  let formules = 0, raccourcis = 0;
+  elements.forEach((e) => { if (typeElement(e) === "raccourci") raccourcis++; else formules++; });
+  return { formules, raccourcis };
+}
+
+function majTitre() {
+  const noms = {
+    tous: "Toutes les fiches",
+    favoris: "Mes favoris",
+    recents: "Historique récent",
+  };
+  if (etat.mode === "categorie") {
+    const prefixe = etat.type === "formules" ? "Formules" : "Raccourcis";
+    elTitre.textContent = prefixe + " — " + etat.categorie;
+  } else {
+    elTitre.textContent = noms[etat.mode] || "Toutes les fiches";
+  }
+}
+
 function elementsCourants() {
   const formulesT  = etat.formules.map((f) => ({ ...f, _type: "formule" }));
   const raccourcisT = etat.raccourcis.map((r) => ({ ...r, _type: "raccourci" }));
 
-  if (etat.ongletActif === "formules")  return formulesT;
-  if (etat.ongletActif === "raccourcis") return raccourcisT;
+  if (etat.mode === "tous") return [...formulesT, ...raccourcisT];
+  if (etat.mode === "favoris") return [...formulesT, ...raccourcisT].filter((it) => etat.favoris.has(idDe(it)));
 
-  // Onglet Favoris : on mélange les deux types
-  return [...formulesT, ...raccourcisT].filter((it) => etat.favoris.has(idDe(it)));
-}
-
-/* =========================================================
-   Filtres par catégorie
-   ========================================================= */
-function construireFiltres() {
-  // Sur l'onglet Favoris, on n'affiche pas de filtre catégorie
-  if (etat.ongletActif === "favoris") {
-    elFiltres.innerHTML = "";
-    return;
+  if (etat.mode === "recents") {
+    const map = {};
+    formulesT.forEach((f) => { map[idDe(f)] = f; });
+    raccourcisT.forEach((r) => { map[idDe(r)] = r; });
+    return etat.recents.map((id) => map[id]).filter(Boolean);
   }
 
-  const source = etat.ongletActif === "raccourcis" ? etat.raccourcis : etat.formules;
-  const categories = ["Toutes", ...new Set(source.map((x) => x.categorie))];
-
-  elFiltres.innerHTML = "";
-  categories.forEach((cat) => {
-    const btn = document.createElement("button");
-    btn.className = "filtre" + (cat === etat.categorieActive ? " actif" : "");
-    btn.textContent = cat;
-    btn.addEventListener("click", () => {
-      etat.categorieActive = cat;
-      afficher();
-    });
-    elFiltres.appendChild(btn);
-  });
+  const source = etat.type === "raccourcis" ? raccourcisT : formulesT;
+  return source.filter((e) => e.categorie === etat.categorie);
 }
 
-function filtrerParCategorie(elements) {
-  if (etat.categorieActive === "Toutes" || etat.ongletActif === "favoris") return elements;
-  return elements.filter((e) => e.categorie === etat.categorieActive);
+function filtrerParRecherche(elements) {
+  if (!etat.recherche) return elements;
+  const q = etat.recherche;
+  return elements.filter((e) => {
+    if (typeElement(e) === "raccourci") {
+      return (
+        correspond(q, e.action) ||
+        correspond(q, e.description) ||
+        correspond(q, e.touches.join(" ")) ||
+        correspond(q, e.categorie)
+      );
+    }
+    return (
+      correspond(q, e.nom) ||
+      correspond(q, e.description) ||
+      correspond(q, e.syntaxe) ||
+      correspond(q, e.categorie)
+    );
+  });
 }
 
 function normaliser(s) {
@@ -192,12 +225,9 @@ function bigrammes(s) {
 function correspond(q, texte) {
   const nq = normaliser(q);
   const nt = normaliser(texte);
-  // 1. Sous-chaîne directe (gère les accents)
   if (nt.includes(nq)) return true;
-  // 2. Tous les mots de la requête apparaissent dans le texte (ordre libre)
   const motsQ = nq.split(/\s+/).filter(Boolean);
   if (motsQ.length > 1 && motsQ.every((m) => nt.includes(m))) return true;
-  // 3. Fuzzy : pour les requêtes courtes, similarité de bigrammes
   if (nq.length >= 2 && nq.length <= 5) {
     const bgQ = bigrammes(nq);
     const bgT = bigrammes(nt);
@@ -206,27 +236,6 @@ function correspond(q, texte) {
     if (intersection / bgQ.size >= 0.6) return true;
   }
   return false;
-}
-
-function filtrerParRecherche(elements) {
-  if (!etat.recherche) return elements;
-  const q = etat.recherche;
-  return elements.filter((e) => {
-    if (e._type === "raccourci") {
-      return (
-        correspond(q, e.action) ||
-        correspond(q, e.description) ||
-        correspond(q, e.touches.join(" ")) ||
-        correspond(q, e.categorie)
-      );
-    }
-    return (
-      correspond(q, e.nom) ||
-      correspond(q, e.description) ||
-      correspond(q, e.syntaxe) ||
-      correspond(q, e.categorie)
-    );
-  });
 }
 
 /* =========================================================
@@ -258,19 +267,16 @@ function carteFormule(f) {
     </div>
     <span class="voir-fiche">Voir la fiche détaillée →</span>`;
 
-  // Copier l'exemple (sans ouvrir la fiche)
   carte.querySelector(".exemple").addEventListener("click", (e) => {
     e.stopPropagation();
     copier(f.exemple);
   });
 
-  // Favori (sans ouvrir la fiche)
   carte.querySelector(".favori").addEventListener("click", (e) => {
     e.stopPropagation();
     basculerFavori(id, e.currentTarget);
   });
 
-  // Ouvrir la fiche : clic ou touche Entrée / Espace
   carte.addEventListener("click", () => ouvrirFiche(f));
   carte.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ouvrirFiche(f); }
@@ -317,25 +323,23 @@ function boutonFavori(actif) {
 }
 
 /* =========================================================
-   Fiche détaillée (fenêtre modale)
-   Affiche toutes les sections disponibles. Les champs absents
-   (formules encore en version simple) ne sont pas affichés.
+   Fiche détaillée (modale)
    ========================================================= */
-const elOverlay = document.getElementById("fiche-overlay");
 const elFiche   = document.getElementById("fiche-contenu");
 
 function ouvrirFiche(f) {
   elFiche.innerHTML = contenuFiche(f);
-  elOverlay.hidden = false;
+  const overlay = document.getElementById("fiche-overlay");
+  overlay.hidden = false;
   document.body.classList.add("sans-defilement");
   brancherActionsFiche(f);
-  // Mettre le focus sur le bouton fermer, et remonter en haut
-  elOverlay.querySelector(".fiche").scrollTop = 0;
+  overlay.querySelector(".fiche").scrollTop = 0;
   document.getElementById("fiche-fermer").focus();
+  ajouterRecent(f);
 }
 
 function fermerFiche() {
-  elOverlay.hidden = true;
+  document.getElementById("fiche-overlay").hidden = true;
   document.body.classList.remove("sans-defilement");
 }
 
@@ -343,12 +347,10 @@ function contenuFiche(f) {
   const id = idDe(f);
   const estFavori = etat.favoris.has(id);
 
-  // Badge niveau (facultatif)
   const niveau = f.niveau
     ? `<span class="badge-niveau niveau-${accentLess(f.niveau)}">${echapper(f.niveau)}</span>`
     : "";
 
-  // Arguments (facultatif)
   let argsHTML = "";
   if (Array.isArray(f.arguments) && f.arguments.length) {
     argsHTML = section("Arguments",
@@ -359,7 +361,6 @@ function contenuFiche(f) {
         </div>`).join("") + `</div>`);
   }
 
-  // Exemples : simple + métier (facultatif)
   let exemplesHTML = `
     <div class="exemple-bloc">
       <p class="exemple-label">Exemple simple</p>
@@ -378,14 +379,12 @@ function contenuFiche(f) {
       </div>`;
   }
 
-  // Guide pas à pas (facultatif)
   let etapesHTML = "";
   if (Array.isArray(f.etapes) && f.etapes.length) {
     etapesHTML = section("Guide d'application pas à pas",
       `<ol class="etapes">` + f.etapes.map((e) => `<li>${echapper(e)}</li>`).join("") + `</ol>`);
   }
 
-  // Erreurs fréquentes (facultatif)
   let erreursHTML = "";
   if (Array.isArray(f.erreurs) && f.erreurs.length) {
     erreursHTML = section("Erreurs fréquentes",
@@ -396,12 +395,10 @@ function contenuFiche(f) {
         </div>`).join("") + `</div>`);
   }
 
-  // Astuce (facultatif)
   const astuceHTML = f.astuce
     ? `<div class="astuce">${iconeAmpoule()}<p>${echapper(f.astuce)}</p></div>`
     : "";
 
-  // Voir aussi (facultatif) — cliquable si la formule existe
   let voirHTML = "";
   if (Array.isArray(f.voirAussi) && f.voirAussi.length) {
     voirHTML = section("Voir aussi",
@@ -445,21 +442,17 @@ function section(titre, contenu) {
   </section>`;
 }
 
-// Branche les boutons internes de la fiche (copie, favori, voir aussi)
 function brancherActionsFiche(f) {
-  // Copie des exemples
   elFiche.querySelectorAll(".exemple-copiable").forEach((bloc) => {
     bloc.addEventListener("click", () => copier(bloc.dataset.copier));
   });
-  // Favori
   const favBtn = elFiche.querySelector(".fiche-favori");
   if (favBtn) {
     favBtn.addEventListener("click", () => {
       basculerFavori(idDe(f), favBtn);
-      afficher(); // resynchronise les étoiles de la grille
+      afficher();
     });
   }
-  // Voir aussi → ouvrir une autre fiche
   elFiche.querySelectorAll(".puce-lien").forEach((b) => {
     b.addEventListener("click", () => {
       const cible = etat.formulesParNom[b.dataset.aller];
@@ -482,7 +475,6 @@ function iconeAmpoule() {
   return `<svg class="ico-ampoule" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>`;
 }
 
-// "Débutant" -> "debutant" (pour la classe CSS du niveau)
 function accentLess(s) {
   return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z]/g, "");
 }
@@ -506,7 +498,7 @@ function chargerFavoris() {
 function sauvegarderFavoris() {
   try {
     localStorage.setItem("ecfr_favoris", JSON.stringify([...etat.favoris]));
-  } catch {/* mode privé : on ignore */}
+  } catch { /* mode privé : on ignore */ }
 }
 
 function basculerFavori(id, bouton) {
@@ -521,13 +513,39 @@ function basculerFavori(id, bouton) {
   }
   sauvegarderFavoris();
   majCompteurFavoris();
-
-  // Sur l'onglet Favoris, on rafraîchit pour faire disparaître la carte retirée
-  if (etat.ongletActif === "favoris") afficher();
+  if (etat.mode === "favoris") afficher();
 }
 
 function majCompteurFavoris() {
   elCompteur.textContent = etat.favoris.size;
+}
+
+/* =========================================================
+   Récents (localStorage)
+   ========================================================= */
+const MAX_RECENTS = 15;
+
+function chargerRecents() {
+  try {
+    const brut = localStorage.getItem("ecfr_recents");
+    return brut ? JSON.parse(brut) : [];
+  } catch {
+    return [];
+  }
+}
+
+function sauvegarderRecents() {
+  try {
+    localStorage.setItem("ecfr_recents", JSON.stringify(etat.recents));
+  } catch { /* ignore */ }
+}
+
+function ajouterRecent(item) {
+  const id = idDe(item);
+  etat.recents = etat.recents.filter((r) => r !== id);
+  etat.recents.unshift(id);
+  if (etat.recents.length > MAX_RECENTS) etat.recents = etat.recents.slice(0, MAX_RECENTS);
+  sauvegarderRecents();
 }
 
 /* =========================================================
@@ -578,20 +596,17 @@ function echapper(s) {
     .replace(/"/g, "&quot;");
 }
 
-// Surligne les points-virgules dans la syntaxe (après échappement)
 function surlignerPV(s) {
   return echapper(s).replace(/;/g, '<span class="pv">;</span>');
 }
 
-// Associe chaque catégorie à sa couleur (variables CSS)
 function couleurCategorie(cat) {
   const cle = "--cat-" + cat
     .toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")  // enlève les accents
-    .replace(/[^a-z]/g, "");                            // enlève espaces, /, &, etc.
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z]/g, "");
   const valeur = getComputedStyle(document.documentElement).getPropertyValue(cle);
   return valeur.trim() || "#64748B";
 }
 
-/* C'est parti */
 demarrer();
