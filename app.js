@@ -20,6 +20,7 @@ const elFiltres   = document.getElementById("filtres");
 const elVide      = document.getElementById("vide");
 const elInfo      = document.getElementById("resultat-info");
 const elRecherche = document.getElementById("champ-recherche");
+const elEffacer   = document.getElementById("recherche-effacer");
 const elCompteur  = document.getElementById("compteur-favoris");
 const elToast     = document.getElementById("toast");
 
@@ -61,6 +62,16 @@ function brancherEvenements() {
   // Recherche en temps réel
   elRecherche.addEventListener("input", (e) => {
     etat.recherche = e.target.value.trim().toLowerCase();
+    elEffacer.hidden = !e.target.value;
+    afficher();
+  });
+
+  // Effacement du champ recherche
+  elEffacer.addEventListener("click", () => {
+    elRecherche.value = "";
+    elRecherche.focus();
+    etat.recherche = "";
+    elEffacer.hidden = true;
     afficher();
   });
 
@@ -168,23 +179,52 @@ function filtrerParCategorie(elements) {
   return elements.filter((e) => e.categorie === etat.categorieActive);
 }
 
+function normaliser(s) {
+  return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function bigrammes(s) {
+  const r = new Set();
+  for (let i = 0; i < s.length - 1; i++) r.add(s.slice(i, i + 2));
+  return r;
+}
+
+function correspond(q, texte) {
+  const nq = normaliser(q);
+  const nt = normaliser(texte);
+  // 1. Sous-chaîne directe (gère les accents)
+  if (nt.includes(nq)) return true;
+  // 2. Tous les mots de la requête apparaissent dans le texte (ordre libre)
+  const motsQ = nq.split(/\s+/).filter(Boolean);
+  if (motsQ.length > 1 && motsQ.every((m) => nt.includes(m))) return true;
+  // 3. Fuzzy : pour les requêtes courtes, similarité de bigrammes
+  if (nq.length >= 2 && nq.length <= 5) {
+    const bgQ = bigrammes(nq);
+    const bgT = bigrammes(nt);
+    let intersection = 0;
+    bgQ.forEach((b) => { if (bgT.has(b)) intersection++; });
+    if (intersection / bgQ.size >= 0.6) return true;
+  }
+  return false;
+}
+
 function filtrerParRecherche(elements) {
   if (!etat.recherche) return elements;
   const q = etat.recherche;
   return elements.filter((e) => {
     if (e._type === "raccourci") {
       return (
-        e.action.toLowerCase().includes(q) ||
-        e.description.toLowerCase().includes(q) ||
-        e.touches.join(" ").toLowerCase().includes(q) ||
-        e.categorie.toLowerCase().includes(q)
+        correspond(q, e.action) ||
+        correspond(q, e.description) ||
+        correspond(q, e.touches.join(" ")) ||
+        correspond(q, e.categorie)
       );
     }
     return (
-      e.nom.toLowerCase().includes(q) ||
-      e.description.toLowerCase().includes(q) ||
-      e.syntaxe.toLowerCase().includes(q) ||
-      e.categorie.toLowerCase().includes(q)
+      correspond(q, e.nom) ||
+      correspond(q, e.description) ||
+      correspond(q, e.syntaxe) ||
+      correspond(q, e.categorie)
     );
   });
 }
@@ -496,7 +536,7 @@ function majCompteurFavoris() {
 function copier(texte) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(texte).then(
-      () => toast("Copié : " + texte),
+      () => toast("Copié\u00A0!"),
       () => copierSecours(texte)
     );
   } else {
@@ -511,7 +551,7 @@ function copierSecours(texte) {
   tmp.style.opacity = "0";
   document.body.appendChild(tmp);
   tmp.select();
-  try { document.execCommand("copy"); toast("Copié : " + texte); }
+  try { document.execCommand("copy"); toast("Copié\u00A0!"); }
   catch { toast("Copie impossible"); }
   document.body.removeChild(tmp);
 }

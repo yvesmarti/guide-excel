@@ -91,9 +91,17 @@ body {
   width: 18px; height: 18px; fill: none; stroke: var(--texte-doux);
   stroke-width: 2; stroke-linecap: round; pointer-events: none;
 }
+.recherche-effacer {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  border: 0; background: transparent; cursor: pointer; padding: 4px; line-height: 0;
+  color: var(--texte-doux); border-radius: 50%;
+  transition: color .15s, background .15s;
+}
+.recherche-effacer:hover { color: var(--texte); background: #F1F3F5; }
+.recherche-effacer svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 #champ-recherche {
   width: 100%;
-  padding: 11px 16px 11px 42px;
+  padding: 11px 40px 11px 42px;
   font-family: inherit; font-size: 1rem;
   background: #fff;
   border: 1px solid var(--bordure);
