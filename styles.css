@@ -296,6 +296,10 @@ body {
    ========================================================= */
 body.sans-defilement { overflow: hidden; }
 
+/* La fenêtre doit rester cachée tant que l'attribut hidden est présent.
+   (Sans cette règle, le display:flex ci-dessous l'afficherait au chargement.) */
+.fiche-overlay[hidden] { display: none; }
+
 .fiche-overlay {
   position: fixed; inset: 0; z-index: 200;
   background: rgba(16, 24, 40, .45);
