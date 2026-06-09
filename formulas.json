@@ -1,88 +1,1264 @@
 [
-  { "nom": "SOMME", "categorie": "Mathématiques", "syntaxe": "SOMME(nombre1;[nombre2];...)", "exemple": "=SOMME(A1:A10)", "description": "Additionne tous les nombres d'une plage de cellules." },
-  { "nom": "ARRONDI", "categorie": "Mathématiques", "syntaxe": "ARRONDI(nombre;no_chiffres)", "exemple": "=ARRONDI(3,14159;2)", "description": "Arrondit un nombre au nombre de décimales indiqué." },
-  { "nom": "ARRONDI.SUP", "categorie": "Mathématiques", "syntaxe": "ARRONDI.SUP(nombre;no_chiffres)", "exemple": "=ARRONDI.SUP(3,2;0)", "description": "Arrondit un nombre à l'unité ou décimale supérieure." },
-  { "nom": "ARRONDI.INF", "categorie": "Mathématiques", "syntaxe": "ARRONDI.INF(nombre;no_chiffres)", "exemple": "=ARRONDI.INF(3,8;0)", "description": "Arrondit un nombre à l'unité ou décimale inférieure." },
-  { "nom": "PUISSANCE", "categorie": "Mathématiques", "syntaxe": "PUISSANCE(nombre;puissance)", "exemple": "=PUISSANCE(2;10)", "description": "Élève un nombre à la puissance indiquée." },
-  { "nom": "RACINE", "categorie": "Mathématiques", "syntaxe": "RACINE(nombre)", "exemple": "=RACINE(144)", "description": "Renvoie la racine carrée d'un nombre positif." },
-  { "nom": "MOD", "categorie": "Mathématiques", "syntaxe": "MOD(nombre;diviseur)", "exemple": "=MOD(10;3)", "description": "Renvoie le reste d'une division (ici 1)." },
-  { "nom": "EXP", "categorie": "Mathématiques", "syntaxe": "EXP(nombre)", "exemple": "=EXP(1)", "description": "Renvoie e (≈2,718) élevé à la puissance indiquée." },
-  { "nom": "LN", "categorie": "Mathématiques", "syntaxe": "LN(nombre)", "exemple": "=LN(100)", "description": "Renvoie le logarithme népérien (base e) d'un nombre." },
-  { "nom": "PI", "categorie": "Mathématiques", "syntaxe": "PI()", "exemple": "=PI()", "description": "Renvoie la valeur de π (3,14159...)." },
-  { "nom": "SOMME.SI", "categorie": "Mathématiques", "syntaxe": "SOMME.SI(plage;critère;[somme_plage])", "exemple": "=SOMME.SI(A1:A10;\">100\")", "description": "Additionne les cellules qui répondent à un critère donné." },
-  { "nom": "SOMME.SI.ENS", "categorie": "Mathématiques", "syntaxe": "SOMME.SI.ENS(plage_somme;plage_critères1;critère1;...)", "exemple": "=SOMME.SI.ENS(C:C;A:A;\"Paris\";B:B;\">100\")", "description": "Additionne les cellules répondant à plusieurs critères simultanés." },
-  { "nom": "SOUS.TOTAL", "categorie": "Mathématiques", "syntaxe": "SOUS.TOTAL(no_fonction;réf1;...)", "exemple": "=SOUS.TOTAL(9;A1:A100)", "description": "Calcule un sous-total (somme, moyenne...) en ignorant les lignes masquées ou filtrées." },
-  { "nom": "ALEA", "categorie": "Mathématiques", "syntaxe": "ALEA()", "exemple": "=ALEA()", "description": "Renvoie un nombre aléatoire décimal compris entre 0 et 1." },
-  { "nom": "ALEA.ENTRE.BORNES", "categorie": "Mathématiques", "syntaxe": "ALEA.ENTRE.BORNES(min;max)", "exemple": "=ALEA.ENTRE.BORNES(1;100)", "description": "Renvoie un nombre entier aléatoire compris entre deux bornes." },
-  { "nom": "BITET", "categorie": "Mathématiques", "syntaxe": "BITET(nombre1;nombre2)", "exemple": "=BITET(5;3)", "description": "Renvoie un « ET » binaire (bit à bit) de deux nombres entiers." },
-  { "nom": "BITOU", "categorie": "Mathématiques", "syntaxe": "BITOU(nombre1;nombre2)", "exemple": "=BITOU(5;3)", "description": "Renvoie un « OU » binaire (bit à bit) de deux nombres entiers." },
-  { "nom": "BITDECALG", "categorie": "Mathématiques", "syntaxe": "BITDECALG(nombre;montant_décalage)", "exemple": "=BITDECALG(4;2)", "description": "Décale les bits d'un nombre vers la gauche (multiplie par 2 à chaque décalage)." },
-  { "nom": "BITDECALD", "categorie": "Mathématiques", "syntaxe": "BITDECALD(nombre;montant_décalage)", "exemple": "=BITDECALD(16;2)", "description": "Décale les bits d'un nombre vers la droite (divise par 2 à chaque décalage)." },
-
-  { "nom": "SI", "categorie": "Logiques", "syntaxe": "SI(test_logique;valeur_si_vrai;[valeur_si_faux])", "exemple": "=SI(A1>10;\"Élevé\";\"Bas\")", "description": "Renvoie une valeur si une condition est vraie, une autre si elle est fausse." },
-  { "nom": "ET", "categorie": "Logiques", "syntaxe": "ET(valeur_logique1;[valeur_logique2];...)", "exemple": "=ET(A1>0;A1<100)", "description": "Renvoie VRAI uniquement si toutes les conditions sont vraies." },
-  { "nom": "OU", "categorie": "Logiques", "syntaxe": "OU(valeur_logique1;[valeur_logique2];...)", "exemple": "=OU(A1=\"Oui\";B1=\"Oui\")", "description": "Renvoie VRAI si au moins une des conditions est vraie." },
-  { "nom": "NON", "categorie": "Logiques", "syntaxe": "NON(valeur_logique)", "exemple": "=NON(A1=0)", "description": "Inverse la valeur logique de son argument (VRAI devient FAUX)." },
-  { "nom": "SIERREUR", "categorie": "Logiques", "syntaxe": "SIERREUR(valeur;valeur_si_erreur)", "exemple": "=SIERREUR(A1/B1;\"Erreur\")", "description": "Renvoie une valeur de remplacement si une formule génère une erreur." },
-
-  { "nom": "RECHERCHEV", "categorie": "Recherche", "syntaxe": "RECHERCHEV(valeur_cherchée;table_matrice;no_index_col;[valeur_proche])", "exemple": "=RECHERCHEV(\"Dupont\";A2:C50;3;FAUX)", "description": "Recherche une valeur dans la première colonne d'un tableau et renvoie une valeur de la même ligne." },
-  { "nom": "RECHERCHEH", "categorie": "Recherche", "syntaxe": "RECHERCHEH(valeur_cherchée;table_matrice;no_index_lig;[valeur_proche])", "exemple": "=RECHERCHEH(\"Janvier\";A1:M3;2;FAUX)", "description": "Recherche une valeur dans la première ligne d'un tableau et renvoie une valeur de la même colonne." },
-  { "nom": "INDEX", "categorie": "Recherche", "syntaxe": "INDEX(matrice;no_lig;[no_col])", "exemple": "=INDEX(A1:C10;5;2)", "description": "Renvoie la valeur de la cellule à l'intersection d'une ligne et d'une colonne données." },
-  { "nom": "EQUIV", "categorie": "Recherche", "syntaxe": "EQUIV(valeur_cherchée;matrice_recherche;[type])", "exemple": "=EQUIV(\"Mars\";A1:A12;0)", "description": "Renvoie la position (rang) d'un élément dans une plage. Souvent combinée avec INDEX." },
-  { "nom": "INDIRECT", "categorie": "Recherche", "syntaxe": "INDIRECT(réf_texte;[a1])", "exemple": "=INDIRECT(\"A\"&LIGNE())", "description": "Renvoie la référence désignée par une chaîne de texte." },
-  { "nom": "DECALER", "categorie": "Recherche", "syntaxe": "DECALER(réf;lignes;colonnes;[hauteur];[largeur])", "exemple": "=DECALER(A1;2;1)", "description": "Renvoie une référence décalée d'un nombre de lignes et de colonnes par rapport à une cellule." },
-  { "nom": "ADRESSE", "categorie": "Recherche", "syntaxe": "ADRESSE(no_lig;no_col;[abs];[a1];[feuille])", "exemple": "=ADRESSE(1;1)", "description": "Crée une adresse de cellule sous forme de texte (ici $A$1)." },
-  { "nom": "COLONNE", "categorie": "Recherche", "syntaxe": "COLONNE([référence])", "exemple": "=COLONNE(B1)", "description": "Renvoie le numéro de colonne d'une référence (ici 2)." },
-  { "nom": "LIGNE", "categorie": "Recherche", "syntaxe": "LIGNE([référence])", "exemple": "=LIGNE(A5)", "description": "Renvoie le numéro de ligne d'une référence (ici 5)." },
-
-  { "nom": "CONCATENER", "categorie": "Texte", "syntaxe": "CONCATENER(texte1;[texte2];...)", "exemple": "=CONCATENER(A1;\" \";B1)", "description": "Assemble plusieurs textes en une seule chaîne." },
-  { "nom": "GAUCHE", "categorie": "Texte", "syntaxe": "GAUCHE(texte;[no_car])", "exemple": "=GAUCHE(A1;3)", "description": "Extrait les premiers caractères d'un texte, en partant de la gauche." },
-  { "nom": "DROITE", "categorie": "Texte", "syntaxe": "DROITE(texte;[no_car])", "exemple": "=DROITE(A1;4)", "description": "Extrait les derniers caractères d'un texte, en partant de la droite." },
-  { "nom": "STXT", "categorie": "Texte", "syntaxe": "STXT(texte;no_départ;no_car)", "exemple": "=STXT(A1;2;5)", "description": "Extrait un nombre de caractères à partir d'une position donnée." },
-  { "nom": "NBCAR", "categorie": "Texte", "syntaxe": "NBCAR(texte)", "exemple": "=NBCAR(A1)", "description": "Renvoie le nombre de caractères d'un texte." },
-  { "nom": "SUPPRESPACE", "categorie": "Texte", "syntaxe": "SUPPRESPACE(texte)", "exemple": "=SUPPRESPACE(A1)", "description": "Supprime les espaces superflus d'un texte (garde un seul espace entre les mots)." },
-  { "nom": "MAJUSCULE", "categorie": "Texte", "syntaxe": "MAJUSCULE(texte)", "exemple": "=MAJUSCULE(A1)", "description": "Convertit tout le texte en majuscules." },
-  { "nom": "MINUSCULE", "categorie": "Texte", "syntaxe": "MINUSCULE(texte)", "exemple": "=MINUSCULE(A1)", "description": "Convertit tout le texte en minuscules." },
-  { "nom": "NOMPROPRE", "categorie": "Texte", "syntaxe": "NOMPROPRE(texte)", "exemple": "=NOMPROPRE(\"jean dupont\")", "description": "Met une majuscule à la première lettre de chaque mot." },
-  { "nom": "TEXTE", "categorie": "Texte", "syntaxe": "TEXTE(valeur;format_texte)", "exemple": "=TEXTE(A1;\"jj/mm/aaaa\")", "description": "Convertit une valeur en texte selon un format d'affichage précis." },
-  { "nom": "CNUM", "categorie": "Texte", "syntaxe": "CNUM(texte)", "exemple": "=CNUM(\"1234\")", "description": "Convertit un texte représentant un nombre en valeur numérique." },
-  { "nom": "SUBSTITUE", "categorie": "Texte", "syntaxe": "SUBSTITUE(texte;ancien_texte;nouveau_texte;[no_position])", "exemple": "=SUBSTITUE(A1;\"-\";\"/\")", "description": "Remplace un texte précis par un autre dans une chaîne." },
-  { "nom": "REMPLACER", "categorie": "Texte", "syntaxe": "REMPLACER(ancien_texte;no_départ;no_car;nouveau_texte)", "exemple": "=REMPLACER(A1;1;3;\"XXX\")", "description": "Remplace une partie d'un texte selon sa position." },
-  { "nom": "TROUVE", "categorie": "Texte", "syntaxe": "TROUVE(texte_cherché;texte;[no_départ])", "exemple": "=TROUVE(\"@\";A1)", "description": "Renvoie la position d'un texte dans un autre (sensible à la casse)." },
-  { "nom": "CHERCHE", "categorie": "Texte", "syntaxe": "CHERCHE(texte_cherché;texte;[no_départ])", "exemple": "=CHERCHE(\"a\";A1)", "description": "Renvoie la position d'un texte dans un autre (insensible à la casse)." },
-  { "nom": "REPT", "categorie": "Texte", "syntaxe": "REPT(texte;no_fois)", "exemple": "=REPT(\"-\";20)", "description": "Répète un texte un certain nombre de fois." },
-  { "nom": "EXACT", "categorie": "Texte", "syntaxe": "EXACT(texte1;texte2)", "exemple": "=EXACT(A1;B1)", "description": "Compare deux textes et renvoie VRAI s'ils sont strictement identiques (casse comprise)." },
-  { "nom": "EPURAGE", "categorie": "Texte", "syntaxe": "EPURAGE(texte)", "exemple": "=EPURAGE(A1)", "description": "Supprime les caractères non imprimables d'un texte." },
-  { "nom": "CAR", "categorie": "Texte", "syntaxe": "CAR(nombre)", "exemple": "=CAR(65)", "description": "Renvoie le caractère correspondant à un code numérique (65 = A)." },
-  { "nom": "CODE", "categorie": "Texte", "syntaxe": "CODE(texte)", "exemple": "=CODE(\"A\")", "description": "Renvoie le code numérique du premier caractère d'un texte (A = 65)." },
-
-  { "nom": "AUJOURDHUI", "categorie": "Date/Heure", "syntaxe": "AUJOURDHUI()", "exemple": "=AUJOURDHUI()", "description": "Renvoie la date du jour (sans heure), mise à jour automatiquement." },
-  { "nom": "MAINTENANT", "categorie": "Date/Heure", "syntaxe": "MAINTENANT()", "exemple": "=MAINTENANT()", "description": "Renvoie la date et l'heure actuelles." },
-  { "nom": "DATE", "categorie": "Date/Heure", "syntaxe": "DATE(année;mois;jour)", "exemple": "=DATE(2026;6;8)", "description": "Construit une date à partir d'une année, d'un mois et d'un jour." },
-  { "nom": "ANNEE", "categorie": "Date/Heure", "syntaxe": "ANNEE(numéro_série)", "exemple": "=ANNEE(A1)", "description": "Extrait l'année d'une date." },
-  { "nom": "MOIS", "categorie": "Date/Heure", "syntaxe": "MOIS(numéro_série)", "exemple": "=MOIS(A1)", "description": "Extrait le numéro du mois (1 à 12) d'une date." },
-  { "nom": "JOUR", "categorie": "Date/Heure", "syntaxe": "JOUR(numéro_série)", "exemple": "=JOUR(A1)", "description": "Extrait le jour du mois (1 à 31) d'une date." },
-  { "nom": "HEURE", "categorie": "Date/Heure", "syntaxe": "HEURE(numéro_série)", "exemple": "=HEURE(A1)", "description": "Extrait l'heure (0 à 23) d'une valeur horaire." },
-  { "nom": "JOURSEM", "categorie": "Date/Heure", "syntaxe": "JOURSEM(numéro_série;[type_retour])", "exemple": "=JOURSEM(A1;2)", "description": "Renvoie le jour de la semaine d'une date (avec le type 2, lundi = 1)." },
-  { "nom": "FIN.MOIS", "categorie": "Date/Heure", "syntaxe": "FIN.MOIS(date_départ;mois)", "exemple": "=FIN.MOIS(A1;0)", "description": "Renvoie le dernier jour du mois, éventuellement décalé d'un nombre de mois." },
-
-  { "nom": "VPM", "categorie": "Financières", "syntaxe": "VPM(taux;npm;va;[vc];[type])", "exemple": "=VPM(0,05/12;240;-150000)", "description": "Calcule la mensualité de remboursement d'un emprunt à taux fixe." },
-  { "nom": "VC", "categorie": "Financières", "syntaxe": "VC(taux;npm;vpm;[va];[type])", "exemple": "=VC(0,04/12;60;-200)", "description": "Calcule la valeur future (capital atteint) d'un placement régulier." },
-  { "nom": "VA", "categorie": "Financières", "syntaxe": "VA(taux;npm;vpm;[vc];[type])", "exemple": "=VA(0,05;10;-1000)", "description": "Calcule la valeur actuelle d'une série de versements futurs." },
-  { "nom": "TRI", "categorie": "Financières", "syntaxe": "TRI(valeurs;[estimation])", "exemple": "=TRI(A1:A6)", "description": "Calcule le taux de rentabilité interne d'une série de flux financiers." },
-  { "nom": "VAN", "categorie": "Financières", "syntaxe": "VAN(taux;valeur1;[valeur2];...)", "exemple": "=VAN(0,1;A1:A6)", "description": "Calcule la valeur actuelle nette d'un investissement à partir de flux périodiques." },
-
-  { "nom": "MOYENNE", "categorie": "Statistiques", "syntaxe": "MOYENNE(nombre1;[nombre2];...)", "exemple": "=MOYENNE(B2:B20)", "description": "Calcule la moyenne arithmétique d'un ensemble de valeurs." },
-  { "nom": "NB", "categorie": "Statistiques", "syntaxe": "NB(valeur1;[valeur2];...)", "exemple": "=NB(A1:A50)", "description": "Compte le nombre de cellules qui contiennent des nombres." },
-  { "nom": "NBVAL", "categorie": "Statistiques", "syntaxe": "NBVAL(valeur1;[valeur2];...)", "exemple": "=NBVAL(A1:A50)", "description": "Compte le nombre de cellules non vides (texte ou nombre)." },
-  { "nom": "MAX", "categorie": "Statistiques", "syntaxe": "MAX(nombre1;[nombre2];...)", "exemple": "=MAX(C1:C100)", "description": "Renvoie la plus grande valeur d'un ensemble." },
-  { "nom": "MIN", "categorie": "Statistiques", "syntaxe": "MIN(nombre1;[nombre2];...)", "exemple": "=MIN(C1:C100)", "description": "Renvoie la plus petite valeur d'un ensemble." },
-  { "nom": "NB.SI", "categorie": "Statistiques", "syntaxe": "NB.SI(plage;critère)", "exemple": "=NB.SI(A1:A10;\"Oui\")", "description": "Compte les cellules qui répondent à un critère." },
-  { "nom": "MOYENNE.SI", "categorie": "Statistiques", "syntaxe": "MOYENNE.SI(plage;critère;[plage_moyenne])", "exemple": "=MOYENNE.SI(A1:A10;\">0\")", "description": "Calcule la moyenne des cellules qui répondent à un critère." },
-  { "nom": "NB.SI.ENS", "categorie": "Statistiques", "syntaxe": "NB.SI.ENS(plage_critères1;critère1;...)", "exemple": "=NB.SI.ENS(A:A;\"Paris\";B:B;\">100\")", "description": "Compte les cellules répondant à plusieurs critères simultanés." },
-  { "nom": "ECARTYPE", "categorie": "Statistiques", "syntaxe": "ECARTYPE(nombre1;[nombre2];...)", "exemple": "=ECARTYPE(A1:A20)", "description": "Évalue l'écart type d'un échantillon (dispersion des valeurs)." },
-  { "nom": "MEDIANE", "categorie": "Statistiques", "syntaxe": "MEDIANE(nombre1;[nombre2];...)", "exemple": "=MEDIANE(A1:A20)", "description": "Renvoie la valeur médiane (centrale) d'un ensemble de nombres." },
-
-  { "nom": "ESTVIDE", "categorie": "Information", "syntaxe": "ESTVIDE(valeur)", "exemple": "=ESTVIDE(A1)", "description": "Renvoie VRAI si la cellule testée est vide." },
-  { "nom": "ESTERREUR", "categorie": "Information", "syntaxe": "ESTERREUR(valeur)", "exemple": "=ESTERREUR(A1/B1)", "description": "Renvoie VRAI si la valeur testée est une erreur (#DIV/0!, #N/A, etc.)." }
+  {
+    "nom": "SOMME",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Additionne tous les nombres d'une plage de cellules.",
+    "syntaxe": "SOMME(nombre1;[nombre2];...)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Le premier nombre ou la première plage de cellules à additionner."
+      },
+      {
+        "nom": "nombre2",
+        "description": "(Facultatif) Le deuxième nombre ou la deuxième plage de cellules à additionner."
+      }
+    ],
+    "exemple": "=SOMME(A1:A10)",
+    "exempleMetier": {
+      "contexte": "Calculer le chiffre d'affaires total du mois.",
+      "formule": "=SOMME(B2:B32)",
+      "resultat": "La somme de toutes les ventes saisies dans la colonne B."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =SOMME(",
+      "Sélectionnez la plage de cellules à additionner (ex. A1:A10).",
+      "Fermez la parenthèse et validez avec Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est 0",
+        "solution": "Vérifiez que les cellules contiennent bien des nombres et non du texte ressemblant à des nombres."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Une des cellules de la plage contient du texte non convertible en nombre."
+      }
+    ],
+    "astuce": "Pour additionner rapidement une colonne ou une ligne, utilisez le raccourci Alt + = (Somme automatique).",
+    "voirAussi": [
+      "SOMME.SI",
+      "SOMME.SI.ENS",
+      "SOUS.TOTAL"
+    ]
+  },
+  {
+    "nom": "ARRONDI",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Arrondit un nombre au nombre de décimales indiqué.",
+    "syntaxe": "ARRONDI(nombre;no_chiffres)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre que vous souhaitez arrondir."
+      },
+      {
+        "nom": "no_chiffres",
+        "description": "Le nombre de décimales souhaité (un nombre négatif arrondit à gauche de la virgule)."
+      }
+    ],
+    "exemple": "=ARRONDI(123,456;2)",
+    "exempleMetier": {
+      "contexte": "Afficher un prix TTC avec seulement deux décimales.",
+      "formule": "=ARRONDI(B2*1,2;2)",
+      "resultat": "Le prix TTC arrondi au centime d'euro le plus proche."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de destination.",
+      "Tapez =ARRONDI(",
+      "Sélectionnez la cellule contenant le nombre ou tapez-le.",
+      "Ajoutez un point-virgule et le nombre de décimales souhaité.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOM? s'affiche",
+        "solution": "Vérifiez l'orthographe de la fonction : elle doit être exactement ARRONDI."
+      },
+      {
+        "probleme": "Le résultat ne change pas à l'affichage",
+        "solution": "Le format de la cellule impose peut-être un nombre de décimales différent de celui calculé."
+      }
+    ],
+    "astuce": "Utilisez ARRONDI.SUP ou ARRONDI.INF pour toujours arrondir dans une direction donnée.",
+    "voirAussi": [
+      "ARRONDI.SUP",
+      "ARRONDI.INF",
+      "TEXTE"
+    ]
+  },
+  {
+    "nom": "ARRONDI.SUP",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Arrondit un nombre par excès, en s'éloignant de zéro.",
+    "syntaxe": "ARRONDI.SUP(nombre;no_chiffres)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre que vous souhaitez arrondir par excès."
+      },
+      {
+        "nom": "no_chiffres",
+        "description": "Le nombre de décimales auquel arrondir (0 pour un entier)."
+      }
+    ],
+    "exemple": "=ARRONDI.SUP(3,141;2)",
+    "exempleMetier": {
+      "contexte": "Calculer le nombre de cartons nécessaires pour expédier une commande, en arrondissant toujours à l'entier supérieur.",
+      "formule": "=ARRONDI.SUP(A2/12;0)",
+      "resultat": "Le nombre entier de cartons, même s'il reste un seul article à expédier."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =ARRONDI.SUP(",
+      "Indiquez la valeur ou la cellule à arrondir.",
+      "Ajoutez un point-virgule et le nombre de chiffres (0 pour un entier).",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'un des arguments n'est pas un nombre reconnu par Excel."
+      },
+      {
+        "probleme": "Résultat inattendu avec un nombre négatif",
+        "solution": "ARRONDI.SUP s'éloigne de zéro : -3,1 devient donc -4."
+      }
+    ],
+    "astuce": "Pour arrondir au multiple supérieur le plus proche (par ex. un multiple de 5), utilisez la fonction PLAFOND.",
+    "voirAussi": [
+      "ARRONDI",
+      "ARRONDI.INF",
+      "PLAFOND"
+    ]
+  },
+  {
+    "nom": "ARRONDI.INF",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Arrondit un nombre par défaut, en se rapprochant de zéro.",
+    "syntaxe": "ARRONDI.INF(nombre;no_chiffres)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre que vous souhaitez arrondir par défaut."
+      },
+      {
+        "nom": "no_chiffres",
+        "description": "Le nombre de décimales auquel arrondir."
+      }
+    ],
+    "exemple": "=ARRONDI.INF(3,141;2)",
+    "exempleMetier": {
+      "contexte": "Calculer une remise commerciale en ne gardant que les euros entiers.",
+      "formule": "=ARRONDI.INF(B2*0,15;0)",
+      "resultat": "Le montant de la remise tronqué à l'euro inférieur."
+    },
+    "etapes": [
+      "Placez-vous dans la cellule de destination.",
+      "Tapez =ARRONDI.INF(",
+      "Sélectionnez la cellule contenant le nombre.",
+      "Ajoutez un point-virgule et le nombre de décimales voulu.",
+      "Fermez la parenthèse et appuyez sur Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Vérifiez que les arguments sont bien des valeurs numériques."
+      },
+      {
+        "probleme": "Le résultat semble faux",
+        "solution": "Pour un nombre négatif, ARRONDI.INF se rapproche de zéro : -3,9 devient -3."
+      }
+    ],
+    "astuce": "Pour simplement tronquer un nombre, la fonction TRONQUE est souvent plus explicite.",
+    "voirAussi": [
+      "ARRONDI",
+      "ARRONDI.SUP",
+      "TRONQUE"
+    ]
+  },
+  {
+    "nom": "PUISSANCE",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Élève un nombre à la puissance indiquée.",
+    "syntaxe": "PUISSANCE(nombre;puissance)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre de base."
+      },
+      {
+        "nom": "puissance",
+        "description": "L'exposant auquel la base est élevée."
+      }
+    ],
+    "exemple": "=PUISSANCE(5;2)",
+    "exempleMetier": {
+      "contexte": "Calculer la surface d'un carré à partir de la longueur de son côté.",
+      "formule": "=PUISSANCE(B2;2)",
+      "resultat": "La surface, en multipliant la valeur de B2 par elle-même."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =PUISSANCE(",
+      "Indiquez le nombre de base.",
+      "Ajoutez un point-virgule et la valeur de l'exposant.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Vous élevez un nombre négatif à une puissance fractionnaire (ex. racine carrée d'un négatif)."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'un des arguments n'est pas un nombre."
+      }
+    ],
+    "astuce": "Vous pouvez obtenir le même résultat avec l'opérateur ^, par exemple =5^2.",
+    "voirAussi": [
+      "RACINE",
+      "EXP"
+    ]
+  },
+  {
+    "nom": "RACINE",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Renvoie la racine carrée d'un nombre positif.",
+    "syntaxe": "RACINE(nombre)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre dont vous souhaitez obtenir la racine carrée (doit être positif ou nul)."
+      }
+    ],
+    "exemple": "=RACINE(16)",
+    "exempleMetier": {
+      "contexte": "Calculer la longueur du côté d'un terrain carré dont on connaît la surface.",
+      "formule": "=RACINE(B2)",
+      "resultat": "La longueur du côté, en mètres."
+    },
+    "etapes": [
+      "Cliquez sur la cellule où afficher le résultat.",
+      "Tapez =RACINE(",
+      "Sélectionnez la cellule contenant le nombre ou tapez-le.",
+      "Fermez la parenthèse et validez avec Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Le nombre fourni est négatif : la racine carrée d'un nombre négatif n'existe pas dans les réels."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La cellule contient du texte au lieu d'un nombre."
+      }
+    ],
+    "astuce": "Pour une racine cubique ou nième, utilisez l'opérateur ^ avec une fraction, par exemple =A1^(1/3).",
+    "voirAussi": [
+      "PUISSANCE",
+      "ABS"
+    ]
+  },
+  {
+    "nom": "MOD",
+    "categorie": "Mathématiques",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie le reste de la division d'un nombre par un diviseur.",
+    "syntaxe": "MOD(nombre;diviseur)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre pour lequel vous souhaitez trouver le reste."
+      },
+      {
+        "nom": "diviseur",
+        "description": "Le nombre par lequel vous souhaitez diviser."
+      }
+    ],
+    "exemple": "=MOD(10;3)",
+    "exempleMetier": {
+      "contexte": "Repérer les lignes paires ou impaires d'un tableau pour une mise en forme conditionnelle.",
+      "formule": "=MOD(LIGNE();2)",
+      "resultat": "Renvoie 0 pour les lignes paires et 1 pour les lignes impaires."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de destination.",
+      "Tapez =MOD(",
+      "Indiquez le nombre à diviser.",
+      "Ajoutez un point-virgule et le diviseur.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#DIV/0! s'affiche",
+        "solution": "Le diviseur est égal à zéro : la division par zéro est impossible."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'un des arguments n'est pas une valeur numérique."
+      }
+    ],
+    "astuce": "MOD est très utile combiné à SI pour exécuter une action seulement toutes les N lignes.",
+    "voirAussi": [
+      "QUOTIENT",
+      "LIGNE",
+      "SI"
+    ]
+  },
+  {
+    "nom": "EXP",
+    "categorie": "Mathématiques",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie e élevé à la puissance d'un nombre donné (e ≈ 2,71828).",
+    "syntaxe": "EXP(nombre)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "L'exposant appliqué à la constante e."
+      }
+    ],
+    "exemple": "=EXP(1)",
+    "exempleMetier": {
+      "contexte": "Calculer la croissance continue d'un capital sur une période donnée.",
+      "formule": "=A2*EXP(B2*C2)",
+      "resultat": "La valeur future du capital avec une capitalisation continue."
+    },
+    "etapes": [
+      "Placez-vous dans la cellule de résultat.",
+      "Tapez =EXP(",
+      "Indiquez la valeur de l'exposant ou la cellule le contenant.",
+      "Fermez la parenthèse et appuyez sur Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Le résultat est trop grand pour être représenté par Excel (dépassement de capacité)."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'argument fourni n'est pas un nombre."
+      }
+    ],
+    "astuce": "EXP est l'inverse de LN (le logarithme népérien).",
+    "voirAussi": [
+      "LN",
+      "PUISSANCE"
+    ]
+  },
+  {
+    "nom": "LN",
+    "categorie": "Mathématiques",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie le logarithme népérien d'un nombre (base e).",
+    "syntaxe": "LN(nombre)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le nombre réel strictement positif dont vous souhaitez le logarithme népérien."
+      }
+    ],
+    "exemple": "=LN(86)",
+    "exempleMetier": {
+      "contexte": "Estimer le temps nécessaire pour qu'un capital double avec un taux de croissance continu.",
+      "formule": "=LN(2)/B2",
+      "resultat": "Le nombre d'années requis pour doubler le capital."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de destination.",
+      "Tapez =LN(",
+      "Indiquez le nombre strictement positif.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Le nombre est inférieur ou égal à zéro : le logarithme n'existe que pour les nombres strictement positifs."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'argument n'est pas une valeur numérique."
+      }
+    ],
+    "astuce": "Pour un logarithme dans une autre base, utilisez LOG, ou la formule LN(nombre)/LN(base).",
+    "voirAussi": [
+      "EXP",
+      "LOG",
+      "LOG10"
+    ]
+  },
+  {
+    "nom": "PI",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Renvoie la valeur du nombre Pi (3,14159265358979) avec une précision de 15 chiffres.",
+    "syntaxe": "PI()",
+    "arguments": [],
+    "exemple": "=PI()",
+    "exempleMetier": {
+      "contexte": "Calculer la circonférence d'un cercle à partir de son rayon.",
+      "formule": "=2*PI()*B2",
+      "resultat": "La circonférence exacte, basée sur la valeur de Pi."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =PI()",
+      "Validez avec la touche Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat semble imprécis",
+        "solution": "Augmentez le nombre de décimales affichées via le format de cellule."
+      }
+    ],
+    "astuce": "Aucun argument n'est requis, mais les parenthèses () restent obligatoires.",
+    "voirAussi": [
+      "PUISSANCE",
+      "RACINE"
+    ]
+  },
+  {
+    "nom": "SOMME.SI",
+    "categorie": "Mathématiques",
+    "niveau": "Intermédiaire",
+    "description": "Additionne les cellules qui répondent à un critère unique.",
+    "syntaxe": "SOMME.SI(plage;critère;[plage_somme])",
+    "arguments": [
+      {
+        "nom": "plage",
+        "description": "La plage de cellules à évaluer selon le critère."
+      },
+      {
+        "nom": "critère",
+        "description": "La condition qui détermine les cellules à additionner (ex. \">100\" ou \"Paris\")."
+      },
+      {
+        "nom": "plage_somme",
+        "description": "(Facultatif) Les cellules réellement additionnées. Si ce champ est omis, Excel additionne les cellules de la première plage."
+      }
+    ],
+    "exemple": "=SOMME.SI(A1:A10;\">50\";B1:B10)",
+    "exempleMetier": {
+      "contexte": "Calculer le total des ventes réalisées par un commercial précis.",
+      "formule": "=SOMME.SI(B2:B100;\"Dupont\";C2:C100)",
+      "resultat": "La somme des montants de la colonne C lorsque la colonne B contient « Dupont »."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =SOMME.SI(",
+      "Sélectionnez la plage où chercher le critère.",
+      "Ajoutez un point-virgule et définissez le critère (entre guillemets pour du texte).",
+      "Ajoutez un point-virgule et sélectionnez la plage des valeurs à additionner.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est 0",
+        "solution": "Vérifiez que le critère correspond exactement aux données (espaces, majuscules/minuscules)."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le critère est mal formaté : utilisez des guillemets pour le texte et les opérateurs."
+      }
+    ],
+    "astuce": "Pour appliquer plusieurs critères simultanés, utilisez SOMME.SI.ENS.",
+    "voirAussi": [
+      "SOMME.SI.ENS",
+      "SOMME",
+      "NB.SI"
+    ]
+  },
+  {
+    "nom": "SOMME.SI.ENS",
+    "categorie": "Mathématiques",
+    "niveau": "Avancé",
+    "description": "Additionne les cellules qui répondent à plusieurs critères, dans plusieurs plages.",
+    "syntaxe": "SOMME.SI.ENS(plage_somme;plage_critères1;critère1;[plage_critères2;critère2];...)",
+    "arguments": [
+      {
+        "nom": "plage_somme",
+        "description": "La plage de cellules à additionner."
+      },
+      {
+        "nom": "plage_critères1",
+        "description": "La première plage à évaluer selon le premier critère."
+      },
+      {
+        "nom": "critère1",
+        "description": "La condition à appliquer à la première plage."
+      },
+      {
+        "nom": "plage_critères2",
+        "description": "(Facultatif) La deuxième plage à évaluer."
+      },
+      {
+        "nom": "critère2",
+        "description": "(Facultatif) La condition à appliquer à la deuxième plage."
+      }
+    ],
+    "exemple": "=SOMME.SI.ENS(C1:C10;A1:A10;\"Nord\";B1:B10;\">100\")",
+    "exempleMetier": {
+      "contexte": "Calculer le chiffre d'affaires d'un produit précis dans une région donnée.",
+      "formule": "=SOMME.SI.ENS(D2:D500;B2:B500;\"Ordinateur\";C2:C500;\"Paris\")",
+      "resultat": "Le total des ventes d'ordinateurs réalisées à Paris."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de destination.",
+      "Tapez =SOMME.SI.ENS(",
+      "Sélectionnez d'abord la plage contenant les nombres à additionner.",
+      "Ajoutez un point-virgule, puis la première plage de critères et son critère.",
+      "Répétez pour chaque critère supplémentaire.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Les plages n'ont pas la même taille",
+        "solution": "Toutes les plages de critères doivent avoir exactement le même nombre de lignes et de colonnes que la plage à additionner."
+      },
+      {
+        "probleme": "Le résultat est 0",
+        "solution": "Aucune ligne ne satisfait simultanément tous les critères. Vérifiez les données."
+      }
+    ],
+    "astuce": "Attention à l'ordre : dans SOMME.SI.ENS la plage à additionner vient en premier (l'inverse de SOMME.SI).",
+    "voirAussi": [
+      "SOMME.SI",
+      "NB.SI.ENS",
+      "SOMMEPROD"
+    ]
+  },
+  {
+    "nom": "SOUS.TOTAL",
+    "categorie": "Mathématiques",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie un total partiel dans une liste, en ignorant les lignes masquées ou filtrées.",
+    "syntaxe": "SOUS.TOTAL(no_fonction;réf1;[réf2];...)",
+    "arguments": [
+      {
+        "nom": "no_fonction",
+        "description": "Un nombre de 1 à 11 (inclut les lignes masquées manuellement) ou de 101 à 111 (les exclut) indiquant la fonction à utiliser (ex. 9 pour SOMME)."
+      },
+      {
+        "nom": "réf1",
+        "description": "La première plage de cellules pour laquelle calculer le sous-total."
+      },
+      {
+        "nom": "réf2",
+        "description": "(Facultatif) Plages supplémentaires (jusqu'à 254)."
+      }
+    ],
+    "exemple": "=SOUS.TOTAL(9;A1:A100)",
+    "exempleMetier": {
+      "contexte": "Calculer la somme des ventes visibles après avoir appliqué un filtre sur un tableau.",
+      "formule": "=SOUS.TOTAL(9;C2:C100)",
+      "resultat": "La somme des seules lignes affichées par le filtre."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =SOUS.TOTAL(",
+      "Indiquez le numéro de la fonction (9 pour SOMME, 1 pour MOYENNE...).",
+      "Ajoutez un point-virgule et sélectionnez la plage de données.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat inclut des lignes masquées",
+        "solution": "Utilisez un numéro entre 101 et 111 (ex. 109 au lieu de 9) pour exclure les lignes masquées manuellement."
+      },
+      {
+        "probleme": "#DIV/0! s'affiche",
+        "solution": "Vous avez choisi une fonction de moyenne (1 ou 101) et aucune cellule visible ne contient de nombre."
+      }
+    ],
+    "astuce": "SOUS.TOTAL ignore les autres SOUS.TOTAL présents dans la plage, ce qui évite les doubles comptages.",
+    "voirAussi": [
+      "SOMME",
+      "AGREGAT"
+    ]
+  },
+  {
+    "nom": "ALEA",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Renvoie un nombre réel aléatoire supérieur ou égal à 0 et strictement inférieur à 1.",
+    "syntaxe": "ALEA()",
+    "arguments": [],
+    "exemple": "=ALEA()",
+    "exempleMetier": {
+      "contexte": "Attribuer un ordre de passage aléatoire à une liste de participants.",
+      "formule": "=ALEA()",
+      "resultat": "Un nombre décimal aléatoire qui, une fois trié, mélange la liste."
+    },
+    "etapes": [
+      "Cliquez sur la cellule souhaitée.",
+      "Tapez =ALEA()",
+      "Validez avec la touche Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le nombre change à chaque modification",
+        "solution": "C'est le comportement normal. Pour figer la valeur, copiez la cellule puis faites Collage spécial > Valeurs."
+      }
+    ],
+    "astuce": "Pour un nombre aléatoire entre deux bornes, utilisez plutôt ALEA.ENTRE.BORNES.",
+    "voirAussi": [
+      "ALEA.ENTRE.BORNES"
+    ]
+  },
+  {
+    "nom": "ALEA.ENTRE.BORNES",
+    "categorie": "Mathématiques",
+    "niveau": "Débutant",
+    "description": "Renvoie un nombre entier aléatoire compris entre les deux valeurs que vous indiquez.",
+    "syntaxe": "ALEA.ENTRE.BORNES(min;max)",
+    "arguments": [
+      {
+        "nom": "min",
+        "description": "Le plus petit nombre entier que la fonction peut renvoyer."
+      },
+      {
+        "nom": "max",
+        "description": "Le plus grand nombre entier que la fonction peut renvoyer."
+      }
+    ],
+    "exemple": "=ALEA.ENTRE.BORNES(1;100)",
+    "exempleMetier": {
+      "contexte": "Générer des numéros de dossier aléatoires pour des tests.",
+      "formule": "=ALEA.ENTRE.BORNES(1000;9999)",
+      "resultat": "Un nombre entier aléatoire à 4 chiffres."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de destination.",
+      "Tapez =ALEA.ENTRE.BORNES(",
+      "Indiquez la valeur minimale.",
+      "Ajoutez un point-virgule et la valeur maximale.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "La valeur minimale est strictement supérieure à la valeur maximale."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'un des arguments n'est pas un nombre entier."
+      }
+    ],
+    "astuce": "Comme ALEA, cette fonction est volatile : elle se recalcule à chaque modification de la feuille.",
+    "voirAussi": [
+      "ALEA",
+      "ENT"
+    ]
+  },
+  {
+    "nom": "BITET",
+    "categorie": "Mathématiques",
+    "niveau": "Avancé",
+    "description": "Renvoie le résultat de l'opérateur « ET » bit à bit de deux nombres.",
+    "syntaxe": "BITET(nombre1;nombre2)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Un nombre entier décimal supérieur ou égal à 0."
+      },
+      {
+        "nom": "nombre2",
+        "description": "Un nombre entier décimal supérieur ou égal à 0."
+      }
+    ],
+    "exemple": "=BITET(13;14)",
+    "exempleMetier": {
+      "contexte": "Vérifier si un indicateur précis (bit) est activé dans un masque de permissions.",
+      "formule": "=BITET(A2;4)",
+      "resultat": "Renvoie 4 si le 3e bit est activé, sinon 0."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =BITET(",
+      "Indiquez le premier nombre entier.",
+      "Ajoutez un point-virgule et le deuxième nombre entier.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "L'un des nombres est négatif, non entier, ou dépasse (2^48)-1."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'un des arguments n'est pas une valeur numérique."
+      }
+    ],
+    "astuce": "Utile pour manipuler des masques binaires (permissions, indicateurs d'état).",
+    "voirAussi": [
+      "BITOU",
+      "BITDECALG",
+      "BITDECALD"
+    ]
+  },
+  {
+    "nom": "BITOU",
+    "categorie": "Mathématiques",
+    "niveau": "Avancé",
+    "description": "Renvoie le résultat de l'opérateur « OU » bit à bit de deux nombres.",
+    "syntaxe": "BITOU(nombre1;nombre2)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Un nombre entier décimal supérieur ou égal à 0."
+      },
+      {
+        "nom": "nombre2",
+        "description": "Un nombre entier décimal supérieur ou égal à 0."
+      }
+    ],
+    "exemple": "=BITOU(13;14)",
+    "exempleMetier": {
+      "contexte": "Combiner plusieurs indicateurs d'état (bits) en un seul masque.",
+      "formule": "=BITOU(A2;B2)",
+      "resultat": "Un nombre entier représentant la combinaison des états de A2 et B2."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de destination.",
+      "Tapez =BITOU(",
+      "Indiquez le premier nombre.",
+      "Ajoutez un point-virgule et le second nombre.",
+      "Fermez la parenthèse et appuyez sur Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Un argument est négatif, décimal ou trop grand."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "L'un des arguments est du texte non convertible."
+      }
+    ],
+    "astuce": "Le résultat correspond à la somme des bits à 1 dans l'un ou l'autre des deux nombres.",
+    "voirAussi": [
+      "BITET",
+      "BITDECALG",
+      "BITDECALD"
+    ]
+  },
+  {
+    "nom": "BITDECALG",
+    "categorie": "Mathématiques",
+    "niveau": "Avancé",
+    "description": "Renvoie la valeur décalée vers la gauche du nombre de bits indiqué.",
+    "syntaxe": "BITDECALG(nombre;montant_décalage)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Un nombre entier décimal supérieur ou égal à 0."
+      },
+      {
+        "nom": "montant_décalage",
+        "description": "Le nombre de bits de décalage vers la gauche (un entier)."
+      }
+    ],
+    "exemple": "=BITDECALG(5;2)",
+    "exempleMetier": {
+      "contexte": "Multiplier rapidement une valeur par une puissance de 2 dans un calcul technique.",
+      "formule": "=BITDECALG(A2;3)",
+      "resultat": "Équivalent à multiplier la valeur de A2 par 8."
+    },
+    "etapes": [
+      "Placez-vous dans la cellule de résultat.",
+      "Tapez =BITDECALG(",
+      "Indiquez le nombre à décaler.",
+      "Ajoutez un point-virgule et le nombre de positions de décalage.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Le nombre de bits est négatif, ou la valeur dépasse (2^48)-1."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Les arguments ne sont pas des nombres entiers."
+      }
+    ],
+    "astuce": "Un décalage d'un bit vers la gauche équivaut à multiplier le nombre par 2.",
+    "voirAussi": [
+      "BITDECALD",
+      "BITET",
+      "BITOU"
+    ]
+  },
+  {
+    "nom": "BITDECALD",
+    "categorie": "Mathématiques",
+    "niveau": "Avancé",
+    "description": "Renvoie la valeur décalée vers la droite du nombre de bits indiqué.",
+    "syntaxe": "BITDECALD(nombre;montant_décalage)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Un nombre entier décimal supérieur ou égal à 0."
+      },
+      {
+        "nom": "montant_décalage",
+        "description": "Le nombre de bits de décalage vers la droite (un entier)."
+      }
+    ],
+    "exemple": "=BITDECALD(20;2)",
+    "exempleMetier": {
+      "contexte": "Diviser rapidement une valeur par une puissance de 2 dans un traitement binaire.",
+      "formule": "=BITDECALD(A2;1)",
+      "resultat": "Équivalent à diviser la valeur de A2 par 2 (division entière)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de destination.",
+      "Tapez =BITDECALD(",
+      "Indiquez le nombre à décaler.",
+      "Ajoutez un point-virgule et le nombre de positions de décalage.",
+      "Fermez la parenthèse et validez avec Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "Le nombre de bits est négatif, ou la valeur est hors limites."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Les arguments fournis ne sont pas des nombres entiers."
+      }
+    ],
+    "astuce": "Un décalage d'un bit vers la droite équivaut à une division entière par 2.",
+    "voirAussi": [
+      "BITDECALG",
+      "BITET",
+      "BITOU"
+    ]
+  },
+  {
+    "nom": "SI",
+    "categorie": "Logiques",
+    "syntaxe": "SI(test_logique;valeur_si_vrai;[valeur_si_faux])",
+    "exemple": "=SI(A1>10;\"Élevé\";\"Bas\")",
+    "description": "Renvoie une valeur si une condition est vraie, une autre si elle est fausse."
+  },
+  {
+    "nom": "ET",
+    "categorie": "Logiques",
+    "syntaxe": "ET(valeur_logique1;[valeur_logique2];...)",
+    "exemple": "=ET(A1>0;A1<100)",
+    "description": "Renvoie VRAI uniquement si toutes les conditions sont vraies."
+  },
+  {
+    "nom": "OU",
+    "categorie": "Logiques",
+    "syntaxe": "OU(valeur_logique1;[valeur_logique2];...)",
+    "exemple": "=OU(A1=\"Oui\";B1=\"Oui\")",
+    "description": "Renvoie VRAI si au moins une des conditions est vraie."
+  },
+  {
+    "nom": "NON",
+    "categorie": "Logiques",
+    "syntaxe": "NON(valeur_logique)",
+    "exemple": "=NON(A1=0)",
+    "description": "Inverse la valeur logique de son argument (VRAI devient FAUX)."
+  },
+  {
+    "nom": "SIERREUR",
+    "categorie": "Logiques",
+    "syntaxe": "SIERREUR(valeur;valeur_si_erreur)",
+    "exemple": "=SIERREUR(A1/B1;\"Erreur\")",
+    "description": "Renvoie une valeur de remplacement si une formule génère une erreur."
+  },
+  {
+    "nom": "RECHERCHEV",
+    "categorie": "Recherche",
+    "syntaxe": "RECHERCHEV(valeur_cherchée;table_matrice;no_index_col;[valeur_proche])",
+    "exemple": "=RECHERCHEV(\"Dupont\";A2:C50;3;FAUX)",
+    "description": "Recherche une valeur dans la première colonne d'un tableau et renvoie une valeur de la même ligne."
+  },
+  {
+    "nom": "RECHERCHEH",
+    "categorie": "Recherche",
+    "syntaxe": "RECHERCHEH(valeur_cherchée;table_matrice;no_index_lig;[valeur_proche])",
+    "exemple": "=RECHERCHEH(\"Janvier\";A1:M3;2;FAUX)",
+    "description": "Recherche une valeur dans la première ligne d'un tableau et renvoie une valeur de la même colonne."
+  },
+  {
+    "nom": "INDEX",
+    "categorie": "Recherche",
+    "syntaxe": "INDEX(matrice;no_lig;[no_col])",
+    "exemple": "=INDEX(A1:C10;5;2)",
+    "description": "Renvoie la valeur de la cellule à l'intersection d'une ligne et d'une colonne données."
+  },
+  {
+    "nom": "EQUIV",
+    "categorie": "Recherche",
+    "syntaxe": "EQUIV(valeur_cherchée;matrice_recherche;[type])",
+    "exemple": "=EQUIV(\"Mars\";A1:A12;0)",
+    "description": "Renvoie la position (rang) d'un élément dans une plage. Souvent combinée avec INDEX."
+  },
+  {
+    "nom": "INDIRECT",
+    "categorie": "Recherche",
+    "syntaxe": "INDIRECT(réf_texte;[a1])",
+    "exemple": "=INDIRECT(\"A\"&LIGNE())",
+    "description": "Renvoie la référence désignée par une chaîne de texte."
+  },
+  {
+    "nom": "DECALER",
+    "categorie": "Recherche",
+    "syntaxe": "DECALER(réf;lignes;colonnes;[hauteur];[largeur])",
+    "exemple": "=DECALER(A1;2;1)",
+    "description": "Renvoie une référence décalée d'un nombre de lignes et de colonnes par rapport à une cellule."
+  },
+  {
+    "nom": "ADRESSE",
+    "categorie": "Recherche",
+    "syntaxe": "ADRESSE(no_lig;no_col;[abs];[a1];[feuille])",
+    "exemple": "=ADRESSE(1;1)",
+    "description": "Crée une adresse de cellule sous forme de texte (ici $A$1)."
+  },
+  {
+    "nom": "COLONNE",
+    "categorie": "Recherche",
+    "syntaxe": "COLONNE([référence])",
+    "exemple": "=COLONNE(B1)",
+    "description": "Renvoie le numéro de colonne d'une référence (ici 2)."
+  },
+  {
+    "nom": "LIGNE",
+    "categorie": "Recherche",
+    "syntaxe": "LIGNE([référence])",
+    "exemple": "=LIGNE(A5)",
+    "description": "Renvoie le numéro de ligne d'une référence (ici 5)."
+  },
+  {
+    "nom": "CONCATENER",
+    "categorie": "Texte",
+    "syntaxe": "CONCATENER(texte1;[texte2];...)",
+    "exemple": "=CONCATENER(A1;\" \";B1)",
+    "description": "Assemble plusieurs textes en une seule chaîne."
+  },
+  {
+    "nom": "GAUCHE",
+    "categorie": "Texte",
+    "syntaxe": "GAUCHE(texte;[no_car])",
+    "exemple": "=GAUCHE(A1;3)",
+    "description": "Extrait les premiers caractères d'un texte, en partant de la gauche."
+  },
+  {
+    "nom": "DROITE",
+    "categorie": "Texte",
+    "syntaxe": "DROITE(texte;[no_car])",
+    "exemple": "=DROITE(A1;4)",
+    "description": "Extrait les derniers caractères d'un texte, en partant de la droite."
+  },
+  {
+    "nom": "STXT",
+    "categorie": "Texte",
+    "syntaxe": "STXT(texte;no_départ;no_car)",
+    "exemple": "=STXT(A1;2;5)",
+    "description": "Extrait un nombre de caractères à partir d'une position donnée."
+  },
+  {
+    "nom": "NBCAR",
+    "categorie": "Texte",
+    "syntaxe": "NBCAR(texte)",
+    "exemple": "=NBCAR(A1)",
+    "description": "Renvoie le nombre de caractères d'un texte."
+  },
+  {
+    "nom": "SUPPRESPACE",
+    "categorie": "Texte",
+    "syntaxe": "SUPPRESPACE(texte)",
+    "exemple": "=SUPPRESPACE(A1)",
+    "description": "Supprime les espaces superflus d'un texte (garde un seul espace entre les mots)."
+  },
+  {
+    "nom": "MAJUSCULE",
+    "categorie": "Texte",
+    "syntaxe": "MAJUSCULE(texte)",
+    "exemple": "=MAJUSCULE(A1)",
+    "description": "Convertit tout le texte en majuscules."
+  },
+  {
+    "nom": "MINUSCULE",
+    "categorie": "Texte",
+    "syntaxe": "MINUSCULE(texte)",
+    "exemple": "=MINUSCULE(A1)",
+    "description": "Convertit tout le texte en minuscules."
+  },
+  {
+    "nom": "NOMPROPRE",
+    "categorie": "Texte",
+    "syntaxe": "NOMPROPRE(texte)",
+    "exemple": "=NOMPROPRE(\"jean dupont\")",
+    "description": "Met une majuscule à la première lettre de chaque mot."
+  },
+  {
+    "nom": "TEXTE",
+    "categorie": "Texte",
+    "syntaxe": "TEXTE(valeur;format_texte)",
+    "exemple": "=TEXTE(A1;\"jj/mm/aaaa\")",
+    "description": "Convertit une valeur en texte selon un format d'affichage précis."
+  },
+  {
+    "nom": "CNUM",
+    "categorie": "Texte",
+    "syntaxe": "CNUM(texte)",
+    "exemple": "=CNUM(\"1234\")",
+    "description": "Convertit un texte représentant un nombre en valeur numérique."
+  },
+  {
+    "nom": "SUBSTITUE",
+    "categorie": "Texte",
+    "syntaxe": "SUBSTITUE(texte;ancien_texte;nouveau_texte;[no_position])",
+    "exemple": "=SUBSTITUE(A1;\"-\";\"/\")",
+    "description": "Remplace un texte précis par un autre dans une chaîne."
+  },
+  {
+    "nom": "REMPLACER",
+    "categorie": "Texte",
+    "syntaxe": "REMPLACER(ancien_texte;no_départ;no_car;nouveau_texte)",
+    "exemple": "=REMPLACER(A1;1;3;\"XXX\")",
+    "description": "Remplace une partie d'un texte selon sa position."
+  },
+  {
+    "nom": "TROUVE",
+    "categorie": "Texte",
+    "syntaxe": "TROUVE(texte_cherché;texte;[no_départ])",
+    "exemple": "=TROUVE(\"@\";A1)",
+    "description": "Renvoie la position d'un texte dans un autre (sensible à la casse)."
+  },
+  {
+    "nom": "CHERCHE",
+    "categorie": "Texte",
+    "syntaxe": "CHERCHE(texte_cherché;texte;[no_départ])",
+    "exemple": "=CHERCHE(\"a\";A1)",
+    "description": "Renvoie la position d'un texte dans un autre (insensible à la casse)."
+  },
+  {
+    "nom": "REPT",
+    "categorie": "Texte",
+    "syntaxe": "REPT(texte;no_fois)",
+    "exemple": "=REPT(\"-\";20)",
+    "description": "Répète un texte un certain nombre de fois."
+  },
+  {
+    "nom": "EXACT",
+    "categorie": "Texte",
+    "syntaxe": "EXACT(texte1;texte2)",
+    "exemple": "=EXACT(A1;B1)",
+    "description": "Compare deux textes et renvoie VRAI s'ils sont strictement identiques (casse comprise)."
+  },
+  {
+    "nom": "EPURAGE",
+    "categorie": "Texte",
+    "syntaxe": "EPURAGE(texte)",
+    "exemple": "=EPURAGE(A1)",
+    "description": "Supprime les caractères non imprimables d'un texte."
+  },
+  {
+    "nom": "CAR",
+    "categorie": "Texte",
+    "syntaxe": "CAR(nombre)",
+    "exemple": "=CAR(65)",
+    "description": "Renvoie le caractère correspondant à un code numérique (65 = A)."
+  },
+  {
+    "nom": "CODE",
+    "categorie": "Texte",
+    "syntaxe": "CODE(texte)",
+    "exemple": "=CODE(\"A\")",
+    "description": "Renvoie le code numérique du premier caractère d'un texte (A = 65)."
+  },
+  {
+    "nom": "AUJOURDHUI",
+    "categorie": "Date/Heure",
+    "syntaxe": "AUJOURDHUI()",
+    "exemple": "=AUJOURDHUI()",
+    "description": "Renvoie la date du jour (sans heure), mise à jour automatiquement."
+  },
+  {
+    "nom": "MAINTENANT",
+    "categorie": "Date/Heure",
+    "syntaxe": "MAINTENANT()",
+    "exemple": "=MAINTENANT()",
+    "description": "Renvoie la date et l'heure actuelles."
+  },
+  {
+    "nom": "DATE",
+    "categorie": "Date/Heure",
+    "syntaxe": "DATE(année;mois;jour)",
+    "exemple": "=DATE(2026;6;8)",
+    "description": "Construit une date à partir d'une année, d'un mois et d'un jour."
+  },
+  {
+    "nom": "ANNEE",
+    "categorie": "Date/Heure",
+    "syntaxe": "ANNEE(numéro_série)",
+    "exemple": "=ANNEE(A1)",
+    "description": "Extrait l'année d'une date."
+  },
+  {
+    "nom": "MOIS",
+    "categorie": "Date/Heure",
+    "syntaxe": "MOIS(numéro_série)",
+    "exemple": "=MOIS(A1)",
+    "description": "Extrait le numéro du mois (1 à 12) d'une date."
+  },
+  {
+    "nom": "JOUR",
+    "categorie": "Date/Heure",
+    "syntaxe": "JOUR(numéro_série)",
+    "exemple": "=JOUR(A1)",
+    "description": "Extrait le jour du mois (1 à 31) d'une date."
+  },
+  {
+    "nom": "HEURE",
+    "categorie": "Date/Heure",
+    "syntaxe": "HEURE(numéro_série)",
+    "exemple": "=HEURE(A1)",
+    "description": "Extrait l'heure (0 à 23) d'une valeur horaire."
+  },
+  {
+    "nom": "JOURSEM",
+    "categorie": "Date/Heure",
+    "syntaxe": "JOURSEM(numéro_série;[type_retour])",
+    "exemple": "=JOURSEM(A1;2)",
+    "description": "Renvoie le jour de la semaine d'une date (avec le type 2, lundi = 1)."
+  },
+  {
+    "nom": "FIN.MOIS",
+    "categorie": "Date/Heure",
+    "syntaxe": "FIN.MOIS(date_départ;mois)",
+    "exemple": "=FIN.MOIS(A1;0)",
+    "description": "Renvoie le dernier jour du mois, éventuellement décalé d'un nombre de mois."
+  },
+  {
+    "nom": "VPM",
+    "categorie": "Financières",
+    "syntaxe": "VPM(taux;npm;va;[vc];[type])",
+    "exemple": "=VPM(0,05/12;240;-150000)",
+    "description": "Calcule la mensualité de remboursement d'un emprunt à taux fixe."
+  },
+  {
+    "nom": "VC",
+    "categorie": "Financières",
+    "syntaxe": "VC(taux;npm;vpm;[va];[type])",
+    "exemple": "=VC(0,04/12;60;-200)",
+    "description": "Calcule la valeur future (capital atteint) d'un placement régulier."
+  },
+  {
+    "nom": "VA",
+    "categorie": "Financières",
+    "syntaxe": "VA(taux;npm;vpm;[vc];[type])",
+    "exemple": "=VA(0,05;10;-1000)",
+    "description": "Calcule la valeur actuelle d'une série de versements futurs."
+  },
+  {
+    "nom": "TRI",
+    "categorie": "Financières",
+    "syntaxe": "TRI(valeurs;[estimation])",
+    "exemple": "=TRI(A1:A6)",
+    "description": "Calcule le taux de rentabilité interne d'une série de flux financiers."
+  },
+  {
+    "nom": "VAN",
+    "categorie": "Financières",
+    "syntaxe": "VAN(taux;valeur1;[valeur2];...)",
+    "exemple": "=VAN(0,1;A1:A6)",
+    "description": "Calcule la valeur actuelle nette d'un investissement à partir de flux périodiques."
+  },
+  {
+    "nom": "MOYENNE",
+    "categorie": "Statistiques",
+    "syntaxe": "MOYENNE(nombre1;[nombre2];...)",
+    "exemple": "=MOYENNE(B2:B20)",
+    "description": "Calcule la moyenne arithmétique d'un ensemble de valeurs."
+  },
+  {
+    "nom": "NB",
+    "categorie": "Statistiques",
+    "syntaxe": "NB(valeur1;[valeur2];...)",
+    "exemple": "=NB(A1:A50)",
+    "description": "Compte le nombre de cellules qui contiennent des nombres."
+  },
+  {
+    "nom": "NBVAL",
+    "categorie": "Statistiques",
+    "syntaxe": "NBVAL(valeur1;[valeur2];...)",
+    "exemple": "=NBVAL(A1:A50)",
+    "description": "Compte le nombre de cellules non vides (texte ou nombre)."
+  },
+  {
+    "nom": "MAX",
+    "categorie": "Statistiques",
+    "syntaxe": "MAX(nombre1;[nombre2];...)",
+    "exemple": "=MAX(C1:C100)",
+    "description": "Renvoie la plus grande valeur d'un ensemble."
+  },
+  {
+    "nom": "MIN",
+    "categorie": "Statistiques",
+    "syntaxe": "MIN(nombre1;[nombre2];...)",
+    "exemple": "=MIN(C1:C100)",
+    "description": "Renvoie la plus petite valeur d'un ensemble."
+  },
+  {
+    "nom": "NB.SI",
+    "categorie": "Statistiques",
+    "syntaxe": "NB.SI(plage;critère)",
+    "exemple": "=NB.SI(A1:A10;\"Oui\")",
+    "description": "Compte les cellules qui répondent à un critère."
+  },
+  {
+    "nom": "MOYENNE.SI",
+    "categorie": "Statistiques",
+    "syntaxe": "MOYENNE.SI(plage;critère;[plage_moyenne])",
+    "exemple": "=MOYENNE.SI(A1:A10;\">0\")",
+    "description": "Calcule la moyenne des cellules qui répondent à un critère."
+  },
+  {
+    "nom": "NB.SI.ENS",
+    "categorie": "Statistiques",
+    "syntaxe": "NB.SI.ENS(plage_critères1;critère1;...)",
+    "exemple": "=NB.SI.ENS(A:A;\"Paris\";B:B;\">100\")",
+    "description": "Compte les cellules répondant à plusieurs critères simultanés."
+  },
+  {
+    "nom": "ECARTYPE",
+    "categorie": "Statistiques",
+    "syntaxe": "ECARTYPE(nombre1;[nombre2];...)",
+    "exemple": "=ECARTYPE(A1:A20)",
+    "description": "Évalue l'écart type d'un échantillon (dispersion des valeurs)."
+  },
+  {
+    "nom": "MEDIANE",
+    "categorie": "Statistiques",
+    "syntaxe": "MEDIANE(nombre1;[nombre2];...)",
+    "exemple": "=MEDIANE(A1:A20)",
+    "description": "Renvoie la valeur médiane (centrale) d'un ensemble de nombres."
+  },
+  {
+    "nom": "ESTVIDE",
+    "categorie": "Information",
+    "syntaxe": "ESTVIDE(valeur)",
+    "exemple": "=ESTVIDE(A1)",
+    "description": "Renvoie VRAI si la cellule testée est vide."
+  },
+  {
+    "nom": "ESTERREUR",
+    "categorie": "Information",
+    "syntaxe": "ESTERREUR(valeur)",
+    "exemple": "=ESTERREUR(A1/B1)",
+    "description": "Renvoie VRAI si la valeur testée est une erreur (#DIV/0!, #N/A, etc.)."
+  }
 ]
