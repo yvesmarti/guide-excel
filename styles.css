@@ -207,6 +207,7 @@ body {
   background: rgba(255, 255, 255, .85);
   backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid var(--bordure);
+  display: none;
 }
 .entete-contenu {
   max-width: 1180px;
@@ -248,7 +249,7 @@ body {
 }
 
 /* ---------- Conteneur ---------- */
-.conteneur { max-width: 1180px; margin: 0 auto; padding: 24px 20px 60px; width: 100%; }
+.conteneur { max-width: 1180px; margin: 0 auto; padding: 24px 20px 60px; width: 100%; flex: 1; }
 
 .conteneur-entete { margin-bottom: 20px; }
 .titre-section {
@@ -349,11 +350,28 @@ body {
 
 .vide { text-align: center; color: var(--texte-doux); padding: 60px 20px; font-size: 1rem; }
 
+/* ---------- Séparateurs de section dans la grille ---------- */
+.grille-separateur {
+  grid-column: 1 / -1;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700; font-size: 1rem;
+  color: var(--texte-doux);
+  padding: 8px 0 6px;
+  border-bottom: 1px solid var(--bordure);
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 28px;
+}
+.grille-separateur:first-child { margin-top: 0; }
+.grille-separateur-compte {
+  font-size: .75rem; font-weight: 600;
+  background: var(--vert-clair); color: var(--vert);
+  padding: 2px 9px; border-radius: 999px;
+}
+
 /* ---------- Pied ---------- */
 .pied {
-  max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px;
+  max-width: 1180px; margin: 0 auto; padding: 24px 20px 40px; width: 100%;
   color: var(--texte-doux); font-size: .82rem; border-top: 1px solid var(--bordure);
-  margin-left: var(--sidebar-largeur);
 }
 .pied strong { color: var(--vert); }
 .pied-lien { margin: 6px 0 0; text-align: right; }
@@ -546,6 +564,7 @@ body.sans-defilement { overflow: hidden; }
   }
   .sidebar.ouverte { left: 0; }
 
+  .entete { display: block; }
   .sidebar-fermer { display: block; }
   .hamburger { display: flex; }
   .entete .logo { display: flex; }

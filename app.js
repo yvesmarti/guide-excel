@@ -140,13 +140,37 @@ function afficher() {
   if (stats.raccourcis > 0) parties.push(stats.raccourcis + " " + (stats.raccourcis > 1 ? "raccourcis" : "raccourci"));
   elInfo.textContent = parties.join(" et ") + " affiché" + (elements.length > 1 ? "s" : "");
 
-  elements.forEach((item, i) => {
-    const carte = typeElement(item) === "raccourci"
-      ? carteRaccourci(item)
-      : carteFormule(item);
-    carte.style.animationDelay = Math.min(i * 18, 300) + "ms";
-    elGrille.appendChild(carte);
-  });
+  const formules = elements.filter((e) => typeElement(e) !== "raccourci");
+  const raccourcis = elements.filter((e) => typeElement(e) === "raccourci");
+  const avecSeparateurs = stats.formules > 0 && stats.raccourcis > 0;
+
+  let delai = 0;
+  function rendreGroupe(groupe) {
+    groupe.forEach((item) => {
+      const carte = typeElement(item) === "raccourci"
+        ? carteRaccourci(item)
+        : carteFormule(item);
+      carte.style.animationDelay = Math.min(delai * 18, 300) + "ms";
+      delai++;
+      elGrille.appendChild(carte);
+    });
+  }
+
+  if (avecSeparateurs) {
+    elGrille.appendChild(creerSeparateur("Formules & fonctions", stats.formules));
+    rendreGroupe(formules);
+    elGrille.appendChild(creerSeparateur("Raccourcis clavier", stats.raccourcis));
+    rendreGroupe(raccourcis);
+  } else {
+    rendreGroupe(elements);
+  }
+}
+
+function creerSeparateur(label, count) {
+  const div = document.createElement("div");
+  div.className = "grille-separateur";
+  div.innerHTML = `${echapper(label)} <span class="grille-separateur-compte">${count}</span>`;
+  return div;
 }
 
 function typeElement(item) {
