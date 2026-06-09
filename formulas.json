@@ -844,100 +844,654 @@
   {
     "nom": "SI",
     "categorie": "Logiques",
+    "niveau": "Débutant",
+    "description": "Renvoie une valeur si une condition est vraie, une autre si elle est fausse.",
     "syntaxe": "SI(test_logique;valeur_si_vrai;[valeur_si_faux])",
+    "arguments": [
+      {
+        "nom": "test_logique",
+        "description": "La condition à vérifier (ex. A1>10, B2=\"Oui\")."
+      },
+      {
+        "nom": "valeur_si_vrai",
+        "description": "Ce qui est renvoyé si la condition est vraie."
+      },
+      {
+        "nom": "valeur_si_faux",
+        "description": "(Facultatif) Ce qui est renvoyé si la condition est fausse. Renvoie FAUX si omis."
+      }
+    ],
     "exemple": "=SI(A1>10;\"Élevé\";\"Bas\")",
-    "description": "Renvoie une valeur si une condition est vraie, une autre si elle est fausse."
+    "exempleMetier": {
+      "contexte": "Afficher « Admis » ou « Recalé » selon une note d'examen sur 20.",
+      "formule": "=SI(B2>=10;\"Admis\";\"Recalé\")",
+      "resultat": "Renvoie « Admis » si la note de B2 atteint 10, sinon « Recalé »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =SI( puis écrivez la condition à tester.",
+      "Ajoutez un point-virgule et la valeur à afficher si c'est vrai (entre guillemets pour du texte).",
+      "Ajoutez un point-virgule et la valeur à afficher si c'est faux.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOM? s'affiche",
+        "solution": "Le texte n'est pas entre guillemets. Écrivez \"Admis\" et non Admis."
+      },
+      {
+        "probleme": "Formule illisible à force de SI imbriqués",
+        "solution": "Au-delà de 3 ou 4 niveaux, préférez SI.CONDITIONS, ou une table avec RECHERCHEV."
+      }
+    ],
+    "astuce": "Combinez SI avec ET ou OU pour tester plusieurs conditions à la fois : =SI(ET(...);...;...).",
+    "voirAussi": [
+      "ET",
+      "OU",
+      "SIERREUR"
+    ]
   },
   {
     "nom": "ET",
     "categorie": "Logiques",
+    "niveau": "Débutant",
+    "description": "Renvoie VRAI uniquement si toutes les conditions sont vraies.",
     "syntaxe": "ET(valeur_logique1;[valeur_logique2];...)",
+    "arguments": [
+      {
+        "nom": "valeur_logique1",
+        "description": "La première condition à vérifier."
+      },
+      {
+        "nom": "valeur_logique2",
+        "description": "(Facultatif) Les conditions suivantes, séparées par des points-virgules."
+      }
+    ],
     "exemple": "=ET(A1>0;A1<100)",
-    "description": "Renvoie VRAI uniquement si toutes les conditions sont vraies."
+    "exempleMetier": {
+      "contexte": "Vérifier qu'un dossier est complet (deux pièces fournies).",
+      "formule": "=SI(ET(B2=\"Oui\";C2=\"Oui\");\"Complet\";\"Incomplet\")",
+      "resultat": "Affiche « Complet » seulement si les deux pièces sont présentes."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =ET( puis écrivez la première condition.",
+      "Ajoutez un point-virgule pour chaque condition supplémentaire.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La formule renvoie VRAI ou FAUX, pas un texte",
+        "solution": "ET renvoie un résultat logique. Entourez-la de SI pour afficher un message personnalisé."
+      }
+    ],
+    "astuce": "ET exige que TOUTES les conditions soient vraies. Si une seule suffit, utilisez OU.",
+    "voirAussi": [
+      "OU",
+      "NON",
+      "SI"
+    ]
   },
   {
     "nom": "OU",
     "categorie": "Logiques",
+    "niveau": "Débutant",
+    "description": "Renvoie VRAI si au moins une des conditions est vraie.",
     "syntaxe": "OU(valeur_logique1;[valeur_logique2];...)",
+    "arguments": [
+      {
+        "nom": "valeur_logique1",
+        "description": "La première condition à vérifier."
+      },
+      {
+        "nom": "valeur_logique2",
+        "description": "(Facultatif) Les conditions suivantes, séparées par des points-virgules."
+      }
+    ],
     "exemple": "=OU(A1=\"Oui\";B1=\"Oui\")",
-    "description": "Renvoie VRAI si au moins une des conditions est vraie."
+    "exempleMetier": {
+      "contexte": "Repérer un dossier prioritaire s'il est urgent ou ancien.",
+      "formule": "=SI(OU(B2=\"Urgent\";C2>30);\"À traiter\";\"\")",
+      "resultat": "Affiche « À traiter » si au moins une des deux conditions est remplie."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =OU( puis écrivez la première condition.",
+      "Ajoutez un point-virgule pour chaque condition supplémentaire.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La formule renvoie VRAI ou FAUX",
+        "solution": "OU renvoie un résultat logique. Combinez-la avec SI pour afficher un texte."
+      }
+    ],
+    "astuce": "OU est vraie dès qu'UNE condition est remplie. Pour exiger toutes les conditions, utilisez ET.",
+    "voirAussi": [
+      "ET",
+      "NON",
+      "SI"
+    ]
   },
   {
     "nom": "NON",
     "categorie": "Logiques",
+    "niveau": "Débutant",
+    "description": "Inverse la valeur logique de son argument (VRAI devient FAUX).",
     "syntaxe": "NON(valeur_logique)",
+    "arguments": [
+      {
+        "nom": "valeur_logique",
+        "description": "La condition ou valeur logique dont on veut l'inverse."
+      }
+    ],
     "exemple": "=NON(A1=0)",
-    "description": "Inverse la valeur logique de son argument (VRAI devient FAUX)."
+    "exempleMetier": {
+      "contexte": "Marquer les lignes qui ne sont PAS encore traitées.",
+      "formule": "=SI(NON(B2=\"Fait\");\"À faire\";\"\")",
+      "resultat": "Affiche « À faire » tant que la cellule B2 ne contient pas « Fait »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =NON( puis écrivez la condition à inverser.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "NON attend une valeur logique (VRAI/FAUX) ou une comparaison, pas un texte seul."
+      }
+    ],
+    "astuce": "NON est souvent évitable : =NON(A1=0) revient à écrire plus simplement =A1<>0.",
+    "voirAussi": [
+      "ET",
+      "OU",
+      "SI"
+    ]
   },
   {
     "nom": "SIERREUR",
     "categorie": "Logiques",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie une valeur de remplacement si une formule génère une erreur.",
     "syntaxe": "SIERREUR(valeur;valeur_si_erreur)",
+    "arguments": [
+      {
+        "nom": "valeur",
+        "description": "La formule ou la valeur à évaluer (souvent une RECHERCHEV ou une division)."
+      },
+      {
+        "nom": "valeur_si_erreur",
+        "description": "Ce qui est affiché à la place si la formule génère une erreur."
+      }
+    ],
     "exemple": "=SIERREUR(A1/B1;\"Erreur\")",
-    "description": "Renvoie une valeur de remplacement si une formule génère une erreur."
+    "exempleMetier": {
+      "contexte": "Éviter les vilains #N/A d'une RECHERCHEV lorsqu'un article est introuvable.",
+      "formule": "=SIERREUR(RECHERCHEV(B2;Catalogue!A:D;4;FAUX);\"Non trouvé\")",
+      "resultat": "Renvoie le prix, ou « Non trouvé » si la référence n'existe pas."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =SIERREUR( puis écrivez votre formule habituelle.",
+      "Ajoutez un point-virgule et la valeur de remplacement (un texte, 0, ou du vide \"\").",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Une vraie erreur passe inaperçue",
+        "solution": "SIERREUR masque TOUTES les erreurs. Vérifiez d'abord que votre formule est correcte avant de l'envelopper."
+      }
+    ],
+    "astuce": "Pour n'intercepter que les valeurs introuvables (et pas les autres erreurs), Excel 365 propose SI.NON.DISP.",
+    "voirAussi": [
+      "SI",
+      "ESTERREUR",
+      "RECHERCHEV"
+    ]
   },
   {
     "nom": "RECHERCHEV",
     "categorie": "Recherche",
+    "niveau": "Intermédiaire",
+    "description": "Recherche une valeur dans la première colonne d'un tableau et renvoie une valeur de la même ligne.",
     "syntaxe": "RECHERCHEV(valeur_cherchée;table_matrice;no_index_col;[valeur_proche])",
+    "arguments": [
+      {
+        "nom": "valeur_cherchée",
+        "description": "La valeur à retrouver dans la première colonne du tableau (un nom, un code, un numéro…)."
+      },
+      {
+        "nom": "table_matrice",
+        "description": "La plage de cellules contenant les données. La valeur cherchée doit se trouver dans sa toute première colonne."
+      },
+      {
+        "nom": "no_index_col",
+        "description": "Le numéro de la colonne dont on veut le résultat (1 = première colonne du tableau, 2 = deuxième…)."
+      },
+      {
+        "nom": "valeur_proche",
+        "description": "FAUX pour une correspondance exacte (le cas le plus courant), VRAI pour une correspondance approximative. En cas de doute, mettez FAUX."
+      }
+    ],
     "exemple": "=RECHERCHEV(\"Dupont\";A2:C50;3;FAUX)",
-    "description": "Recherche une valeur dans la première colonne d'un tableau et renvoie une valeur de la même ligne."
+    "exempleMetier": {
+      "contexte": "Retrouver le tarif d'un article à partir de sa référence, dans un catalogue.",
+      "formule": "=RECHERCHEV(B2;Catalogue!A:D;4;FAUX)",
+      "resultat": "Cherche la référence saisie en B2 et renvoie le prix situé dans la 4e colonne du catalogue."
+    },
+    "etapes": [
+      "Cliquez sur la cellule qui doit afficher le résultat.",
+      "Tapez =RECHERCHEV( puis cliquez sur la cellule contenant la valeur à chercher.",
+      "Ajoutez un point-virgule, puis sélectionnez le tableau de données (la valeur cherchée doit être dans sa 1re colonne).",
+      "Ajoutez un point-virgule, puis tapez le numéro de la colonne du résultat voulu.",
+      "Ajoutez un point-virgule, tapez FAUX pour une correspondance exacte, fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#N/A s'affiche",
+        "solution": "La valeur cherchée n'existe pas dans la première colonne, ou contient des espaces invisibles. Vérifiez l'orthographe ou nettoyez avec SUPPRESPACE."
+      },
+      {
+        "probleme": "Le résultat se décale quand on recopie la formule",
+        "solution": "La plage du tableau bouge. Figez-la avec des $ (ex. $A$2:$C$50) ou appuyez sur F4."
+      },
+      {
+        "probleme": "Impossible de chercher vers la gauche",
+        "solution": "RECHERCHEV ne regarde qu'à droite de la première colonne. Pour chercher à gauche, combinez INDEX et EQUIV."
+      }
+    ],
+    "astuce": "Depuis Excel 2021 et Microsoft 365, la fonction RECHERCHEX, plus souple, remplace avantageusement RECHERCHEV.",
+    "voirAussi": [
+      "RECHERCHEH",
+      "INDEX",
+      "EQUIV",
+      "SIERREUR"
+    ]
   },
   {
     "nom": "RECHERCHEH",
     "categorie": "Recherche",
+    "niveau": "Intermédiaire",
+    "description": "Recherche une valeur dans la première ligne d'un tableau et renvoie une valeur de la même colonne.",
     "syntaxe": "RECHERCHEH(valeur_cherchée;table_matrice;no_index_lig;[valeur_proche])",
+    "arguments": [
+      {
+        "nom": "valeur_cherchée",
+        "description": "La valeur à retrouver dans la première ligne du tableau."
+      },
+      {
+        "nom": "table_matrice",
+        "description": "La plage de données. La valeur cherchée doit se situer sur sa première ligne."
+      },
+      {
+        "nom": "no_index_lig",
+        "description": "Le numéro de la ligne dont on veut le résultat (1 = première ligne du tableau, 2 = deuxième…)."
+      },
+      {
+        "nom": "valeur_proche",
+        "description": "FAUX pour une correspondance exacte, VRAI pour une correspondance approximative. En cas de doute, FAUX."
+      }
+    ],
     "exemple": "=RECHERCHEH(\"Janvier\";A1:M3;2;FAUX)",
-    "description": "Recherche une valeur dans la première ligne d'un tableau et renvoie une valeur de la même colonne."
+    "exempleMetier": {
+      "contexte": "Lire le total d'un mois précis dans un tableau où les mois sont disposés en ligne.",
+      "formule": "=RECHERCHEH(\"Mars\";A1:M3;3;FAUX)",
+      "resultat": "Trouve la colonne « Mars » sur la 1re ligne et renvoie la valeur de la 3e ligne."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =RECHERCHEH( puis indiquez la valeur à chercher.",
+      "Ajoutez un point-virgule et sélectionnez le tableau (valeur cherchée sur la 1re ligne).",
+      "Ajoutez un point-virgule et le numéro de la ligne du résultat.",
+      "Ajoutez un point-virgule, tapez FAUX, fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#N/A s'affiche",
+        "solution": "La valeur cherchée n'est pas dans la première ligne du tableau, ou l'orthographe diffère."
+      },
+      {
+        "probleme": "Mauvais résultat",
+        "solution": "Le dernier argument a été oublié : sans FAUX, Excel fait une recherche approximative."
+      }
+    ],
+    "astuce": "RECHERCHEH est l'équivalent horizontal de RECHERCHEV. Beaucoup moins courant, car les données sont rarement organisées en lignes.",
+    "voirAussi": [
+      "RECHERCHEV",
+      "INDEX",
+      "EQUIV"
+    ]
   },
   {
     "nom": "INDEX",
     "categorie": "Recherche",
+    "niveau": "Avancé",
+    "description": "Renvoie la valeur de la cellule à l'intersection d'une ligne et d'une colonne données.",
     "syntaxe": "INDEX(matrice;no_lig;[no_col])",
+    "arguments": [
+      {
+        "nom": "matrice",
+        "description": "La plage de cellules dans laquelle chercher la valeur."
+      },
+      {
+        "nom": "no_lig",
+        "description": "Le numéro de ligne, dans la plage, où se trouve la valeur voulue."
+      },
+      {
+        "nom": "no_col",
+        "description": "(Facultatif) Le numéro de colonne. Inutile si la plage ne contient qu'une seule colonne."
+      }
+    ],
     "exemple": "=INDEX(A1:C10;5;2)",
-    "description": "Renvoie la valeur de la cellule à l'intersection d'une ligne et d'une colonne données."
+    "exempleMetier": {
+      "contexte": "Récupérer une valeur au croisement d'une ligne et d'une colonne dans une grille tarifaire.",
+      "formule": "=INDEX(B2:F20;4;3)",
+      "resultat": "Renvoie la valeur située sur la 4e ligne et la 3e colonne de la plage."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =INDEX( puis sélectionnez la plage de données.",
+      "Ajoutez un point-virgule et le numéro de ligne.",
+      "Si besoin, ajoutez un point-virgule et le numéro de colonne.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#REF! s'affiche",
+        "solution": "Le numéro de ligne ou de colonne dépasse la taille de la plage sélectionnée."
+      },
+      {
+        "probleme": "Le résultat est 0 au lieu de vide",
+        "solution": "INDEX renvoie 0 pour une cellule vide. Encadrez-la au besoin par SI pour afficher du vide."
+      }
+    ],
+    "astuce": "Combinée à EQUIV, la fonction INDEX devient une alternative très souple à RECHERCHEV : elle peut chercher dans n'importe quel sens, y compris vers la gauche.",
+    "voirAussi": [
+      "EQUIV",
+      "RECHERCHEV",
+      "DECALER"
+    ]
   },
   {
     "nom": "EQUIV",
     "categorie": "Recherche",
+    "niveau": "Avancé",
+    "description": "Renvoie la position (rang) d'un élément dans une plage. Souvent combinée avec INDEX.",
     "syntaxe": "EQUIV(valeur_cherchée;matrice_recherche;[type])",
+    "arguments": [
+      {
+        "nom": "valeur_cherchée",
+        "description": "La valeur dont vous voulez connaître la position."
+      },
+      {
+        "nom": "matrice_recherche",
+        "description": "La plage (une seule ligne ou une seule colonne) dans laquelle chercher."
+      },
+      {
+        "nom": "type",
+        "description": "0 pour une correspondance exacte (recommandé), 1 ou -1 pour une correspondance approximative sur des données triées."
+      }
+    ],
     "exemple": "=EQUIV(\"Mars\";A1:A12;0)",
-    "description": "Renvoie la position (rang) d'un élément dans une plage. Souvent combinée avec INDEX."
+    "exempleMetier": {
+      "contexte": "Trouver le rang d'un mois dans un en-tête, pour le transmettre ensuite à INDEX.",
+      "formule": "=EQUIV(\"Mars\";A1:L1;0)",
+      "resultat": "Renvoie 3, car « Mars » est le 3e élément de la plage."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =EQUIV( puis indiquez la valeur à localiser.",
+      "Ajoutez un point-virgule et sélectionnez la plage où chercher.",
+      "Ajoutez un point-virgule et tapez 0 pour une correspondance exacte.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#N/A s'affiche",
+        "solution": "La valeur n'a pas été trouvée. Vérifiez l'orthographe, ou que le type vaut bien 0."
+      },
+      {
+        "probleme": "Position incohérente",
+        "solution": "Avec le type 1, la plage doit être triée par ordre croissant, sinon le résultat est faux."
+      }
+    ],
+    "astuce": "EQUIV donne une position, pas une valeur. C'est le compagnon idéal d'INDEX : =INDEX(plage;EQUIV(...)).",
+    "voirAussi": [
+      "INDEX",
+      "RECHERCHEV",
+      "COLONNE"
+    ]
   },
   {
     "nom": "INDIRECT",
     "categorie": "Recherche",
+    "niveau": "Avancé",
+    "description": "Renvoie la référence désignée par une chaîne de texte.",
     "syntaxe": "INDIRECT(réf_texte;[a1])",
+    "arguments": [
+      {
+        "nom": "réf_texte",
+        "description": "Une référence de cellule ou de plage écrite sous forme de texte (ex. \"A1\" ou \"Feuil2!B3\")."
+      },
+      {
+        "nom": "a1",
+        "description": "(Facultatif) VRAI ou omis pour le style de référence A1 (le standard), FAUX pour le style L1C1."
+      }
+    ],
     "exemple": "=INDIRECT(\"A\"&LIGNE())",
-    "description": "Renvoie la référence désignée par une chaîne de texte."
+    "exempleMetier": {
+      "contexte": "Lire une valeur dans une feuille dont le nom est saisi dans une cellule (ex. un onglet par mois).",
+      "formule": "=INDIRECT(B1&\"!C5\")",
+      "resultat": "Si B1 contient « Mars », renvoie la valeur de la cellule C5 de la feuille Mars."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =INDIRECT(",
+      "Construisez la référence sous forme de texte (souvent en assemblant des cellules avec &).",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#REF! s'affiche",
+        "solution": "Le texte ne correspond pas à une référence valide (nom de feuille mal orthographié, cellule inexistante)."
+      },
+      {
+        "probleme": "La feuille a été renommée et tout casse",
+        "solution": "INDIRECT ne suit pas les renommages : la référence en texte doit être mise à jour à la main."
+      }
+    ],
+    "astuce": "Très pratique pour des tableaux de bord multi-feuilles, mais c'est une fonction volatile : à utiliser avec parcimonie sur de gros fichiers, car elle ralentit les recalculs.",
+    "voirAussi": [
+      "ADRESSE",
+      "DECALER",
+      "RECHERCHEV"
+    ]
   },
   {
     "nom": "DECALER",
     "categorie": "Recherche",
+    "niveau": "Avancé",
+    "description": "Renvoie une référence décalée d'un nombre de lignes et de colonnes par rapport à une cellule.",
     "syntaxe": "DECALER(réf;lignes;colonnes;[hauteur];[largeur])",
+    "arguments": [
+      {
+        "nom": "réf",
+        "description": "La cellule de départ servant de point de repère."
+      },
+      {
+        "nom": "lignes",
+        "description": "Le nombre de lignes de décalage (positif vers le bas, négatif vers le haut)."
+      },
+      {
+        "nom": "colonnes",
+        "description": "Le nombre de colonnes de décalage (positif vers la droite, négatif vers la gauche)."
+      },
+      {
+        "nom": "hauteur",
+        "description": "(Facultatif) Le nombre de lignes de la plage renvoyée."
+      },
+      {
+        "nom": "largeur",
+        "description": "(Facultatif) Le nombre de colonnes de la plage renvoyée."
+      }
+    ],
     "exemple": "=DECALER(A1;2;1)",
-    "description": "Renvoie une référence décalée d'un nombre de lignes et de colonnes par rapport à une cellule."
+    "exempleMetier": {
+      "contexte": "Additionner une plage qui s'agrandit toute seule au fur et à mesure des saisies.",
+      "formule": "=SOMME(DECALER(A1;0;0;NBVAL(A:A);1))",
+      "resultat": "Somme la colonne A sur exactement le nombre de cellules remplies."
+    },
+    "etapes": [
+      "Sélectionnez la cellule de résultat.",
+      "Tapez =DECALER( puis indiquez la cellule de départ.",
+      "Ajoutez un point-virgule et le décalage en lignes, puis en colonnes.",
+      "Si besoin, ajoutez la hauteur et la largeur de la plage voulue.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#REF! s'affiche",
+        "solution": "Le décalage envoie la référence en dehors de la feuille."
+      },
+      {
+        "probleme": "Le fichier devient lent",
+        "solution": "DECALER est une fonction volatile (recalculée en permanence). Sur de gros classeurs, privilégiez un tableau structuré ou INDEX."
+      }
+    ],
+    "astuce": "Pour des plages dynamiques, les tableaux structurés (Ctrl + L) sont souvent plus simples et plus rapides que DECALER.",
+    "voirAussi": [
+      "INDIRECT",
+      "INDEX",
+      "SOMME"
+    ]
   },
   {
     "nom": "ADRESSE",
     "categorie": "Recherche",
+    "niveau": "Intermédiaire",
+    "description": "Crée une adresse de cellule sous forme de texte (ici $A$1).",
     "syntaxe": "ADRESSE(no_lig;no_col;[abs];[a1];[feuille])",
+    "arguments": [
+      {
+        "nom": "no_lig",
+        "description": "Le numéro de ligne de l'adresse à construire."
+      },
+      {
+        "nom": "no_col",
+        "description": "Le numéro de colonne de l'adresse à construire."
+      },
+      {
+        "nom": "abs",
+        "description": "(Facultatif) Type de référence : 1 = absolue ($A$1), 2, 3, ou 4 = relative (A1)."
+      },
+      {
+        "nom": "a1",
+        "description": "(Facultatif) VRAI pour le style A1, FAUX pour le style L1C1."
+      },
+      {
+        "nom": "feuille",
+        "description": "(Facultatif) Le nom de la feuille à inclure dans l'adresse."
+      }
+    ],
     "exemple": "=ADRESSE(1;1)",
-    "description": "Crée une adresse de cellule sous forme de texte (ici $A$1)."
+    "exempleMetier": {
+      "contexte": "Construire une référence en texte, puis la rendre active avec INDIRECT.",
+      "formule": "=INDIRECT(ADRESSE(5;2))",
+      "resultat": "ADRESSE renvoie « $B$5 », et INDIRECT en lit le contenu."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =ADRESSE( puis le numéro de ligne.",
+      "Ajoutez un point-virgule et le numéro de colonne.",
+      "Ajoutez si besoin les options (type de référence, style, feuille).",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est du texte, pas une valeur",
+        "solution": "ADRESSE renvoie seulement l'adresse écrite. Pour récupérer le contenu de cette cellule, entourez-la d'INDIRECT."
+      }
+    ],
+    "astuce": "ADRESSE est presque toujours utilisée en duo avec INDIRECT pour pointer dynamiquement vers une cellule.",
+    "voirAussi": [
+      "INDIRECT",
+      "COLONNE",
+      "LIGNE"
+    ]
   },
   {
     "nom": "COLONNE",
     "categorie": "Recherche",
+    "niveau": "Débutant",
+    "description": "Renvoie le numéro de colonne d'une référence (ici 2).",
     "syntaxe": "COLONNE([référence])",
+    "arguments": [
+      {
+        "nom": "référence",
+        "description": "(Facultatif) La cellule dont on veut le numéro de colonne. Sans argument, renvoie la colonne de la cellule elle-même."
+      }
+    ],
     "exemple": "=COLONNE(B1)",
-    "description": "Renvoie le numéro de colonne d'une référence (ici 2)."
+    "exempleMetier": {
+      "contexte": "Créer un compteur qui s'incrémente automatiquement quand on recopie une formule vers la droite.",
+      "formule": "=COLONNE()-1",
+      "resultat": "Affiche 1 dans la 2e colonne, 2 dans la 3e, etc."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =COLONNE(",
+      "Indiquez une cellule, ou laissez vide pour la cellule courante.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Résultat inattendu",
+        "solution": "Sans argument, COLONNE renvoie le numéro de la colonne où se trouve la formule, pas 1."
+      }
+    ],
+    "astuce": "Soustrayez un nombre (ex. =COLONNE()-1) pour démarrer votre numérotation à 1.",
+    "voirAussi": [
+      "LIGNE",
+      "ADRESSE"
+    ]
   },
   {
     "nom": "LIGNE",
     "categorie": "Recherche",
+    "niveau": "Débutant",
+    "description": "Renvoie le numéro de ligne d'une référence (ici 5).",
     "syntaxe": "LIGNE([référence])",
+    "arguments": [
+      {
+        "nom": "référence",
+        "description": "(Facultatif) La cellule dont on veut le numéro de ligne. Sans argument, renvoie la ligne de la cellule elle-même."
+      }
+    ],
     "exemple": "=LIGNE(A5)",
-    "description": "Renvoie le numéro de ligne d'une référence (ici 5)."
+    "exempleMetier": {
+      "contexte": "Numéroter automatiquement les lignes d'un tableau, en se réajustant si on insère ou supprime une ligne.",
+      "formule": "=LIGNE()-1",
+      "resultat": "Affiche 1 sur la première ligne sous l'en-tête, 2 sur la suivante, etc."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =LIGNE(",
+      "Indiquez une cellule, ou laissez vide pour la ligne courante.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La numérotation ne démarre pas à 1",
+        "solution": "Sans argument, LIGNE renvoie le numéro réel de la ligne. Soustrayez le nombre de lignes d'en-tête (ex. =LIGNE()-1)."
+      }
+    ],
+    "astuce": "Associée à MOD, la fonction LIGNE permet d'appliquer une mise en forme une ligne sur deux.",
+    "voirAussi": [
+      "COLONNE",
+      "ADRESSE",
+      "MOD"
+    ]
   },
   {
     "nom": "CONCATENER",
