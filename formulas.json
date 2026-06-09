@@ -1496,323 +1496,2051 @@
   {
     "nom": "CONCATENER",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Assemble plusieurs textes en une seule chaîne.",
     "syntaxe": "CONCATENER(texte1;[texte2];...)",
+    "arguments": [
+      {
+        "nom": "texte1",
+        "description": "Le premier texte ou la première cellule à assembler."
+      },
+      {
+        "nom": "texte2",
+        "description": "(Facultatif) Les textes ou cellules suivants à ajouter à la suite."
+      }
+    ],
     "exemple": "=CONCATENER(A1;\" \";B1)",
-    "description": "Assemble plusieurs textes en une seule chaîne."
+    "exempleMetier": {
+      "contexte": "Créer une colonne « Nom complet » à partir des colonnes Prénom et Nom.",
+      "formule": "=CONCATENER(A2;\" \";B2)",
+      "resultat": "Assemble le prénom de A2, un espace, puis le nom de B2 (ex. « Marie Dupont »)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =CONCATENER( puis cliquez sur la première cellule à assembler.",
+      "Ajoutez un point-virgule, puis le texte ou la cellule suivante (un espace s'écrit \" \").",
+      "Répétez autant que nécessaire, fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Les mots sont collés sans espace",
+        "solution": "Pensez à insérer \" \" (un espace entre guillemets) entre chaque élément."
+      },
+      {
+        "probleme": "#NOM? s'affiche",
+        "solution": "Le texte libre n'est pas entre guillemets, ou le nom de la fonction est mal orthographié."
+      }
+    ],
+    "astuce": "Le symbole & fait la même chose en plus court : =A2&\" \"&B2. Dans les versions récentes, JOINDRE.TEXTE permet en plus de définir le séparateur une seule fois.",
+    "voirAussi": [
+      "GAUCHE",
+      "DROITE",
+      "TEXTE"
+    ]
   },
   {
     "nom": "GAUCHE",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Extrait les premiers caractères d'un texte, en partant de la gauche.",
     "syntaxe": "GAUCHE(texte;[no_car])",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dont on veut extraire le début."
+      },
+      {
+        "nom": "no_car",
+        "description": "(Facultatif) Le nombre de caractères à extraire. 1 par défaut."
+      }
+    ],
     "exemple": "=GAUCHE(A1;3)",
-    "description": "Extrait les premiers caractères d'un texte, en partant de la gauche."
+    "exempleMetier": {
+      "contexte": "Extraire le code département (2 premiers caractères) d'un code postal.",
+      "formule": "=GAUCHE(B2;2)",
+      "resultat": "Pour « 14000 » en B2, renvoie « 14 »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =GAUCHE( puis cliquez sur la cellule contenant le texte.",
+      "Ajoutez un point-virgule puis le nombre de caractères voulus.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est traité comme du texte, pas un nombre",
+        "solution": "GAUCHE renvoie toujours du texte. Entourez la formule de CNUM pour la convertir : =CNUM(GAUCHE(B2;2))."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le nombre de caractères est négatif. Il doit être supérieur ou égal à 0."
+      }
+    ],
+    "astuce": "Combinez avec TROUVE pour extraire jusqu'à un caractère précis : =GAUCHE(A2;TROUVE(\" \";A2)-1) récupère le premier mot.",
+    "voirAussi": [
+      "DROITE",
+      "STXT",
+      "TROUVE"
+    ]
   },
   {
     "nom": "DROITE",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Extrait les derniers caractères d'un texte, en partant de la droite.",
     "syntaxe": "DROITE(texte;[no_car])",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dont on veut extraire la fin."
+      },
+      {
+        "nom": "no_car",
+        "description": "(Facultatif) Le nombre de caractères à extraire en partant de la droite. 1 par défaut."
+      }
+    ],
     "exemple": "=DROITE(A1;4)",
-    "description": "Extrait les derniers caractères d'un texte, en partant de la droite."
+    "exempleMetier": {
+      "contexte": "Récupérer les 4 derniers chiffres d'un numéro de facture du type « FAC-2026-0042 ».",
+      "formule": "=DROITE(A2;4)",
+      "resultat": "Renvoie « 0042 »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =DROITE( puis cliquez sur la cellule contenant le texte.",
+      "Ajoutez un point-virgule puis le nombre de caractères voulus.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Les zéros de tête disparaissent après conversion en nombre",
+        "solution": "C'est normal : « 0042 » devient 42. Gardez le résultat en texte si les zéros comptent."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le nombre de caractères est négatif. Il doit être supérieur ou égal à 0."
+      }
+    ],
+    "astuce": "Si la longueur de la partie à extraire varie, combinez avec NBCAR et TROUVE plutôt que de fixer un nombre en dur.",
+    "voirAussi": [
+      "GAUCHE",
+      "STXT",
+      "NBCAR"
+    ]
   },
   {
     "nom": "STXT",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Extrait un nombre de caractères à partir d'une position donnée.",
     "syntaxe": "STXT(texte;no_départ;no_car)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dont on veut extraire une partie."
+      },
+      {
+        "nom": "no_départ",
+        "description": "La position du premier caractère à extraire (1 = premier caractère)."
+      },
+      {
+        "nom": "no_car",
+        "description": "Le nombre de caractères à extraire à partir de cette position."
+      }
+    ],
     "exemple": "=STXT(A1;2;5)",
-    "description": "Extrait un nombre de caractères à partir d'une position donnée."
+    "exempleMetier": {
+      "contexte": "Extraire l'année d'une référence du type « FAC-2026-0042 ».",
+      "formule": "=STXT(A2;5;4)",
+      "resultat": "Renvoie « 2026 » (4 caractères à partir du 5e)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =STXT( puis cliquez sur la cellule contenant le texte.",
+      "Ajoutez un point-virgule, la position de départ, un point-virgule, puis le nombre de caractères.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est vide",
+        "solution": "La position de départ dépasse la longueur du texte. Vérifiez-la avec NBCAR."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La position de départ est inférieure à 1 ou le nombre de caractères est négatif."
+      }
+    ],
+    "astuce": "STXT signifie « Sous-TeXTe ». Pour des découpages à position variable, combinez avec TROUVE pour localiser un séparateur.",
+    "voirAussi": [
+      "GAUCHE",
+      "DROITE",
+      "TROUVE"
+    ]
   },
   {
     "nom": "NBCAR",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Renvoie le nombre de caractères d'un texte.",
     "syntaxe": "NBCAR(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dont on veut compter les caractères (espaces compris)."
+      }
+    ],
     "exemple": "=NBCAR(A1)",
-    "description": "Renvoie le nombre de caractères d'un texte."
+    "exempleMetier": {
+      "contexte": "Vérifier que les codes postaux saisis font bien 5 caractères.",
+      "formule": "=SI(NBCAR(B2)=5;\"OK\";\"À corriger\")",
+      "resultat": "Affiche « À corriger » pour toute saisie qui ne fait pas exactement 5 caractères."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =NBCAR( puis cliquez sur la cellule à mesurer.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le compte semble trop élevé",
+        "solution": "Des espaces invisibles en début ou fin de texte sont comptés. Nettoyez d'abord avec SUPPRESPACE."
+      },
+      {
+        "probleme": "Un nombre formaté affiche un compte inattendu",
+        "solution": "NBCAR compte la valeur stockée, pas l'affichage : 12,50 € affiché peut être stocké 12,5 (4 caractères)."
+      }
+    ],
+    "astuce": "Très utile pour repérer des espaces parasites : si NBCAR(A2) est plus grand que prévu, comparez avec NBCAR(SUPPRESPACE(A2)).",
+    "voirAussi": [
+      "SUPPRESPACE",
+      "GAUCHE",
+      "DROITE"
+    ]
   },
   {
     "nom": "SUPPRESPACE",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Supprime les espaces superflus d'un texte (garde un seul espace entre les mots).",
     "syntaxe": "SUPPRESPACE(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule à nettoyer de ses espaces superflus."
+      }
+    ],
     "exemple": "=SUPPRESPACE(A1)",
-    "description": "Supprime les espaces superflus d'un texte (garde un seul espace entre les mots)."
+    "exempleMetier": {
+      "contexte": "Nettoyer une liste de noms importée d'un autre logiciel, pleine d'espaces parasites.",
+      "formule": "=SUPPRESPACE(A2)",
+      "resultat": "« Dupont   Marie » devient « Dupont Marie » : espaces de début et de fin supprimés, espaces multiples réduits à un seul."
+    },
+    "etapes": [
+      "Insérez une colonne vide à côté de la colonne à nettoyer.",
+      "Tapez =SUPPRESPACE( puis cliquez sur la première cellule à nettoyer.",
+      "Fermez la parenthèse, validez, puis recopiez la formule vers le bas.",
+      "Copiez la colonne nettoyée et collez-la en « valeurs » à la place de l'originale si besoin."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Certains espaces résistent",
+        "solution": "Ce sont souvent des espaces insécables (code 160) venant du web. Remplacez-les d'abord : =SUPPRESPACE(SUBSTITUE(A2;CAR(160);\" \"))."
+      },
+      {
+        "probleme": "Le résultat n'apparaît pas modifié",
+        "solution": "La cellule contenait peut-être des caractères invisibles autres que des espaces. Essayez EPURAGE en complément."
+      }
+    ],
+    "astuce": "Réflexe indispensable avant une RECHERCHEV : un espace invisible suffit à provoquer un #N/A.",
+    "voirAussi": [
+      "EPURAGE",
+      "SUBSTITUE",
+      "NBCAR"
+    ]
   },
   {
     "nom": "MAJUSCULE",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Convertit tout le texte en majuscules.",
     "syntaxe": "MAJUSCULE(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule à convertir en majuscules."
+      }
+    ],
     "exemple": "=MAJUSCULE(A1)",
-    "description": "Convertit tout le texte en majuscules."
+    "exempleMetier": {
+      "contexte": "Uniformiser une colonne de noms de famille avant un publipostage.",
+      "formule": "=MAJUSCULE(B2)",
+      "resultat": "« dupont » devient « DUPONT »."
+    },
+    "etapes": [
+      "Insérez une colonne vide à côté des données.",
+      "Tapez =MAJUSCULE( puis cliquez sur la cellule à convertir.",
+      "Fermez la parenthèse, validez et recopiez vers le bas."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Les accents restent en minuscule selon la version",
+        "solution": "Excel met « é » en « É » correctement ; si ce n'est pas le cas, vérifiez les paramètres régionaux."
+      },
+      {
+        "probleme": "Les chiffres semblent inchangés",
+        "solution": "C'est normal : seuls les caractères alphabétiques sont concernés."
+      }
+    ],
+    "astuce": "Pour figer le résultat, copiez la colonne puis « Collage spécial > Valeurs » : la formule disparaît, le texte converti reste.",
+    "voirAussi": [
+      "MINUSCULE",
+      "NOMPROPRE"
+    ]
   },
   {
     "nom": "MINUSCULE",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Convertit tout le texte en minuscules.",
     "syntaxe": "MINUSCULE(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule à convertir en minuscules."
+      }
+    ],
     "exemple": "=MINUSCULE(A1)",
-    "description": "Convertit tout le texte en minuscules."
+    "exempleMetier": {
+      "contexte": "Normaliser des adresses e-mail saisies de façon hétérogène.",
+      "formule": "=MINUSCULE(C2)",
+      "resultat": "« Marie.DUPONT@Mail.fr » devient « marie.dupont@mail.fr »."
+    },
+    "etapes": [
+      "Insérez une colonne vide à côté des données.",
+      "Tapez =MINUSCULE( puis cliquez sur la cellule à convertir.",
+      "Fermez la parenthèse, validez et recopiez vers le bas."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La cellule d'origine ne change pas",
+        "solution": "C'est normal : la formule produit le résultat ailleurs. Remplacez ensuite l'original par un collage en valeurs."
+      }
+    ],
+    "astuce": "Pratique avant une comparaison de textes : =MINUSCULE(A2)=MINUSCULE(B2) ignore les différences de casse.",
+    "voirAussi": [
+      "MAJUSCULE",
+      "NOMPROPRE",
+      "EXACT"
+    ]
   },
   {
     "nom": "NOMPROPRE",
     "categorie": "Texte",
+    "niveau": "Débutant",
+    "description": "Met une majuscule à la première lettre de chaque mot.",
     "syntaxe": "NOMPROPRE(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte dont chaque mot doit commencer par une majuscule."
+      }
+    ],
     "exemple": "=NOMPROPRE(\"jean dupont\")",
-    "description": "Met une majuscule à la première lettre de chaque mot."
+    "exempleMetier": {
+      "contexte": "Mettre en forme des prénoms et noms saisis tout en minuscules.",
+      "formule": "=NOMPROPRE(A2)",
+      "resultat": "« marie dupont » devient « Marie Dupont »."
+    },
+    "etapes": [
+      "Insérez une colonne vide à côté des données.",
+      "Tapez =NOMPROPRE( puis cliquez sur la cellule à convertir.",
+      "Fermez la parenthèse, validez et recopiez vers le bas."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Les noms composés ou particules sont mal traités",
+        "solution": "« d'arc » devient « D'Arc » et « McDonald » devient « Mcdonald ». Corrigez ces cas manuellement ou avec SUBSTITUE."
+      },
+      {
+        "probleme": "Les sigles perdent leurs majuscules",
+        "solution": "« SNCF » devient « Sncf ». Évitez NOMPROPRE sur des colonnes contenant des sigles."
+      }
+    ],
+    "astuce": "Idéal en combinaison : =NOMPROPRE(SUPPRESPACE(A2)) nettoie et met en forme en une seule étape.",
+    "voirAussi": [
+      "MAJUSCULE",
+      "MINUSCULE",
+      "SUPPRESPACE"
+    ]
   },
   {
     "nom": "TEXTE",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Convertit une valeur en texte selon un format d'affichage précis.",
     "syntaxe": "TEXTE(valeur;format_texte)",
+    "arguments": [
+      {
+        "nom": "valeur",
+        "description": "Le nombre ou la date à convertir en texte."
+      },
+      {
+        "nom": "format_texte",
+        "description": "Le format souhaité, entre guillemets (ex. \"jj/mm/aaaa\", \"# ##0,00 €\", \"0000\")."
+      }
+    ],
     "exemple": "=TEXTE(A1;\"jj/mm/aaaa\")",
-    "description": "Convertit une valeur en texte selon un format d'affichage précis."
+    "exempleMetier": {
+      "contexte": "Insérer une date dans une phrase générée automatiquement.",
+      "formule": "=\"Relevé du \"&TEXTE(AUJOURDHUI();\"jj/mm/aaaa\")",
+      "resultat": "Affiche par exemple « Relevé du 09/06/2026 » au lieu d'un numéro de série illisible."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =TEXTE( puis cliquez sur la cellule contenant le nombre ou la date.",
+      "Ajoutez un point-virgule, puis le format souhaité entre guillemets.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le format ne fonctionne pas",
+        "solution": "Les codes dépendent de la langue d'Excel : en français, jour = j, mois = m, année = a (et non d/y comme en anglais)."
+      },
+      {
+        "probleme": "Le résultat ne peut plus servir à des calculs",
+        "solution": "C'est normal : TEXTE renvoie du texte. Gardez la valeur d'origine dans une autre cellule pour les calculs."
+      }
+    ],
+    "astuce": "Le format \"0000\" force l'affichage des zéros de tête : =TEXTE(42;\"0000\") renvoie « 0042 ». Pratique pour des numéros de dossier.",
+    "voirAussi": [
+      "CNUM",
+      "CONCATENER",
+      "AUJOURDHUI"
+    ]
   },
   {
     "nom": "CNUM",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Convertit un texte représentant un nombre en valeur numérique.",
     "syntaxe": "CNUM(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte représentant un nombre à convertir en vrai nombre."
+      }
+    ],
     "exemple": "=CNUM(\"1234\")",
-    "description": "Convertit un texte représentant un nombre en valeur numérique."
+    "exempleMetier": {
+      "contexte": "Rendre calculables des montants importés d'un logiciel tiers, stockés comme du texte.",
+      "formule": "=CNUM(B2)",
+      "resultat": "Le « 1250,50 » stocké en texte devient le nombre 1250,5, utilisable dans une SOMME."
+    },
+    "etapes": [
+      "Insérez une colonne vide à côté des données importées.",
+      "Tapez =CNUM( puis cliquez sur la cellule à convertir.",
+      "Fermez la parenthèse, validez et recopiez vers le bas.",
+      "Remplacez la colonne d'origine par un collage en valeurs si besoin."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le texte contient des caractères non numériques (espace, €, point au lieu de virgule). Nettoyez d'abord avec SUPPRESPACE ou SUBSTITUE."
+      },
+      {
+        "probleme": "Le séparateur décimal pose problème",
+        "solution": "Si les données utilisent un point (12.5), remplacez-le par une virgule : =CNUM(SUBSTITUE(B2;\".\";\",\"))."
+      }
+    ],
+    "astuce": "Indice qu'un nombre est en fait du texte : il s'aligne à gauche dans la cellule et la SOMME de la colonne renvoie 0.",
+    "voirAussi": [
+      "TEXTE",
+      "SUBSTITUE",
+      "SUPPRESPACE"
+    ]
   },
   {
     "nom": "SUBSTITUE",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Remplace un texte précis par un autre dans une chaîne.",
     "syntaxe": "SUBSTITUE(texte;ancien_texte;nouveau_texte;[no_position])",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dans lequel effectuer le remplacement."
+      },
+      {
+        "nom": "ancien_texte",
+        "description": "Le texte à remplacer."
+      },
+      {
+        "nom": "nouveau_texte",
+        "description": "Le texte de remplacement."
+      },
+      {
+        "nom": "no_position",
+        "description": "(Facultatif) Le numéro de l'occurrence à remplacer. Toutes si omis."
+      }
+    ],
     "exemple": "=SUBSTITUE(A1;\"-\";\"/\")",
-    "description": "Remplace un texte précis par un autre dans une chaîne."
+    "exempleMetier": {
+      "contexte": "Remplacer les points par des virgules dans des montants importés.",
+      "formule": "=SUBSTITUE(B2;\".\";\",\")",
+      "resultat": "« 1250.50 » devient « 1250,50 », convertible ensuite en nombre avec CNUM."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =SUBSTITUE( puis cliquez sur la cellule à modifier.",
+      "Ajoutez un point-virgule, le texte à remplacer entre guillemets, un point-virgule, puis le nouveau texte entre guillemets.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Rien n'est remplacé",
+        "solution": "SUBSTITUE distingue majuscules et minuscules : « ABC » ne remplace pas « abc »."
+      },
+      {
+        "probleme": "Confusion avec REMPLACER",
+        "solution": "SUBSTITUE remplace un texte précis ; REMPLACER remplace à une position donnée. Choisissez selon votre besoin."
+      }
+    ],
+    "astuce": "Pour supprimer un caractère, remplacez-le par du vide : =SUBSTITUE(A2;\" \";\"\") enlève tous les espaces.",
+    "voirAussi": [
+      "REMPLACER",
+      "SUPPRESPACE",
+      "CNUM"
+    ]
   },
   {
     "nom": "REMPLACER",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Remplace une partie d'un texte selon sa position.",
     "syntaxe": "REMPLACER(ancien_texte;no_départ;no_car;nouveau_texte)",
+    "arguments": [
+      {
+        "nom": "ancien_texte",
+        "description": "Le texte ou la cellule d'origine."
+      },
+      {
+        "nom": "no_départ",
+        "description": "La position du premier caractère à remplacer."
+      },
+      {
+        "nom": "no_car",
+        "description": "Le nombre de caractères à remplacer."
+      },
+      {
+        "nom": "nouveau_texte",
+        "description": "Le texte qui prend leur place."
+      }
+    ],
     "exemple": "=REMPLACER(A1;1;3;\"XXX\")",
-    "description": "Remplace une partie d'un texte selon sa position."
+    "exempleMetier": {
+      "contexte": "Mettre à jour l'année dans des références du type « FAC-2025-0042 ».",
+      "formule": "=REMPLACER(A2;5;4;\"2026\")",
+      "resultat": "« FAC-2025-0042 » devient « FAC-2026-0042 »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =REMPLACER( puis cliquez sur la cellule d'origine.",
+      "Indiquez la position de départ, le nombre de caractères à écraser, puis le nouveau texte entre guillemets, séparés par des points-virgules.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le remplacement tombe au mauvais endroit",
+        "solution": "Comptez bien la position de départ (le 1er caractère = position 1), ou localisez-la avec TROUVE."
+      },
+      {
+        "probleme": "Confusion avec SUBSTITUE",
+        "solution": "REMPLACER travaille par position ; si vous connaissez le texte à remplacer mais pas sa position, utilisez SUBSTITUE."
+      }
+    ],
+    "astuce": "Pour insérer sans rien écraser, mettez 0 comme nombre de caractères : =REMPLACER(A2;5;0;\"-\") insère un tiret en 5e position.",
+    "voirAussi": [
+      "SUBSTITUE",
+      "TROUVE",
+      "STXT"
+    ]
   },
   {
     "nom": "TROUVE",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie la position d'un texte dans un autre (sensible à la casse).",
     "syntaxe": "TROUVE(texte_cherché;texte;[no_départ])",
+    "arguments": [
+      {
+        "nom": "texte_cherché",
+        "description": "Le texte à localiser (sensible aux majuscules/minuscules)."
+      },
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dans lequel chercher."
+      },
+      {
+        "nom": "no_départ",
+        "description": "(Facultatif) La position à partir de laquelle commencer la recherche. 1 par défaut."
+      }
+    ],
     "exemple": "=TROUVE(\"@\";A1)",
-    "description": "Renvoie la position d'un texte dans un autre (sensible à la casse)."
+    "exempleMetier": {
+      "contexte": "Localiser l'arobase dans des adresses e-mail pour en extraire le nom de domaine.",
+      "formule": "=STXT(C2;TROUVE(\"@\";C2)+1;50)",
+      "resultat": "Pour « marie@mail.fr », TROUVE renvoie 6 et la formule extrait « mail.fr »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =TROUVE( puis le caractère ou texte cherché entre guillemets.",
+      "Ajoutez un point-virgule puis cliquez sur la cellule où chercher.",
+      "Fermez la parenthèse et validez : le résultat est une position (un nombre)."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le texte cherché n'existe pas dans la cellule. Pour éviter l'erreur, entourez de SIERREUR ou utilisez CHERCHE."
+      },
+      {
+        "probleme": "La recherche échoue à cause de la casse",
+        "solution": "TROUVE distingue « A » de « a ». Pour ignorer la casse, utilisez CHERCHE."
+      }
+    ],
+    "astuce": "TROUVE sert rarement seule : c'est la cheville ouvrière des découpages de texte avec GAUCHE, DROITE et STXT.",
+    "voirAussi": [
+      "CHERCHE",
+      "STXT",
+      "GAUCHE"
+    ]
   },
   {
     "nom": "CHERCHE",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie la position d'un texte dans un autre (insensible à la casse).",
     "syntaxe": "CHERCHE(texte_cherché;texte;[no_départ])",
+    "arguments": [
+      {
+        "nom": "texte_cherché",
+        "description": "Le texte à localiser (insensible aux majuscules/minuscules, accepte les jokers * et ?)."
+      },
+      {
+        "nom": "texte",
+        "description": "Le texte ou la cellule dans lequel chercher."
+      },
+      {
+        "nom": "no_départ",
+        "description": "(Facultatif) La position à partir de laquelle commencer la recherche. 1 par défaut."
+      }
+    ],
     "exemple": "=CHERCHE(\"a\";A1)",
-    "description": "Renvoie la position d'un texte dans un autre (insensible à la casse)."
+    "exempleMetier": {
+      "contexte": "Repérer les libellés contenant le mot « urgent », quelle que soit la casse.",
+      "formule": "=SI(ESTERREUR(CHERCHE(\"urgent\";A2));\"\";\"À traiter\")",
+      "resultat": "Affiche « À traiter » si A2 contient « urgent », « Urgent » ou « URGENT »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =CHERCHE( puis le texte cherché entre guillemets.",
+      "Ajoutez un point-virgule puis cliquez sur la cellule où chercher.",
+      "Fermez la parenthèse et validez : le résultat est une position (un nombre)."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le texte cherché est absent. Entourez de SIERREUR pour afficher autre chose qu'une erreur."
+      },
+      {
+        "probleme": "Le joker * ou ? est cherché littéralement",
+        "solution": "Pour chercher un vrai astérisque ou point d'interrogation, faites-le précéder d'un tilde : ~* ou ~?."
+      }
+    ],
+    "astuce": "CHERCHE = souple (ignore la casse, accepte les jokers) ; TROUVE = strict. Dans le doute, CHERCHE convient le plus souvent.",
+    "voirAussi": [
+      "TROUVE",
+      "STXT",
+      "SIERREUR"
+    ]
   },
   {
     "nom": "REPT",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Répète un texte un certain nombre de fois.",
     "syntaxe": "REPT(texte;no_fois)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte à répéter."
+      },
+      {
+        "nom": "no_fois",
+        "description": "Le nombre de répétitions."
+      }
+    ],
     "exemple": "=REPT(\"-\";20)",
-    "description": "Répète un texte un certain nombre de fois."
+    "exempleMetier": {
+      "contexte": "Créer un mini graphique en barres directement dans les cellules.",
+      "formule": "=REPT(\"█\";B2/10)",
+      "resultat": "Pour une valeur de 50 en B2, affiche une barre de 5 blocs : plus la valeur est grande, plus la barre est longue."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =REPT( puis le caractère à répéter entre guillemets.",
+      "Ajoutez un point-virgule puis le nombre de répétitions (ou une formule qui le calcule).",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le nombre de répétitions est négatif, ou le résultat dépasse 32 767 caractères (la limite d'une cellule)."
+      },
+      {
+        "probleme": "La barre est trop longue",
+        "solution": "Divisez la valeur pour la mettre à l'échelle (ex. B2/10) afin de rester lisible."
+      }
+    ],
+    "astuce": "Avec un nombre décimal, REPT arrondit à l'entier inférieur : REPT(\"x\";2,9) donne « xx ».",
+    "voirAussi": [
+      "CONCATENER",
+      "TEXTE"
+    ]
   },
   {
     "nom": "EXACT",
     "categorie": "Texte",
+    "niveau": "Intermédiaire",
+    "description": "Compare deux textes et renvoie VRAI s'ils sont strictement identiques (casse comprise).",
     "syntaxe": "EXACT(texte1;texte2)",
+    "arguments": [
+      {
+        "nom": "texte1",
+        "description": "Le premier texte à comparer."
+      },
+      {
+        "nom": "texte2",
+        "description": "Le second texte à comparer."
+      }
+    ],
     "exemple": "=EXACT(A1;B1)",
-    "description": "Compare deux textes et renvoie VRAI s'ils sont strictement identiques (casse comprise)."
+    "exempleMetier": {
+      "contexte": "Vérifier que des codes saisis deux fois (double saisie de contrôle) sont strictement identiques.",
+      "formule": "=EXACT(B2;C2)",
+      "resultat": "Renvoie VRAI uniquement si les deux cellules sont identiques, majuscules comprises (« Ref01 » ≠ « REF01 »)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =EXACT( puis cliquez sur la première cellule.",
+      "Ajoutez un point-virgule puis cliquez sur la seconde cellule.",
+      "Fermez la parenthèse et validez : le résultat est VRAI ou FAUX."
+    ],
+    "erreurs": [
+      {
+        "probleme": "FAUX alors que les textes semblent identiques",
+        "solution": "Un espace invisible diffère probablement. Comparez les longueurs avec NBCAR ou nettoyez avec SUPPRESPACE."
+      },
+      {
+        "probleme": "Le simple = donne un autre résultat",
+        "solution": "C'est normal : A2=B2 ignore la casse, EXACT la respecte. Choisissez selon le niveau de rigueur voulu."
+      }
+    ],
+    "astuce": "Pour rendre le résultat plus lisible, combinez avec SI : =SI(EXACT(B2;C2);\"OK\";\"Différent\").",
+    "voirAussi": [
+      "SI",
+      "SUPPRESPACE",
+      "NBCAR"
+    ]
   },
   {
     "nom": "EPURAGE",
     "categorie": "Texte",
+    "niveau": "Avancé",
+    "description": "Supprime les caractères non imprimables d'un texte.",
     "syntaxe": "EPURAGE(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte à débarrasser de ses caractères non imprimables."
+      }
+    ],
     "exemple": "=EPURAGE(A1)",
-    "description": "Supprime les caractères non imprimables d'un texte."
+    "exempleMetier": {
+      "contexte": "Nettoyer des données exportées d'un vieux logiciel métier, contenant des caractères de contrôle invisibles.",
+      "formule": "=EPURAGE(A2)",
+      "resultat": "Supprime les caractères non imprimables (codes 0 à 31) qui faussaient les recherches et les comparaisons."
+    },
+    "etapes": [
+      "Insérez une colonne vide à côté des données importées.",
+      "Tapez =EPURAGE( puis cliquez sur la cellule à nettoyer.",
+      "Fermez la parenthèse, validez et recopiez vers le bas.",
+      "Remplacez la colonne d'origine par un collage en valeurs si besoin."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Des caractères parasites subsistent",
+        "solution": "EPURAGE ne supprime pas l'espace insécable (code 160), fréquent dans les copier-coller du web. Ajoutez SUBSTITUE(...;CAR(160);\" \")."
+      },
+      {
+        "probleme": "Le texte semble inchangé",
+        "solution": "Les caractères supprimés étaient invisibles : comparez avec NBCAR avant/après pour le vérifier."
+      }
+    ],
+    "astuce": "Le trio gagnant pour nettoyer un import : =SUPPRESPACE(EPURAGE(SUBSTITUE(A2;CAR(160);\" \"))).",
+    "voirAussi": [
+      "SUPPRESPACE",
+      "SUBSTITUE",
+      "CAR"
+    ]
   },
   {
     "nom": "CAR",
     "categorie": "Texte",
+    "niveau": "Avancé",
+    "description": "Renvoie le caractère correspondant à un code numérique (65 = A).",
     "syntaxe": "CAR(nombre)",
+    "arguments": [
+      {
+        "nom": "nombre",
+        "description": "Le code numérique (1 à 255) du caractère à renvoyer."
+      }
+    ],
     "exemple": "=CAR(65)",
-    "description": "Renvoie le caractère correspondant à un code numérique (65 = A)."
+    "exempleMetier": {
+      "contexte": "Insérer un retour à la ligne dans un texte assemblé par formule.",
+      "formule": "=A2&CAR(10)&B2",
+      "resultat": "Affiche le contenu de A2 puis celui de B2 sur une seconde ligne (activez « Renvoyer à la ligne automatiquement » sur la cellule)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =CAR( puis le code du caractère voulu (10 = retour à la ligne).",
+      "Fermez la parenthèse et validez.",
+      "Pour un retour à la ligne, activez le renvoi automatique via Accueil > Renvoyer à la ligne."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le retour à la ligne ne s'affiche pas",
+        "solution": "Le renvoi à la ligne automatique n'est pas activé sur la cellule."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Le code est hors de la plage 1 à 255."
+      }
+    ],
+    "astuce": "Codes utiles à retenir : 10 = retour à la ligne, 160 = espace insécable (à traquer dans les imports web).",
+    "voirAussi": [
+      "CODE",
+      "EPURAGE",
+      "CONCATENER"
+    ]
   },
   {
     "nom": "CODE",
     "categorie": "Texte",
+    "niveau": "Avancé",
+    "description": "Renvoie le code numérique du premier caractère d'un texte (A = 65).",
     "syntaxe": "CODE(texte)",
+    "arguments": [
+      {
+        "nom": "texte",
+        "description": "Le texte dont on veut le code numérique du premier caractère."
+      }
+    ],
     "exemple": "=CODE(\"A\")",
-    "description": "Renvoie le code numérique du premier caractère d'un texte (A = 65)."
+    "exempleMetier": {
+      "contexte": "Diagnostiquer pourquoi deux cellules « identiques » à l'œil sont jugées différentes par Excel.",
+      "formule": "=CODE(STXT(A2;6;1))",
+      "resultat": "Renvoie le code du 6e caractère : 32 = espace normal, 160 = espace insécable invisible venant d'un copier-coller web."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =CODE( puis cliquez sur la cellule à analyser (ou isolez un caractère avec STXT).",
+      "Fermez la parenthèse et validez : le résultat est le code du premier caractère."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La cellule analysée est vide."
+      },
+      {
+        "probleme": "Seul le premier caractère est analysé",
+        "solution": "C'est le fonctionnement normal. Pour analyser le caractère n, isolez-le d'abord avec STXT(A2;n;1)."
+      }
+    ],
+    "astuce": "CODE est l'inverse de CAR : CODE(\"A\") renvoie 65 et CAR(65) renvoie « A ». Duo précieux pour déboguer les imports.",
+    "voirAussi": [
+      "CAR",
+      "STXT",
+      "EPURAGE"
+    ]
   },
   {
     "nom": "AUJOURDHUI",
     "categorie": "Date/Heure",
+    "niveau": "Débutant",
+    "description": "Renvoie la date du jour (sans heure), mise à jour automatiquement.",
     "syntaxe": "AUJOURDHUI()",
+    "arguments": [],
     "exemple": "=AUJOURDHUI()",
-    "description": "Renvoie la date du jour (sans heure), mise à jour automatiquement."
+    "exempleMetier": {
+      "contexte": "Calculer le nombre de jours de retard d'une facture impayée.",
+      "formule": "=AUJOURDHUI()-B2",
+      "resultat": "Pour une échéance B2 au 01/06/2026, affiche le nombre de jours écoulés depuis, recalculé chaque jour."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =AUJOURDHUI() — sans aucun argument entre les parenthèses.",
+      "Validez avec Entrée."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La date se met à jour toute seule",
+        "solution": "C'est volontaire : AUJOURDHUI est « volatile ». Pour figer une date, tapez Ctrl + ; (point-virgule)."
+      },
+      {
+        "probleme": "Le résultat affiche un nombre comme 46000",
+        "solution": "La cellule n'est pas au format Date. Appliquez un format Date via Accueil > Format de nombre."
+      }
+    ],
+    "astuce": "Excel stocke les dates comme des nombres (jours depuis le 01/01/1900), ce qui permet de les soustraire pour obtenir une durée.",
+    "voirAussi": [
+      "MAINTENANT",
+      "DATE",
+      "FIN.MOIS"
+    ]
   },
   {
     "nom": "MAINTENANT",
     "categorie": "Date/Heure",
+    "niveau": "Débutant",
+    "description": "Renvoie la date et l'heure actuelles.",
     "syntaxe": "MAINTENANT()",
+    "arguments": [],
     "exemple": "=MAINTENANT()",
-    "description": "Renvoie la date et l'heure actuelles."
+    "exempleMetier": {
+      "contexte": "Horodater le moment d'une extraction de données.",
+      "formule": "=\"Extrait le \"&TEXTE(MAINTENANT();\"jj/mm/aaaa à hh:mm\")",
+      "resultat": "Affiche par exemple « Extrait le 09/06/2026 à 14:30 »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MAINTENANT() — sans argument.",
+      "Validez. Mettez la cellule au format Date/Heure si besoin."
+    ],
+    "erreurs": [
+      {
+        "probleme": "L'heure change à chaque modification du fichier",
+        "solution": "MAINTENANT est volatile. Pour figer date + heure, tapez Ctrl + ; puis espace puis Ctrl + Maj + ;."
+      },
+      {
+        "probleme": "Seule la date s'affiche, pas l'heure",
+        "solution": "Le format de la cellule masque l'heure. Choisissez un format incluant hh:mm."
+      }
+    ],
+    "astuce": "Différence clé : AUJOURDHUI() donne la date seule, MAINTENANT() donne la date et l'heure.",
+    "voirAussi": [
+      "AUJOURDHUI",
+      "TEXTE",
+      "HEURE"
+    ]
   },
   {
     "nom": "DATE",
     "categorie": "Date/Heure",
+    "niveau": "Intermédiaire",
+    "description": "Construit une date à partir d'une année, d'un mois et d'un jour.",
     "syntaxe": "DATE(année;mois;jour)",
+    "arguments": [
+      {
+        "nom": "année",
+        "description": "L'année (de préférence sur 4 chiffres, ex. 2026)."
+      },
+      {
+        "nom": "mois",
+        "description": "Le mois (1 à 12)."
+      },
+      {
+        "nom": "jour",
+        "description": "Le jour (1 à 31)."
+      }
+    ],
     "exemple": "=DATE(2026;6;8)",
-    "description": "Construit une date à partir d'une année, d'un mois et d'un jour."
+    "exempleMetier": {
+      "contexte": "Reconstituer une vraie date à partir d'année, mois et jour stockés dans trois colonnes séparées.",
+      "formule": "=DATE(A2;B2;C2)",
+      "resultat": "Avec 2026, 6 et 9 dans A2, B2, C2, renvoie une date calculable : 09/06/2026."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =DATE( puis indiquez l'année, un point-virgule, le mois, un point-virgule, le jour.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La date obtenue est décalée",
+        "solution": "DATE corrige les débordements : DATE(2026;13;1) devient janvier 2027. C'est parfois pratique, parfois source d'erreur."
+      },
+      {
+        "probleme": "Le résultat est un nombre",
+        "solution": "Appliquez un format Date à la cellule."
+      }
+    ],
+    "astuce": "Pour ajouter un mois proprement : =DATE(ANNEE(A2);MOIS(A2)+1;JOUR(A2)), DATE gère seule le passage à l'année suivante.",
+    "voirAussi": [
+      "ANNEE",
+      "MOIS",
+      "JOUR"
+    ]
   },
   {
     "nom": "ANNEE",
     "categorie": "Date/Heure",
+    "niveau": "Débutant",
+    "description": "Extrait l'année d'une date.",
     "syntaxe": "ANNEE(numéro_série)",
+    "arguments": [
+      {
+        "nom": "date_série",
+        "description": "La date dont on veut extraire l'année."
+      }
+    ],
     "exemple": "=ANNEE(A1)",
-    "description": "Extrait l'année d'une date."
+    "exempleMetier": {
+      "contexte": "Regrouper des dépenses par année pour un bilan annuel.",
+      "formule": "=ANNEE(A2)",
+      "resultat": "Pour une date 09/06/2026 en A2, renvoie 2026. À utiliser ensuite dans un tableau croisé ou un SOMME.SI."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =ANNEE( puis cliquez sur la cellule contenant la date.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La cellule contient du texte ressemblant à une date, pas une vraie date. Convertissez-la (DATEVAL ou collage spécial)."
+      },
+      {
+        "probleme": "Le résultat s'affiche en date",
+        "solution": "Remettez la cellule au format Standard/Nombre : le résultat est un simple entier (2026)."
+      }
+    ],
+    "astuce": "ANNEE, MOIS et JOUR sont le trio de base pour découper une date et la réagréger comme on veut.",
+    "voirAussi": [
+      "MOIS",
+      "JOUR",
+      "DATE"
+    ]
   },
   {
     "nom": "MOIS",
     "categorie": "Date/Heure",
+    "niveau": "Débutant",
+    "description": "Extrait le numéro du mois (1 à 12) d'une date.",
     "syntaxe": "MOIS(numéro_série)",
+    "arguments": [
+      {
+        "nom": "date_série",
+        "description": "La date dont on veut extraire le numéro de mois."
+      }
+    ],
     "exemple": "=MOIS(A1)",
-    "description": "Extrait le numéro du mois (1 à 12) d'une date."
+    "exempleMetier": {
+      "contexte": "Classer des tournées de collecte par mois.",
+      "formule": "=MOIS(A2)",
+      "resultat": "Pour le 09/06/2026, renvoie 6 (juin)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MOIS( puis cliquez sur la cellule contenant la date.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est le mois plutôt que le nom du mois",
+        "solution": "MOIS renvoie un nombre (1 à 12). Pour le nom, utilisez =TEXTE(A2;\"mmmm\")."
+      },
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La cellule ne contient pas une vraie date mais du texte."
+      }
+    ],
+    "astuce": "Pour le nom du mois directement : =TEXTE(A2;\"mmmm\") donne « juin », =TEXTE(A2;\"mmm\") donne « juin » abrégé selon la langue.",
+    "voirAussi": [
+      "ANNEE",
+      "JOUR",
+      "TEXTE"
+    ]
   },
   {
     "nom": "JOUR",
     "categorie": "Date/Heure",
+    "niveau": "Débutant",
+    "description": "Extrait le jour du mois (1 à 31) d'une date.",
     "syntaxe": "JOUR(numéro_série)",
+    "arguments": [
+      {
+        "nom": "date_série",
+        "description": "La date dont on veut extraire le numéro de jour (1 à 31)."
+      }
+    ],
     "exemple": "=JOUR(A1)",
-    "description": "Extrait le jour du mois (1 à 31) d'une date."
+    "exempleMetier": {
+      "contexte": "Repérer les opérations effectuées en début de mois (avant le 10).",
+      "formule": "=SI(JOUR(A2)<10;\"Début de mois\";\"\")",
+      "resultat": "Affiche « Début de mois » pour toute date dont le jour est inférieur à 10."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =JOUR( puis cliquez sur la cellule contenant la date.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La cellule contient du texte, pas une date reconnue par Excel."
+      },
+      {
+        "probleme": "Confusion avec JOURSEM",
+        "solution": "JOUR renvoie le quantième (1 à 31) ; JOURSEM renvoie le jour de la semaine (lundi, mardi…)."
+      }
+    ],
+    "astuce": "Pour le tout dernier jour d'un mois, ne devinez pas : FIN.MOIS gère automatiquement les mois de 28, 30 ou 31 jours.",
+    "voirAussi": [
+      "ANNEE",
+      "MOIS",
+      "FIN.MOIS"
+    ]
   },
   {
     "nom": "HEURE",
     "categorie": "Date/Heure",
+    "niveau": "Débutant",
+    "description": "Extrait l'heure (0 à 23) d'une valeur horaire.",
     "syntaxe": "HEURE(numéro_série)",
+    "arguments": [
+      {
+        "nom": "heure_série",
+        "description": "La valeur horaire dont on veut extraire l'heure (0 à 23)."
+      }
+    ],
     "exemple": "=HEURE(A1)",
-    "description": "Extrait l'heure (0 à 23) d'une valeur horaire."
+    "exempleMetier": {
+      "contexte": "Identifier les leçons de conduite programmées le matin.",
+      "formule": "=SI(HEURE(B2)<12;\"Matin\";\"Après-midi\")",
+      "resultat": "Pour une leçon à 09:30, affiche « Matin »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =HEURE( puis cliquez sur la cellule contenant l'horaire.",
+      "Fermez la parenthèse et validez : le résultat va de 0 à 23."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "La cellule contient du texte (« 9h30 ») et non une heure reconnue (saisie « 09:30 »)."
+      },
+      {
+        "probleme": "Le résultat dépasse 23",
+        "solution": "C'est impossible avec HEURE ; vérifiez que vous n'utilisez pas une durée cumulée au lieu d'une heure de la journée."
+      }
+    ],
+    "astuce": "Les pendants existent : MINUTE et SECONDE extraient les autres composantes d'un horaire.",
+    "voirAussi": [
+      "MAINTENANT",
+      "TEXTE"
+    ]
   },
   {
     "nom": "JOURSEM",
     "categorie": "Date/Heure",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie le jour de la semaine d'une date (avec le type 2, lundi = 1).",
     "syntaxe": "JOURSEM(numéro_série;[type_retour])",
+    "arguments": [
+      {
+        "nom": "numéro_série",
+        "description": "La date dont on veut connaître le jour de la semaine."
+      },
+      {
+        "nom": "type_retour",
+        "description": "(Facultatif) Le mode de numérotation. 2 = lundi vaut 1 … dimanche vaut 7 (le plus intuitif en France)."
+      }
+    ],
     "exemple": "=JOURSEM(A1;2)",
-    "description": "Renvoie le jour de la semaine d'une date (avec le type 2, lundi = 1)."
+    "exempleMetier": {
+      "contexte": "Repérer les collectes tombant un week-end pour ajuster le planning.",
+      "formule": "=SI(JOURSEM(A2;2)>5;\"Week-end\";\"Semaine\")",
+      "resultat": "Renvoie « Week-end » si la date tombe un samedi (6) ou dimanche (7)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =JOURSEM( puis cliquez sur la cellule contenant la date.",
+      "Ajoutez un point-virgule puis 2 pour que lundi = 1.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le décompte semble décalé d'un jour",
+        "solution": "Le type par défaut (1) fait commencer la semaine le dimanche. Utilisez le type 2 pour démarrer au lundi."
+      },
+      {
+        "probleme": "On veut le nom du jour",
+        "solution": "JOURSEM renvoie un nombre. Pour le nom, utilisez =TEXTE(A2;\"jjjj\") qui donne « lundi », « mardi »…"
+      }
+    ],
+    "astuce": "Pour afficher directement le nom du jour, =TEXTE(A2;\"jjjj\") est souvent plus pratique que JOURSEM.",
+    "voirAussi": [
+      "JOUR",
+      "TEXTE",
+      "AUJOURDHUI"
+    ]
   },
   {
     "nom": "FIN.MOIS",
     "categorie": "Date/Heure",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie le dernier jour du mois, éventuellement décalé d'un nombre de mois.",
     "syntaxe": "FIN.MOIS(date_départ;mois)",
+    "arguments": [
+      {
+        "nom": "date_départ",
+        "description": "La date de référence."
+      },
+      {
+        "nom": "mois",
+        "description": "Le nombre de mois à ajouter (0 = mois en cours, 1 = mois suivant, -1 = mois précédent)."
+      }
+    ],
     "exemple": "=FIN.MOIS(A1;0)",
-    "description": "Renvoie le dernier jour du mois, éventuellement décalé d'un nombre de mois."
+    "exempleMetier": {
+      "contexte": "Fixer l'échéance d'une facture au dernier jour du mois suivant.",
+      "formule": "=FIN.MOIS(A2;1)",
+      "resultat": "Pour une facture du 09/06/2026, renvoie le 31/07/2026, en gérant seule le nombre de jours du mois."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =FIN.MOIS( puis cliquez sur la date de départ.",
+      "Ajoutez un point-virgule puis le nombre de mois à décaler (0 pour le mois en cours).",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est un nombre",
+        "solution": "Appliquez un format Date à la cellule."
+      },
+      {
+        "probleme": "#NOM? s'affiche",
+        "solution": "Dans certaines anciennes versions, activez la fonction via les macros complémentaires « Utilitaire d'analyse »."
+      }
+    ],
+    "astuce": "Pour le premier jour d'un mois, partez de la fin du mois précédent + 1 : =FIN.MOIS(A2;-1)+1.",
+    "voirAussi": [
+      "DATE",
+      "AUJOURDHUI",
+      "JOUR"
+    ]
   },
   {
     "nom": "VPM",
     "categorie": "Financières",
+    "niveau": "Avancé",
+    "description": "Calcule la mensualité de remboursement d'un emprunt à taux fixe.",
     "syntaxe": "VPM(taux;npm;va;[vc];[type])",
+    "arguments": [
+      {
+        "nom": "taux",
+        "description": "Le taux d'intérêt par période. Pour un taux annuel mensualisé, divisez par 12."
+      },
+      {
+        "nom": "npm",
+        "description": "Le nombre total de périodes (mensualités) de remboursement."
+      },
+      {
+        "nom": "va",
+        "description": "La valeur actuelle, c'est-à-dire le montant emprunté (souvent saisi en négatif)."
+      },
+      {
+        "nom": "vc",
+        "description": "(Facultatif) La valeur capitalisée visée en fin de prêt. 0 par défaut."
+      },
+      {
+        "nom": "type",
+        "description": "(Facultatif) 0 si paiement en fin de période (défaut), 1 si en début."
+      }
+    ],
     "exemple": "=VPM(0,05/12;240;-150000)",
-    "description": "Calcule la mensualité de remboursement d'un emprunt à taux fixe."
+    "exempleMetier": {
+      "contexte": "Estimer la mensualité d'un prêt de 150 000 € sur 20 ans à 5 % annuel.",
+      "formule": "=VPM(5%/12;240;150000)",
+      "resultat": "Renvoie environ -990 € : la mensualité (négative car c'est une sortie d'argent)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =VPM( puis le taux périodique (taux annuel / 12 pour du mensuel).",
+      "Ajoutez le nombre total de mensualités, puis le montant emprunté, séparés par des points-virgules.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La mensualité paraît énorme",
+        "solution": "Le taux n'a sans doute pas été ramené à la période : pour du mensuel, divisez le taux annuel par 12."
+      },
+      {
+        "probleme": "Le résultat est négatif",
+        "solution": "C'est la convention Excel (sortie d'argent). Ajoutez un signe - devant la formule pour l'afficher en positif."
+      }
+    ],
+    "astuce": "Cohérence des unités : si le taux est mensuel, le nombre de périodes doit l'être aussi (20 ans = 240 mois).",
+    "voirAussi": [
+      "VC",
+      "VA",
+      "TRI"
+    ]
   },
   {
     "nom": "VC",
     "categorie": "Financières",
+    "niveau": "Avancé",
+    "description": "Calcule la valeur future (capital atteint) d'un placement régulier.",
     "syntaxe": "VC(taux;npm;vpm;[va];[type])",
+    "arguments": [
+      {
+        "nom": "taux",
+        "description": "Le taux d'intérêt par période."
+      },
+      {
+        "nom": "npm",
+        "description": "Le nombre total de périodes de versement."
+      },
+      {
+        "nom": "vpm",
+        "description": "Le montant versé à chaque période (constant)."
+      },
+      {
+        "nom": "va",
+        "description": "(Facultatif) La valeur actuelle (capital de départ). 0 par défaut."
+      },
+      {
+        "nom": "type",
+        "description": "(Facultatif) 0 si versement en fin de période (défaut), 1 si en début."
+      }
+    ],
     "exemple": "=VC(0,04/12;60;-200)",
-    "description": "Calcule la valeur future (capital atteint) d'un placement régulier."
+    "exempleMetier": {
+      "contexte": "Estimer le capital d'une épargne de 200 €/mois pendant 10 ans à 3 % annuel.",
+      "formule": "=VC(3%/12;120;-200)",
+      "resultat": "Renvoie le capital final cumulé, intérêts compris (versements saisis en négatif)."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =VC( puis le taux périodique.",
+      "Ajoutez le nombre de versements puis le montant de chaque versement (en négatif), séparés par des points-virgules.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est négatif alors qu'on attend un gain",
+        "solution": "Saisissez les versements en négatif (sortie d'argent) pour obtenir un capital final positif."
+      },
+      {
+        "probleme": "Le total semble trop faible",
+        "solution": "Vérifiez la cohérence des périodes : taux mensuel ↔ nombre de mois."
+      }
+    ],
+    "astuce": "VC (Valeur Capitalisée) répond à « combien aurai-je à la fin ? » ; VA répond à « combien vaut aujourd'hui ? ».",
+    "voirAussi": [
+      "VA",
+      "VPM",
+      "VAN"
+    ]
   },
   {
     "nom": "VA",
     "categorie": "Financières",
+    "niveau": "Avancé",
+    "description": "Calcule la valeur actuelle d'une série de versements futurs.",
     "syntaxe": "VA(taux;npm;vpm;[vc];[type])",
+    "arguments": [
+      {
+        "nom": "taux",
+        "description": "Le taux d'actualisation par période."
+      },
+      {
+        "nom": "npm",
+        "description": "Le nombre total de périodes."
+      },
+      {
+        "nom": "vpm",
+        "description": "Le montant constant reçu ou versé à chaque période."
+      },
+      {
+        "nom": "vc",
+        "description": "(Facultatif) La valeur capitalisée finale. 0 par défaut."
+      },
+      {
+        "nom": "type",
+        "description": "(Facultatif) 0 si paiement en fin de période (défaut), 1 si en début."
+      }
+    ],
     "exemple": "=VA(0,05;10;-1000)",
-    "description": "Calcule la valeur actuelle d'une série de versements futurs."
+    "exempleMetier": {
+      "contexte": "Savoir combien vaut aujourd'hui une rente de 1 000 €/an sur 15 ans, actualisée à 4 %.",
+      "formule": "=VA(4%;15;-1000)",
+      "resultat": "Renvoie la somme qu'il faudrait placer aujourd'hui pour générer cette rente."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =VA( puis le taux d'actualisation par période.",
+      "Ajoutez le nombre de périodes puis le montant par période, séparés par des points-virgules.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le signe du résultat surprend",
+        "solution": "Les conventions de signe d'Excel s'appliquent : une entrée et une sortie d'argent ont des signes opposés."
+      },
+      {
+        "probleme": "On confond avec VAN",
+        "solution": "VA suppose des flux constants ; VAN accepte des flux différents période par période."
+      }
+    ],
+    "astuce": "Pour des flux irréguliers (un investissement, des recettes variables), passez à VAN plutôt qu'à VA.",
+    "voirAussi": [
+      "VC",
+      "VPM",
+      "VAN"
+    ]
   },
   {
     "nom": "TRI",
     "categorie": "Financières",
+    "niveau": "Avancé",
+    "description": "Calcule le taux de rentabilité interne d'une série de flux financiers.",
     "syntaxe": "TRI(valeurs;[estimation])",
+    "arguments": [
+      {
+        "nom": "valeurs",
+        "description": "La plage des flux de trésorerie : la première valeur (l'investissement) est négative, les suivantes positives."
+      },
+      {
+        "nom": "estimation",
+        "description": "(Facultatif) Une estimation de départ du taux. 10 % par défaut."
+      }
+    ],
     "exemple": "=TRI(A1:A6)",
-    "description": "Calcule le taux de rentabilité interne d'une série de flux financiers."
+    "exempleMetier": {
+      "contexte": "Évaluer la rentabilité d'un investissement : -10 000 € au départ, puis recettes annuelles.",
+      "formule": "=TRI(B2:B7)",
+      "resultat": "Renvoie le taux de rendement interne, à comparer au coût de financement pour décider."
+    },
+    "etapes": [
+      "Saisissez les flux dans une colonne : l'investissement initial en négatif en haut, puis les recettes.",
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =TRI( puis sélectionnez la plage des flux.",
+      "Fermez la parenthèse, validez et mettez la cellule au format Pourcentage."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#NOMBRE! s'affiche",
+        "solution": "La plage ne contient pas au moins un flux négatif et un positif, ou Excel ne converge pas. Donnez une estimation de départ."
+      },
+      {
+        "probleme": "Les flux sont espacés irrégulièrement",
+        "solution": "TRI suppose des périodes régulières. Pour des dates précises, utilisez TRI.PAIEMENTS."
+      }
+    ],
+    "astuce": "Règle de décision simple : si le TRI dépasse votre taux d'emprunt, le projet crée de la valeur.",
+    "voirAussi": [
+      "VAN",
+      "VA",
+      "VC"
+    ]
   },
   {
     "nom": "VAN",
     "categorie": "Financières",
+    "niveau": "Avancé",
+    "description": "Calcule la valeur actuelle nette d'un investissement à partir de flux périodiques.",
     "syntaxe": "VAN(taux;valeur1;[valeur2];...)",
+    "arguments": [
+      {
+        "nom": "taux",
+        "description": "Le taux d'actualisation par période."
+      },
+      {
+        "nom": "valeur1",
+        "description": "Le premier flux de trésorerie (en fin de 1re période)."
+      },
+      {
+        "nom": "valeur2",
+        "description": "(Facultatif) Les flux suivants, un par période."
+      }
+    ],
     "exemple": "=VAN(0,1;A1:A6)",
-    "description": "Calcule la valeur actuelle nette d'un investissement à partir de flux périodiques."
+    "exempleMetier": {
+      "contexte": "Décider d'un investissement en comparant les recettes futures actualisées à la mise de départ.",
+      "formule": "=-10000+VAN(8%;B2:B6)",
+      "resultat": "Si le résultat est positif, le projet rapporte plus que le taux exigé de 8 %."
+    },
+    "etapes": [
+      "Saisissez les flux futurs dans une colonne (hors investissement initial).",
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =VAN( puis le taux d'actualisation, un point-virgule, puis sélectionnez les flux futurs.",
+      "Ajoutez l'investissement initial à part : =-10000+VAN(...), puis validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat semble trop élevé",
+        "solution": "VAN actualise dès la 1re période : n'incluez PAS l'investissement initial dans la plage, ajoutez-le séparément."
+      },
+      {
+        "probleme": "On confond avec TRI",
+        "solution": "VAN donne une somme en euros ; TRI donne un taux. Les deux sont complémentaires pour décider."
+      }
+    ],
+    "astuce": "VAN (Valeur Actuelle Nette) > 0 = projet rentable au taux choisi. C'est l'indicateur d'investissement le plus courant.",
+    "voirAussi": [
+      "TRI",
+      "VA",
+      "VC"
+    ]
   },
   {
     "nom": "MOYENNE",
     "categorie": "Statistiques",
+    "niveau": "Débutant",
+    "description": "Calcule la moyenne arithmétique d'un ensemble de valeurs.",
     "syntaxe": "MOYENNE(nombre1;[nombre2];...)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Le premier nombre ou la première plage à moyenner."
+      },
+      {
+        "nom": "nombre2",
+        "description": "(Facultatif) Les nombres ou plages suivants."
+      }
+    ],
     "exemple": "=MOYENNE(B2:B20)",
-    "description": "Calcule la moyenne arithmétique d'un ensemble de valeurs."
+    "exempleMetier": {
+      "contexte": "Calculer le tonnage moyen collecté par tournée sur un mois.",
+      "formule": "=MOYENNE(B2:B31)",
+      "resultat": "Renvoie le tonnage moyen, en ignorant automatiquement les cellules vides."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MOYENNE( puis sélectionnez la plage de valeurs.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est faussé par les zéros",
+        "solution": "MOYENNE compte les 0 mais ignore les cellules vides. Si les 0 ne doivent pas compter, utilisez MOYENNE.SI(plage;\"<>0\")."
+      },
+      {
+        "probleme": "#DIV/0! s'affiche",
+        "solution": "La plage ne contient aucun nombre. Vérifiez qu'elle n'est pas vide ou entièrement textuelle."
+      }
+    ],
+    "astuce": "Pour une moyenne sous condition (ex. uniquement les jours ouvrés), passez à MOYENNE.SI.",
+    "voirAussi": [
+      "MOYENNE.SI",
+      "MEDIANE",
+      "SOMME"
+    ]
   },
   {
     "nom": "NB",
     "categorie": "Statistiques",
+    "niveau": "Débutant",
+    "description": "Compte le nombre de cellules qui contiennent des nombres.",
     "syntaxe": "NB(valeur1;[valeur2];...)",
+    "arguments": [
+      {
+        "nom": "valeur1",
+        "description": "La première plage ou valeur où compter les nombres."
+      },
+      {
+        "nom": "valeur2",
+        "description": "(Facultatif) Les plages ou valeurs suivantes."
+      }
+    ],
     "exemple": "=NB(A1:A50)",
-    "description": "Compte le nombre de cellules qui contiennent des nombres."
+    "exempleMetier": {
+      "contexte": "Compter combien de leçons ont effectivement reçu une note (cellules chiffrées).",
+      "formule": "=NB(C2:C50)",
+      "resultat": "Renvoie le nombre de cellules contenant un nombre, en ignorant le texte et les cellules vides."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =NB( puis sélectionnez la plage.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le compte est plus bas que prévu",
+        "solution": "NB ne compte QUE les nombres. Pour compter aussi le texte, utilisez NBVAL."
+      },
+      {
+        "probleme": "Les dates ne sont pas comptées",
+        "solution": "Si elles le sont normalement (les dates sont des nombres) : vérifiez qu'elles ne sont pas stockées comme texte."
+      }
+    ],
+    "astuce": "Trois fonctions à distinguer : NB (nombres seuls), NBVAL (cellules non vides), NB.VIDE (cellules vides).",
+    "voirAussi": [
+      "NBVAL",
+      "NB.SI",
+      "SOMME"
+    ]
   },
   {
     "nom": "NBVAL",
     "categorie": "Statistiques",
+    "niveau": "Débutant",
+    "description": "Compte le nombre de cellules non vides (texte ou nombre).",
     "syntaxe": "NBVAL(valeur1;[valeur2];...)",
+    "arguments": [
+      {
+        "nom": "valeur1",
+        "description": "La première plage où compter les cellules non vides."
+      },
+      {
+        "nom": "valeur2",
+        "description": "(Facultatif) Les plages suivantes."
+      }
+    ],
     "exemple": "=NBVAL(A1:A50)",
-    "description": "Compte le nombre de cellules non vides (texte ou nombre)."
+    "exempleMetier": {
+      "contexte": "Compter le nombre d'élèves inscrits, qu'ils soient identifiés par un nom (texte) ou un numéro.",
+      "formule": "=NBVAL(A2:A200)",
+      "resultat": "Renvoie le nombre de cellules remplies, texte et nombres confondus."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =NBVAL( puis sélectionnez la plage.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le compte est trop élevé",
+        "solution": "Une cellule contenant une formule renvoyant \"\" (texte vide) est comptée comme non vide. Utilisez NB.SI(plage;\"<>\") pour l'exclure."
+      },
+      {
+        "probleme": "On voulait compter seulement les nombres",
+        "solution": "Dans ce cas utilisez NB et non NBVAL."
+      }
+    ],
+    "astuce": "NBVAL répond à « combien de cases sont remplies ? », quel que soit le type de contenu.",
+    "voirAussi": [
+      "NB",
+      "NB.SI",
+      "ESTVIDE"
+    ]
   },
   {
     "nom": "MAX",
     "categorie": "Statistiques",
+    "niveau": "Débutant",
+    "description": "Renvoie la plus grande valeur d'un ensemble.",
     "syntaxe": "MAX(nombre1;[nombre2];...)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Le premier nombre ou la première plage à examiner."
+      },
+      {
+        "nom": "nombre2",
+        "description": "(Facultatif) Les nombres ou plages suivants."
+      }
+    ],
     "exemple": "=MAX(C1:C100)",
-    "description": "Renvoie la plus grande valeur d'un ensemble."
+    "exempleMetier": {
+      "contexte": "Identifier le tonnage le plus élevé collecté sur le mois.",
+      "formule": "=MAX(B2:B31)",
+      "resultat": "Renvoie la plus grande valeur de la plage."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MAX( puis sélectionnez la plage.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le texte fausse l'attendu",
+        "solution": "MAX ignore le texte. Si une valeur attendue n'apparaît pas, elle est peut-être stockée comme texte."
+      },
+      {
+        "probleme": "On veut le maximum sous condition",
+        "solution": "Utilisez MAX.SI.ENS (versions récentes) ou une formule matricielle."
+      }
+    ],
+    "astuce": "Pour retrouver QUI a réalisé ce maximum, combinez avec INDEX et EQUIV : =INDEX(A:A;EQUIV(MAX(B:B);B:B;0)).",
+    "voirAussi": [
+      "MIN",
+      "MOYENNE",
+      "EQUIV"
+    ]
   },
   {
     "nom": "MIN",
     "categorie": "Statistiques",
+    "niveau": "Débutant",
+    "description": "Renvoie la plus petite valeur d'un ensemble.",
     "syntaxe": "MIN(nombre1;[nombre2];...)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Le premier nombre ou la première plage à examiner."
+      },
+      {
+        "nom": "nombre2",
+        "description": "(Facultatif) Les nombres ou plages suivants."
+      }
+    ],
     "exemple": "=MIN(C1:C100)",
-    "description": "Renvoie la plus petite valeur d'un ensemble."
+    "exempleMetier": {
+      "contexte": "Repérer le stock le plus bas atteint dans le mois pour anticiper un réapprovisionnement.",
+      "formule": "=MIN(B2:B31)",
+      "resultat": "Renvoie la plus petite valeur de la plage."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MIN( puis sélectionnez la plage.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Le résultat est 0 de façon inattendue",
+        "solution": "Une cellule vide n'est pas comptée, mais une cellule contenant 0 l'est. Vérifiez vos données."
+      },
+      {
+        "probleme": "On veut le minimum hors zéros",
+        "solution": "Utilisez MIN.SI.ENS (versions récentes) avec le critère \"<>0\"."
+      }
+    ],
+    "astuce": "MAX et MIN encadrent une série ; leur écart (=MAX-MIN) donne l'étendue, un indicateur de dispersion rapide.",
+    "voirAussi": [
+      "MAX",
+      "MOYENNE",
+      "MEDIANE"
+    ]
   },
   {
     "nom": "NB.SI",
     "categorie": "Statistiques",
+    "niveau": "Intermédiaire",
+    "description": "Compte les cellules qui répondent à un critère.",
     "syntaxe": "NB.SI(plage;critère)",
+    "arguments": [
+      {
+        "nom": "plage",
+        "description": "La plage de cellules à examiner."
+      },
+      {
+        "nom": "critère",
+        "description": "La condition à remplir (ex. \">10\", \"Payé\", A1). Les jokers * et ? sont acceptés."
+      }
+    ],
     "exemple": "=NB.SI(A1:A10;\"Oui\")",
-    "description": "Compte les cellules qui répondent à un critère."
+    "exempleMetier": {
+      "contexte": "Compter le nombre de factures dont le statut est « Payé ».",
+      "formule": "=NB.SI(C2:C100;\"Payé\")",
+      "resultat": "Renvoie le nombre de cellules de la colonne C contenant exactement « Payé »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =NB.SI( puis sélectionnez la plage à examiner.",
+      "Ajoutez un point-virgule puis le critère (entre guillemets pour du texte ou un opérateur).",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Rien n'est compté",
+        "solution": "Des espaces invisibles ou une casse différente peuvent gêner. Nettoyez avec SUPPRESPACE au besoin."
+      },
+      {
+        "probleme": "Un opérateur n'est pas pris en compte",
+        "solution": "Mettez tout le critère entre guillemets : \">10\" et non >10."
+      }
+    ],
+    "astuce": "Pour plusieurs conditions à la fois (statut ET période), passez à NB.SI.ENS.",
+    "voirAussi": [
+      "NB.SI.ENS",
+      "SOMME.SI",
+      "NB"
+    ]
   },
   {
     "nom": "MOYENNE.SI",
     "categorie": "Statistiques",
+    "niveau": "Intermédiaire",
+    "description": "Calcule la moyenne des cellules qui répondent à un critère.",
     "syntaxe": "MOYENNE.SI(plage;critère;[plage_moyenne])",
+    "arguments": [
+      {
+        "nom": "plage",
+        "description": "La plage sur laquelle tester le critère."
+      },
+      {
+        "nom": "critère",
+        "description": "La condition à remplir (ex. \"Carburant\", \">100\")."
+      },
+      {
+        "nom": "plage_moyenne",
+        "description": "(Facultatif) La plage dont on fait la moyenne. La plage de critère est utilisée si omise."
+      }
+    ],
     "exemple": "=MOYENNE.SI(A1:A10;\">0\")",
-    "description": "Calcule la moyenne des cellules qui répondent à un critère."
+    "exempleMetier": {
+      "contexte": "Calculer le montant moyen des dépenses de carburant uniquement.",
+      "formule": "=MOYENNE.SI(B2:B100;\"Carburant\";C2:C100)",
+      "resultat": "Fait la moyenne des montants de la colonne C, mais seulement pour les lignes « Carburant »."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MOYENNE.SI( puis sélectionnez la plage du critère.",
+      "Ajoutez le critère, un point-virgule, puis la plage des valeurs à moyenner.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#DIV/0! s'affiche",
+        "solution": "Aucune ligne ne remplit le critère. Vérifiez l'orthographe exacte du critère."
+      },
+      {
+        "probleme": "La moyenne porte sur la mauvaise colonne",
+        "solution": "N'oubliez pas le 3e argument (plage_moyenne) si la colonne testée n'est pas celle à moyenner."
+      }
+    ],
+    "astuce": "Pour plusieurs critères (carburant ET année 2026), utilisez MOYENNE.SI.ENS, qui inverse l'ordre des arguments (plage des valeurs en premier).",
+    "voirAussi": [
+      "MOYENNE",
+      "NB.SI",
+      "SOMME.SI"
+    ]
   },
   {
     "nom": "NB.SI.ENS",
     "categorie": "Statistiques",
+    "niveau": "Avancé",
+    "description": "Compte les cellules répondant à plusieurs critères simultanés.",
     "syntaxe": "NB.SI.ENS(plage_critères1;critère1;...)",
+    "arguments": [
+      {
+        "nom": "plage_critères1",
+        "description": "La première plage à tester."
+      },
+      {
+        "nom": "critère1",
+        "description": "La première condition à remplir."
+      },
+      {
+        "nom": "plage_critères2",
+        "description": "(Facultatif) La deuxième plage à tester."
+      },
+      {
+        "nom": "critère2",
+        "description": "(Facultatif) La deuxième condition. Toutes les conditions doivent être vraies simultanément."
+      }
+    ],
     "exemple": "=NB.SI.ENS(A:A;\"Paris\";B:B;\">100\")",
-    "description": "Compte les cellules répondant à plusieurs critères simultanés."
+    "exempleMetier": {
+      "contexte": "Compter les factures « Payé » ET supérieures à 500 €.",
+      "formule": "=NB.SI.ENS(C2:C100;\"Payé\";D2:D100;\">500\")",
+      "resultat": "Ne compte que les lignes remplissant les deux conditions à la fois."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =NB.SI.ENS( puis sélectionnez la 1re plage et indiquez son critère.",
+      "Ajoutez par paires : plage suivante, point-virgule, critère suivant, autant que nécessaire.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "#VALEUR! s'affiche",
+        "solution": "Toutes les plages doivent avoir la même taille (même nombre de lignes)."
+      },
+      {
+        "probleme": "Le résultat est 0",
+        "solution": "Les conditions sont cumulatives (ET). Vérifiez qu'au moins une ligne satisfait toutes les conditions ensemble."
+      }
+    ],
+    "astuce": "NB.SI.ENS additionne des conditions « ET ». Pour un « OU », additionnez plusieurs NB.SI distincts.",
+    "voirAussi": [
+      "NB.SI",
+      "SOMME.SI.ENS",
+      "MOYENNE.SI"
+    ]
   },
   {
     "nom": "ECARTYPE",
     "categorie": "Statistiques",
+    "niveau": "Avancé",
+    "description": "Évalue l'écart type d'un échantillon (dispersion des valeurs).",
     "syntaxe": "ECARTYPE(nombre1;[nombre2];...)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Le premier nombre ou la première plage de l'échantillon."
+      },
+      {
+        "nom": "nombre2",
+        "description": "(Facultatif) Les nombres ou plages suivants."
+      }
+    ],
     "exemple": "=ECARTYPE(A1:A20)",
-    "description": "Évalue l'écart type d'un échantillon (dispersion des valeurs)."
+    "exempleMetier": {
+      "contexte": "Mesurer la régularité des tonnages collectés d'une tournée à l'autre.",
+      "formule": "=ECARTYPE(B2:B31)",
+      "resultat": "Un écart-type faible indique des tonnages réguliers ; élevé, des résultats très variables."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =ECARTYPE( puis sélectionnez la plage de données.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "On hésite entre les variantes",
+        "solution": "ECARTYPE (ou ECARTYPE.STANDARD) traite un échantillon ; ECARTYPEP traite une population complète. En cas de doute, l'échantillon est le choix habituel."
+      },
+      {
+        "probleme": "Le résultat n'a pas de sens",
+        "solution": "L'écart-type s'interprète au regard de la moyenne. Calculez MOYENNE en parallèle pour le contextualiser."
+      }
+    ],
+    "astuce": "Repère pratique : environ deux tiers des valeurs se situent à moins d'un écart-type de la moyenne.",
+    "voirAussi": [
+      "MOYENNE",
+      "MEDIANE",
+      "MAX"
+    ]
   },
   {
     "nom": "MEDIANE",
     "categorie": "Statistiques",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie la valeur médiane (centrale) d'un ensemble de nombres.",
     "syntaxe": "MEDIANE(nombre1;[nombre2];...)",
+    "arguments": [
+      {
+        "nom": "nombre1",
+        "description": "Le premier nombre ou la première plage."
+      },
+      {
+        "nom": "nombre2",
+        "description": "(Facultatif) Les nombres ou plages suivants."
+      }
+    ],
     "exemple": "=MEDIANE(A1:A20)",
-    "description": "Renvoie la valeur médiane (centrale) d'un ensemble de nombres."
+    "exempleMetier": {
+      "contexte": "Connaître le tarif « typique » d'un forfait de conduite, sans être faussé par quelques prix extrêmes.",
+      "formule": "=MEDIANE(B2:B50)",
+      "resultat": "Renvoie la valeur du milieu : la moitié des tarifs sont en dessous, la moitié au-dessus."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =MEDIANE( puis sélectionnez la plage.",
+      "Fermez la parenthèse et validez."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Médiane très différente de la moyenne",
+        "solution": "C'est un signal : des valeurs extrêmes tirent la moyenne. La médiane est alors plus représentative."
+      },
+      {
+        "probleme": "Le texte est ignoré",
+        "solution": "C'est normal : seules les valeurs numériques sont prises en compte."
+      }
+    ],
+    "astuce": "Sur des données déséquilibrées (salaires, prix), la médiane est souvent plus parlante que la moyenne.",
+    "voirAussi": [
+      "MOYENNE",
+      "ECARTYPE",
+      "MAX"
+    ]
   },
   {
     "nom": "ESTVIDE",
     "categorie": "Information",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie VRAI si la cellule testée est vide.",
     "syntaxe": "ESTVIDE(valeur)",
+    "arguments": [
+      {
+        "nom": "valeur",
+        "description": "La cellule à tester."
+      }
+    ],
     "exemple": "=ESTVIDE(A1)",
-    "description": "Renvoie VRAI si la cellule testée est vide."
+    "exempleMetier": {
+      "contexte": "Signaler les lignes où une information obligatoire n'a pas été saisie.",
+      "formule": "=SI(ESTVIDE(C2);\"À compléter\";\"\")",
+      "resultat": "Affiche « À compléter » si la cellule C2 est vide, rien sinon."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =ESTVIDE( puis cliquez sur la cellule à tester.",
+      "Fermez la parenthèse et validez : le résultat est VRAI ou FAUX.",
+      "Combinez avec SI pour afficher un message lisible."
+    ],
+    "erreurs": [
+      {
+        "probleme": "Une cellule « vide » renvoie FAUX",
+        "solution": "Elle contient peut-être un espace ou une formule renvoyant \"\". Testez plutôt =A2=\"\" dans ces cas-là."
+      },
+      {
+        "probleme": "Confusion avec une cellule à zéro",
+        "solution": "Une cellule contenant 0 n'est PAS vide : ESTVIDE renvoie FAUX."
+      }
+    ],
+    "astuce": "ESTVIDE fait partie de la famille des fonctions « EST » (ESTERREUR, ESTTEXTE, ESTNUM…) qui renvoient toutes VRAI/FAUX.",
+    "voirAussi": [
+      "ESTERREUR",
+      "SI",
+      "NBVAL"
+    ]
   },
   {
     "nom": "ESTERREUR",
     "categorie": "Information",
+    "niveau": "Intermédiaire",
+    "description": "Renvoie VRAI si la valeur testée est une erreur (#DIV/0!, #N/A, etc.).",
     "syntaxe": "ESTERREUR(valeur)",
+    "arguments": [
+      {
+        "nom": "valeur",
+        "description": "La cellule ou la formule à tester."
+      }
+    ],
     "exemple": "=ESTERREUR(A1/B1)",
-    "description": "Renvoie VRAI si la valeur testée est une erreur (#DIV/0!, #N/A, etc.)."
+    "exempleMetier": {
+      "contexte": "Masquer les erreurs #N/A d'une colonne de RECHERCHEV pour un rendu propre.",
+      "formule": "=SI(ESTERREUR(RECHERCHEV(B2;Catalogue!A:D;4;FAUX));\"Non trouvé\";RECHERCHEV(B2;Catalogue!A:D;4;FAUX))",
+      "resultat": "Affiche « Non trouvé » au lieu d'une erreur quand la référence n'existe pas."
+    },
+    "etapes": [
+      "Cliquez sur la cellule de résultat.",
+      "Tapez =ESTERREUR( puis cliquez sur la cellule ou recopiez la formule à surveiller.",
+      "Fermez la parenthèse et validez : le résultat est VRAI ou FAUX.",
+      "Encadrez le tout d'un SI pour décider quoi afficher."
+    ],
+    "erreurs": [
+      {
+        "probleme": "La formule devient très longue",
+        "solution": "SIERREUR fait la même chose plus simplement : =SIERREUR(votre_formule;\"Non trouvé\"). Préférez-la dès que possible."
+      },
+      {
+        "probleme": "On veut traiter seulement #N/A",
+        "solution": "ESTERREUR attrape toutes les erreurs. Pour ne viser que #N/A, utilisez ESTNA."
+      }
+    ],
+    "astuce": "Depuis Excel 2007, SIERREUR remplace avantageusement le couple SI + ESTERREUR dans la majorité des cas.",
+    "voirAussi": [
+      "SIERREUR",
+      "ESTVIDE",
+      "RECHERCHEV"
+    ]
   }
 ]
