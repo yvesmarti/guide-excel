@@ -32,6 +32,16 @@
 
   --sidebar-largeur: 260px;
   --overlay-bg: rgba(16, 24, 40, .45);
+
+  --sidebar-fond: #FFFFFF;
+  --header-fond: rgba(255, 255, 255, .92);
+  --touche-fond: #F1F3F5;
+  --touche-bordure: #DDE1E6;
+  --arg-fond: #F8FAFC;
+  --exemple-bloc-fond: #F8FAFC;
+  --fiche-fermer-fond: #F1F3F5;
+  --fiche-fermer-survol: #E5E7EB;
+  --effacer-survol: #F1F3F5;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,7 +67,7 @@ body {
   position: fixed;
   top: 0; left: 0; bottom: 0;
   width: var(--sidebar-largeur);
-  background: #fff;
+  background: var(--sidebar-fond);
   border-right: 1px solid var(--bordure);
   display: flex;
   flex-direction: column;
@@ -100,7 +110,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, .92);
+  background: var(--header-fond);
   backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid var(--bordure);
   padding: 10px 20px;
@@ -135,7 +145,7 @@ body {
   border: 0; background: transparent; cursor: pointer; padding: 3px; line-height: 0;
   color: var(--texte-doux); border-radius: 50%;
 }
-.recherche-effacer:hover { color: var(--texte); background: #F1F3F5; }
+.recherche-effacer:hover { color: var(--texte); background: var(--effacer-survol); }
 .recherche-effacer svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
 .sidebar-contenu {
@@ -209,7 +219,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, .85);
+  background: var(--header-fond);
   backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid var(--bordure);
   display: none;
@@ -347,7 +357,7 @@ body {
 .touches { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .touche {
   font-family: "JetBrains Mono", monospace; font-size: .82rem; font-weight: 500;
-  background: #F1F3F5; border: 1px solid #DDE1E6;
+  background: var(--touche-fond); border: 1px solid var(--touche-bordure);
   border-bottom-width: 3px;
   border-radius: 7px; padding: 5px 10px; color: var(--texte);
   white-space: nowrap;
@@ -442,11 +452,11 @@ body.sans-defilement { overflow: hidden; }
 .fiche-fermer {
   position: absolute; top: 16px; right: 18px;
   width: 34px; height: 34px; border: 0; border-radius: 9px;
-  background: #F1F3F5; color: var(--texte-doux);
+  background: var(--fiche-fermer-fond); color: var(--texte-doux);
   font-size: 1.4rem; line-height: 1; cursor: pointer;
   transition: background .15s, color .15s;
 }
-.fiche-fermer:hover { background: #E5E7EB; color: var(--texte); }
+.fiche-fermer:hover { background: var(--fiche-fermer-survol); color: var(--texte); }
 
 .fiche-entete { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-right: 40px; }
 .fiche-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -477,7 +487,7 @@ body.sans-defilement { overflow: hidden; }
 .liste-args { display: flex; flex-direction: column; gap: 10px; }
 .arg {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
-  background: #F8FAFC; border: 1px solid var(--bordure);
+  background: var(--arg-fond); border: 1px solid var(--bordure);
   border-radius: 10px; padding: 11px 13px;
 }
 .arg-nom {
@@ -488,7 +498,7 @@ body.sans-defilement { overflow: hidden; }
 .arg-desc { color: var(--texte-doux); font-size: .9rem; flex: 1; min-width: 180px; }
 
 .exemple-bloc {
-  background: #F8FAFC; border: 1px solid var(--bordure);
+  background: var(--exemple-bloc-fond); border: 1px solid var(--bordure);
   border-radius: 12px; padding: 14px; margin-bottom: 12px;
 }
 .exemple-bloc.exemple-metier { background: #fff; border-left: 4px solid var(--vert); }
@@ -602,4 +612,112 @@ body.sans-defilement { overflow: hidden; }
   .fiche { padding: 26px 20px 30px; border-radius: 14px; }
   .fiche-overlay { padding: 16px 10px; }
   .fiche-nom { font-size: 1.6rem; }
+}
+
+/* =========================================================
+   Bouton thème clair / sombre
+   ========================================================= */
+.sidebar-entete-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.theme-toggle {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 0;
+  color: var(--texte-doux);
+  border-radius: 8px;
+  transition: background .15s, color .15s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: var(--vert-clair);
+  color: var(--vert);
+}
+.theme-toggle svg { width: 18px; height: 18px; }
+
+/* Mode clair : lune visible, soleil masqué */
+.ico-soleil { display: none; }
+.ico-lune   { display: block; }
+
+/* Mode sombre : soleil visible, lune masquée */
+[data-theme="sombre"] .ico-soleil { display: block; }
+[data-theme="sombre"] .ico-lune   { display: none; }
+
+/* Bouton toggle dans le header mobile */
+.theme-toggle-entete { margin-left: auto; }
+
+/* =========================================================
+   Thème sombre
+   ========================================================= */
+[data-theme="sombre"] {
+  --fond: #0D1117;
+  --carte: #161B22;
+  --texte: #E6EDF3;
+  --texte-doux: #7D8590;
+  --bordure: #30363D;
+  --vert-clair: #112218;
+  --ombre: 0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.4);
+  --ombre-survol: 0 6px 20px rgba(0,0,0,.6);
+  --overlay-bg: rgba(0,0,0,.75);
+
+  --sidebar-fond: #010409;
+  --header-fond: rgba(1, 4, 9, .92);
+  --touche-fond: #21262D;
+  --touche-bordure: #3A3F47;
+  --arg-fond: #0D1117;
+  --exemple-bloc-fond: #0D1117;
+  --fiche-fermer-fond: #21262D;
+  --fiche-fermer-survol: #30363D;
+  --effacer-survol: #21262D;
+}
+
+[data-theme="sombre"] body {
+  background-image: radial-gradient(rgba(16, 124, 65, .07) 1px, transparent 1px);
+}
+
+[data-theme="sombre"] .exemple-bloc.exemple-metier {
+  background: #161B22;
+}
+
+[data-theme="sombre"] .erreur {
+  background: #1F0D10;
+  border-color: #4A1520;
+}
+
+[data-theme="sombre"] .astuce {
+  background: #1A1200;
+  border-color: #3D2E00;
+}
+[data-theme="sombre"] .astuce p { color: #D4A017; }
+
+[data-theme="sombre"] .puce-inerte {
+  background: #21262D;
+  color: var(--texte-doux);
+}
+
+[data-theme="sombre"] .niveau-debutant {
+  background: #112218;
+  color: #6EE7B7;
+}
+[data-theme="sombre"] .niveau-intermediaire {
+  background: #2A1A00;
+  color: #FCD34D;
+}
+[data-theme="sombre"] .niveau-avance {
+  background: #2D0A10;
+  color: #FCA5A5;
+}
+
+[data-theme="sombre"] .hamburger span { background: var(--texte); }
+
+[data-theme="sombre"] #champ-recherche { color: var(--texte); }
+
+[data-theme="sombre"] .sidebar-lien.actif .compteur-favoris {
+  background: rgba(255,255,255,.15);
+  color: #fff;
 }

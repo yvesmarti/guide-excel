@@ -1,3 +1,31 @@
+/* =========================================================
+   Thème clair / sombre
+   ========================================================= */
+function chargerTheme() {
+  try {
+    const sauvegarde = localStorage.getItem("ecfr_theme");
+    if (sauvegarde === "sombre" || sauvegarde === "clair") return sauvegarde;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "sombre" : "clair";
+  } catch {
+    return "clair";
+  }
+}
+
+function appliquerTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme === "sombre" ? "sombre" : "");
+  try { localStorage.setItem("ecfr_theme", theme); } catch { /* ignore */ }
+}
+
+function basculerTheme() {
+  const actuel = document.documentElement.getAttribute("data-theme");
+  appliquerTheme(actuel === "sombre" ? "clair" : "sombre");
+}
+
+appliquerTheme(chargerTheme());
+
+/* =========================================================
+   État global
+   ========================================================= */
 const etat = {
   formules: [],
   raccourcis: [],
@@ -119,6 +147,10 @@ function brancherEvenements() {
 
   elFermer.addEventListener("click", fermerSidebarMobile);
   elOverlay.addEventListener("click", fermerSidebarMobile);
+
+  document.querySelectorAll(".theme-toggle").forEach((btn) => {
+    btn.addEventListener("click", basculerTheme);
+  });
 }
 
 function fermerSidebarMobile() {
