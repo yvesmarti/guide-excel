@@ -31,6 +31,7 @@
   --cat-feuillesclasseur: #64748B;
 
   --sidebar-largeur: 260px;
+  --overlay-bg: rgba(16, 24, 40, .45);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -283,7 +284,9 @@ body {
   position: relative;
   animation: apparition .35s ease both;
 }
-.carte:hover { transform: translateY(-3px); box-shadow: var(--ombre-survol); border-color: #d7dbe0; }
+@media (hover: hover) {
+  .carte:hover { transform: translateY(-3px); box-shadow: var(--ombre-survol); border-color: #d7dbe0; }
+}
 
 @keyframes apparition { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -384,7 +387,7 @@ body {
 
 /* ---------- Toast ---------- */
 .toast {
-  position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(20px);
+  position: fixed; bottom: max(22px, env(safe-area-inset-bottom, 22px)); left: 50%; transform: translateX(-50%) translateY(20px);
   background: var(--texte); color: #fff;
   padding: 11px 20px; border-radius: 999px; font-size: .9rem; font-weight: 500;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
@@ -416,7 +419,7 @@ body.sans-defilement { overflow: hidden; }
 
 .fiche-overlay {
   position: fixed; inset: 0; z-index: 300;
-  background: rgba(16, 24, 40, .45);
+  background: var(--overlay-bg);
   backdrop-filter: blur(3px);
   display: flex; align-items: flex-start; justify-content: center;
   padding: 40px 16px;
@@ -556,13 +559,14 @@ body.sans-defilement { overflow: hidden; }
    Mobile : < 768px
    ========================================================= */
 @media (max-width: 768px) {
+  :root { --sidebar-largeur: 280px; }
+
   body { display: block; }
 
   .sidebar {
     position: fixed;
     left: -100%;
     top: 0; bottom: 0;
-    width: 280px;
     transition: left .28s cubic-bezier(.4, 0, .2, 1);
     box-shadow: 4px 0 20px rgba(0, 0, 0, .15);
   }
@@ -575,7 +579,7 @@ body.sans-defilement { overflow: hidden; }
 
   .sidebar-overlay {
     position: fixed; inset: 0;
-    background: rgba(16, 24, 40, .4);
+    background: var(--overlay-bg);
     z-index: 99;
     animation: fondu .2s ease;
   }

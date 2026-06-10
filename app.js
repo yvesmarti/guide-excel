@@ -47,13 +47,20 @@ function initialiser() {
   majCompteurFavoris();
   brancherEvenements();
   afficher();
+  lireUrlDeepLink();
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
 }
 
 function brancherEvenements() {
+  const afficherDebounce = debounce(() => afficher(), 150);
   elRecherche.addEventListener("input", (e) => {
     etat.recherche = e.target.value.trim().toLowerCase();
     elEffacer.hidden = !e.target.value;
-    afficher();
+    afficherDebounce();
   });
 
   elEffacer.addEventListener("click", () => {
@@ -135,10 +142,15 @@ function afficher() {
   elVide.hidden = true;
 
   const stats = compterTypes(elements);
-  const parties = [];
-  if (stats.formules > 0) parties.push(stats.formules + " " + (stats.formules > 1 ? "formules" : "formule"));
-  if (stats.raccourcis > 0) parties.push(stats.raccourcis + " " + (stats.raccourcis > 1 ? "raccourcis" : "raccourci"));
-  elInfo.textContent = parties.join(" et ") + " affiché" + (elements.length > 1 ? "s" : "");
+  if (etat.recherche) {
+    const n = elements.length;
+    elInfo.textContent = n + " résultat" + (n > 1 ? "s" : "") + " pour « " + etat.recherche + " »";
+  } else {
+    const parties = [];
+    if (stats.formules > 0) parties.push(stats.formules + " " + (stats.formules > 1 ? "formules" : "formule"));
+    if (stats.raccourcis > 0) parties.push(stats.raccourcis + " " + (stats.raccourcis > 1 ? "raccourcis" : "raccourci"));
+    elInfo.textContent = parties.join(" et ") + " affiché" + (elements.length > 1 ? "s" : "");
+  }
 
   const formules = elements.filter((e) => typeElement(e) !== "raccourci");
   const raccourcis = elements.filter((e) => typeElement(e) === "raccourci");
@@ -350,8 +362,10 @@ function boutonFavori(actif) {
    Fiche détaillée (modale)
    ========================================================= */
 const elFiche   = document.getElementById("fiche-contenu");
+let dernierFocusAvantModale = null;
 
 function ouvrirFiche(f) {
+  dernierFocusAvantModale = document.activeElement;
   elFiche.innerHTML = contenuFiche(f);
   const overlay = document.getElementById("fiche-overlay");
   overlay.hidden = false;
@@ -360,11 +374,19 @@ function ouvrirFiche(f) {
   overlay.querySelector(".fiche").scrollTop = 0;
   document.getElementById("fiche-fermer").focus();
   ajouterRecent(f);
+  if (f._type !== "raccourci") {
+    history.pushState(null, "", "?f=" + encodeURIComponent(f.nom));
+  }
 }
 
 function fermerFiche() {
   document.getElementById("fiche-overlay").hidden = true;
   document.body.classList.remove("sans-defilement");
+  history.pushState(null, "", location.pathname);
+  if (dernierFocusAvantModale) {
+    dernierFocusAvantModale.focus();
+    dernierFocusAvantModale = null;
+  }
 }
 
 function contenuFiche(f) {
@@ -631,6 +653,17 @@ function couleurCategorie(cat) {
     .replace(/[^a-z]/g, "");
   const valeur = getComputedStyle(document.documentElement).getPropertyValue(cle);
   return valeur.trim() || "#64748B";
+}
+
+/* =========================================================
+   Deep linking  (?f=SOMME)
+   ========================================================= */
+function lireUrlDeepLink() {
+  const params = new URLSearchParams(location.search);
+  const nomFormule = params.get("f");
+  if (!nomFormule) return;
+  const formule = etat.formules.find((f) => f.nom === nomFormule);
+  if (formule) ouvrirFiche({ ...formule, _type: "formule" });
 }
 
 demarrer();
