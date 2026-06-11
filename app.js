@@ -29,6 +29,8 @@ appliquerTheme(chargerTheme());
 const etat = {
   formules: [],
   raccourcis: [],
+  astuces: [],
+  section: null,
   mode: "tous",
   type: null,
   categorie: null,
@@ -36,6 +38,7 @@ const etat = {
   favoris: chargerFavoris(),
   recents: chargerRecents(),
   formulesParNom: {},
+  astucesParId: {},
 };
 
 const elGrille    = document.getElementById("grille");
@@ -50,15 +53,19 @@ const elOverlay   = document.getElementById("sidebar-overlay");
 const elHamburger = document.getElementById("hamburger");
 const elFermer    = document.getElementById("sidebar-fermer");
 const elTitre     = document.getElementById("titre-section");
+const elIntro     = document.getElementById("section-intro");
 
 async function demarrer() {
   try {
-    const [formules, raccourcis] = await Promise.all([
+    const [formules, raccourcis, astucesData] = await Promise.all([
       fetch("formulas.json").then((r) => r.json()),
       fetch("shortcuts.json").then((r) => r.json()),
+      fetch("astuces-donnees.json").then((r) => r.json()),
     ]);
     etat.formules = formules;
     etat.raccourcis = raccourcis;
+    etat.astuces = (astucesData && astucesData.astuces) || [];
+    etat.section = (astucesData && astucesData.section) || null;
     initialiser();
   } catch (err) {
     elGrille.innerHTML =
@@ -72,6 +79,8 @@ async function demarrer() {
 function initialiser() {
   etat.formulesParNom = {};
   etat.formules.forEach((f) => { etat.formulesParNom[f.nom] = f; });
+  etat.astucesParId = {};
+  etat.astuces.forEach((a) => { etat.astucesParId[a.id] = { ...a, _type: "astuce" }; });
   majCompteurFavoris();
   brancherEvenements();
   afficher();
@@ -164,6 +173,7 @@ function afficher() {
   elements = filtrerParRecherche(elements);
 
   majTitre();
+  majIntro();
   elGrille.innerHTML = "";
 
   if (elements.length === 0) {
@@ -181,19 +191,25 @@ function afficher() {
     const parties = [];
     if (stats.formules > 0) parties.push(stats.formules + " " + (stats.formules > 1 ? "formules" : "formule"));
     if (stats.raccourcis > 0) parties.push(stats.raccourcis + " " + (stats.raccourcis > 1 ? "raccourcis" : "raccourci"));
-    elInfo.textContent = parties.join(" et ") + " affiché" + (elements.length > 1 ? "s" : "");
+    if (stats.astuces > 0) parties.push(stats.astuces + " " + (stats.astuces > 1 ? "astuces" : "astuce"));
+    elInfo.textContent = joindreEt(parties) + " affiché" + (elements.length > 1 ? "s" : "");
   }
 
-  const formules = elements.filter((e) => typeElement(e) !== "raccourci");
-  const raccourcis = elements.filter((e) => typeElement(e) === "raccourci");
-  const avecSeparateurs = stats.formules > 0 && stats.raccourcis > 0;
+  const groupes = [
+    { label: "Formules & fonctions",       items: elements.filter((e) => typeElement(e) === "formule") },
+    { label: "Raccourcis clavier",         items: elements.filter((e) => typeElement(e) === "raccourci") },
+    { label: "Trucs & astuces données",    items: elements.filter((e) => typeElement(e) === "astuce") },
+  ].filter((g) => g.items.length);
+
+  const avecSeparateurs = groupes.length > 1;
 
   let delai = 0;
   function rendreGroupe(groupe) {
     groupe.forEach((item) => {
-      const carte = typeElement(item) === "raccourci"
-        ? carteRaccourci(item)
-        : carteFormule(item);
+      const t = typeElement(item);
+      const carte = t === "raccourci" ? carteRaccourci(item)
+                  : t === "astuce"    ? carteAstuce(item)
+                  : carteFormule(item);
       carte.style.animationDelay = Math.min(delai * 18, 300) + "ms";
       delai++;
       elGrille.appendChild(carte);
@@ -201,12 +217,28 @@ function afficher() {
   }
 
   if (avecSeparateurs) {
-    elGrille.appendChild(creerSeparateur("Formules & fonctions", stats.formules));
-    rendreGroupe(formules);
-    elGrille.appendChild(creerSeparateur("Raccourcis clavier", stats.raccourcis));
-    rendreGroupe(raccourcis);
+    groupes.forEach((g) => {
+      elGrille.appendChild(creerSeparateur(g.label, g.items.length));
+      rendreGroupe(g.items);
+    });
   } else {
     rendreGroupe(elements);
+  }
+}
+
+function joindreEt(parties) {
+  if (parties.length <= 1) return parties.join("");
+  return parties.slice(0, -1).join(", ") + " et " + parties[parties.length - 1];
+}
+
+function majIntro() {
+  const montrer = etat.mode === "categorie" && etat.type === "astuces" && etat.section;
+  if (montrer) {
+    document.getElementById("section-intro-titre").textContent = etat.section.titre;
+    document.getElementById("section-intro-texte").textContent = etat.section.intro;
+    elIntro.hidden = false;
+  } else {
+    elIntro.hidden = true;
   }
 }
 
@@ -222,9 +254,14 @@ function typeElement(item) {
 }
 
 function compterTypes(elements) {
-  let formules = 0, raccourcis = 0;
-  elements.forEach((e) => { if (typeElement(e) === "raccourci") raccourcis++; else formules++; });
-  return { formules, raccourcis };
+  let formules = 0, raccourcis = 0, astuces = 0;
+  elements.forEach((e) => {
+    const t = typeElement(e);
+    if (t === "raccourci") raccourcis++;
+    else if (t === "astuce") astuces++;
+    else formules++;
+  });
+  return { formules, raccourcis, astuces };
 }
 
 function majTitre() {
@@ -234,8 +271,12 @@ function majTitre() {
     recents: "Historique récent",
   };
   if (etat.mode === "categorie") {
-    const prefixe = etat.type === "formules" ? "Formules" : "Raccourcis";
-    elTitre.textContent = prefixe + " — " + etat.categorie;
+    if (etat.type === "astuces") {
+      elTitre.textContent = etat.categorie || "Trucs & astuces données";
+    } else {
+      const prefixe = etat.type === "formules" ? "Formules" : "Raccourcis";
+      elTitre.textContent = prefixe + " — " + etat.categorie;
+    }
   } else {
     elTitre.textContent = noms[etat.mode] || "Toutes les fiches";
   }
@@ -244,15 +285,23 @@ function majTitre() {
 function elementsCourants() {
   const formulesT  = etat.formules.map((f) => ({ ...f, _type: "formule" }));
   const raccourcisT = etat.raccourcis.map((r) => ({ ...r, _type: "raccourci" }));
+  const astucesT = etat.astuces.map((a) => ({ ...a, _type: "astuce" }));
 
-  if (etat.mode === "tous") return [...formulesT, ...raccourcisT];
-  if (etat.mode === "favoris") return [...formulesT, ...raccourcisT].filter((it) => etat.favoris.has(idDe(it)));
+  if (etat.mode === "tous") return [...formulesT, ...raccourcisT, ...astucesT];
+  if (etat.mode === "favoris") {
+    return [...formulesT, ...raccourcisT, ...astucesT].filter((it) => etat.favoris.has(idDe(it)));
+  }
 
   if (etat.mode === "recents") {
     const map = {};
     formulesT.forEach((f) => { map[idDe(f)] = f; });
     raccourcisT.forEach((r) => { map[idDe(r)] = r; });
+    astucesT.forEach((a) => { map[idDe(a)] = a; });
     return etat.recents.map((id) => map[id]).filter(Boolean);
+  }
+
+  if (etat.type === "astuces") {
+    return etat.categorie ? astucesT.filter((e) => e.categorie === etat.categorie) : astucesT;
   }
 
   const source = etat.type === "raccourcis" ? raccourcisT : formulesT;
@@ -269,6 +318,16 @@ function filtrerParRecherche(elements) {
         correspond(q, e.description) ||
         correspond(q, e.touches.join(" ")) ||
         correspond(q, e.categorie)
+      );
+    }
+    if (typeElement(e) === "astuce") {
+      return (
+        correspond(q, e.titre) ||
+        correspond(q, e.accroche) ||
+        correspond(q, e.probleme) ||
+        correspond(q, e.categorie) ||
+        correspond(q, e.astuce) ||
+        correspond(q, (e.etapes || []).join(" "))
       );
     }
     return (
@@ -382,6 +441,44 @@ function carteRaccourci(r) {
   return carte;
 }
 
+function carteAstuce(a) {
+  const carte = document.createElement("article");
+  carte.className = "carte carte-cliquable carte-astuce";
+  carte.setAttribute("role", "button");
+  carte.setAttribute("tabindex", "0");
+  carte.setAttribute("aria-label", "Ouvrir l'astuce : " + a.titre);
+
+  const id = idDe(a);
+  const estFavori = etat.favoris.has(id);
+  const niveau = a.niveau
+    ? `<span class="badge-niveau niveau-${accentLess(a.niveau)}">${echapper(a.niveau)}</span>`
+    : "";
+
+  carte.innerHTML = `
+    <div class="carte-haut">
+      <span class="badge" style="background:${couleurCategorie(a.categorie)}">${echapper(a.categorie)}</span>
+      ${boutonFavori(estFavori)}
+    </div>
+    <h2 class="titre-astuce">${echapper(a.titre)}</h2>
+    <p class="accroche">${echapper(a.accroche)}</p>
+    <div class="carte-pied">
+      ${niveau}
+      <span class="voir-fiche">Voir la fiche détaillée →</span>
+    </div>`;
+
+  carte.querySelector(".favori").addEventListener("click", (e) => {
+    e.stopPropagation();
+    basculerFavori(id, e.currentTarget);
+  });
+
+  carte.addEventListener("click", () => ouvrirFiche(a));
+  carte.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ouvrirFiche(a); }
+  });
+
+  return carte;
+}
+
 function boutonFavori(actif) {
   return `
     <button class="favori ${actif ? "actif" : ""}" aria-label="Ajouter aux favoris" title="Favori">
@@ -399,15 +496,19 @@ let dernierFocusAvantModale = null;
 
 function ouvrirFiche(f) {
   dernierFocusAvantModale = document.activeElement;
-  elFiche.innerHTML = contenuFiche(f);
+  const estAstuce = f._type === "astuce";
+  elFiche.innerHTML = estAstuce ? contenuAstuce(f) : contenuFiche(f);
   const overlay = document.getElementById("fiche-overlay");
   overlay.hidden = false;
   document.body.classList.add("sans-defilement");
-  brancherActionsFiche(f);
+  if (estAstuce) brancherActionsAstuce(f);
+  else brancherActionsFiche(f);
   overlay.querySelector(".fiche").scrollTop = 0;
   document.getElementById("fiche-fermer").focus();
   ajouterRecent(f);
-  if (f._type !== "raccourci") {
+  if (estAstuce) {
+    history.pushState(null, "", "?a=" + encodeURIComponent(f.id));
+  } else if (f._type !== "raccourci") {
     history.pushState(null, "", "?f=" + encodeURIComponent(f.nom));
   }
 }
@@ -540,6 +641,97 @@ function brancherActionsFiche(f) {
   });
 }
 
+function contenuAstuce(a) {
+  const id = idDe(a);
+  const estFavori = etat.favoris.has(id);
+
+  const niveau = a.niveau
+    ? `<span class="badge-niveau niveau-${accentLess(a.niveau)}">${echapper(a.niveau)}</span>`
+    : "";
+
+  const problemeHTML = a.probleme
+    ? section("Le problème", `<div class="probleme-bloc">${echapper(a.probleme)}</div>`)
+    : "";
+
+  let etapesHTML = "";
+  if (Array.isArray(a.etapes) && a.etapes.length) {
+    etapesHTML = section("Comment faire, pas à pas",
+      `<ol class="etapes">` + a.etapes.map((e) => `<li>${echapper(e)}</li>`).join("") + `</ol>`);
+  }
+
+  let erreursHTML = "";
+  if (Array.isArray(a.erreurs) && a.erreurs.length) {
+    erreursHTML = section("Pièges fréquents",
+      `<div class="liste-erreurs">` + a.erreurs.map((er) => `
+        <div class="erreur">
+          <p class="erreur-pb">${iconeAlerte()} ${echapper(er)}</p>
+        </div>`).join("") + `</div>`);
+  }
+
+  const astuceHTML = a.astuce
+    ? `<div class="astuce">${iconeAmpoule()}<p>${echapper(a.astuce)}</p></div>`
+    : "";
+
+  let voirHTML = "";
+  if (Array.isArray(a.voirAussi) && a.voirAussi.length) {
+    voirHTML = section("Voir aussi",
+      `<div class="voir-aussi">` + a.voirAussi.map((ref) => {
+        const astuceCible = etat.astucesParId[ref];
+        if (astuceCible) {
+          return `<button class="puce-lien" data-astuce="${echapper(ref)}">${echapper(astuceCible.titre)}</button>`;
+        }
+        if (etat.formulesParNom[ref]) {
+          return `<button class="puce-lien" data-aller="${echapper(ref)}">${echapper(ref)}</button>`;
+        }
+        return `<span class="puce-inerte">${echapper(ref)}</span>`;
+      }).join("") + `</div>`);
+  }
+
+  return `
+    <div class="fiche-entete">
+      <div class="fiche-badges">
+        <span class="badge" style="background:${couleurCategorie(a.categorie)}">${echapper(a.categorie)}</span>
+        ${niveau}
+      </div>
+      <button class="favori fiche-favori ${estFavori ? "actif" : ""}" aria-label="Favori" title="Favori">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+          <path d="M12 2l2.9 6.3 6.9.8-5.1 4.6 1.4 6.8L12 17.8 5.9 21.3l1.4-6.8L2.2 9.9l6.9-.8L12 2z"/>
+        </svg>
+      </button>
+    </div>
+
+    <h2 class="fiche-nom fiche-nom-astuce" id="fiche-titre">${echapper(a.titre)}</h2>
+    <p class="fiche-accroche">${echapper(a.accroche)}</p>
+
+    ${problemeHTML}
+    ${etapesHTML}
+    ${erreursHTML}
+    ${astuceHTML}
+    ${voirHTML}`;
+}
+
+function brancherActionsAstuce(a) {
+  const favBtn = elFiche.querySelector(".fiche-favori");
+  if (favBtn) {
+    favBtn.addEventListener("click", () => {
+      basculerFavori(idDe(a), favBtn);
+      afficher();
+    });
+  }
+  elFiche.querySelectorAll(".puce-lien[data-astuce]").forEach((b) => {
+    b.addEventListener("click", () => {
+      const cible = etat.astucesParId[b.dataset.astuce];
+      if (cible) ouvrirFiche(cible);
+    });
+  });
+  elFiche.querySelectorAll(".puce-lien[data-aller]").forEach((b) => {
+    b.addEventListener("click", () => {
+      const cible = etat.formulesParNom[b.dataset.aller];
+      if (cible) ouvrirFiche({ ...cible, _type: "formule" });
+    });
+  });
+}
+
 /* Petites icônes SVG */
 function iconeCopier() {
   return `<button class="bouton-copier" aria-label="Copier"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button>`;
@@ -562,7 +754,9 @@ function accentLess(s) {
    Favoris (localStorage)
    ========================================================= */
 function idDe(item) {
-  return item._type === "raccourci" ? "r:" + item.action : "f:" + item.nom;
+  if (item._type === "raccourci") return "r:" + item.action;
+  if (item._type === "astuce") return "a:" + item.id;
+  return "f:" + item.nom;
 }
 
 function chargerFavoris() {
@@ -694,9 +888,15 @@ function couleurCategorie(cat) {
 function lireUrlDeepLink() {
   const params = new URLSearchParams(location.search);
   const nomFormule = params.get("f");
-  if (!nomFormule) return;
-  const formule = etat.formules.find((f) => f.nom === nomFormule);
-  if (formule) ouvrirFiche({ ...formule, _type: "formule" });
+  if (nomFormule) {
+    const formule = etat.formules.find((f) => f.nom === nomFormule);
+    if (formule) { ouvrirFiche({ ...formule, _type: "formule" }); return; }
+  }
+  const idAstuce = params.get("a");
+  if (idAstuce) {
+    const astuce = etat.astucesParId[idAstuce];
+    if (astuce) ouvrirFiche(astuce);
+  }
 }
 
 demarrer();
