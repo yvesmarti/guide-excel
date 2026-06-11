@@ -38,6 +38,17 @@
       }
     ],
     "astuce": "Pour additionner rapidement une colonne ou une ligne, utilisez le raccourci Alt + = (Somme automatique).",
+    "mots_cles": [
+      "additionner",
+      "addition",
+      "total",
+      "sommer",
+      "cumul",
+      "totaliser",
+      "calculer total",
+      "additionner des cellules",
+      "somme des valeurs"
+    ],
     "voirAussi": [
       "SOMME.SI",
       "SOMME.SI.ENS",
@@ -84,6 +95,13 @@
       }
     ],
     "astuce": "Utilisez ARRONDI.SUP ou ARRONDI.INF pour toujours arrondir dans une direction donnée.",
+    "mots_cles": [
+      "arrondir",
+      "décimales",
+      "précision",
+      "approximer",
+      "arrondir à la décimale"
+    ],
     "voirAussi": [
       "ARRONDI.SUP",
       "ARRONDI.INF",
@@ -130,6 +148,13 @@
       }
     ],
     "astuce": "Pour arrondir au multiple supérieur le plus proche (par ex. un multiple de 5), utilisez la fonction PLAFOND.",
+    "mots_cles": [
+      "arrondir vers le haut",
+      "plafond",
+      "supérieur",
+      "ceil",
+      "toujours arrondir au-dessus"
+    ],
     "voirAussi": [
       "ARRONDI",
       "ARRONDI.INF",
@@ -176,6 +201,14 @@
       }
     ],
     "astuce": "Pour simplement tronquer un nombre, la fonction TRONQUE est souvent plus explicite.",
+    "mots_cles": [
+      "arrondir vers le bas",
+      "plancher",
+      "inférieur",
+      "floor",
+      "tronquer",
+      "toujours arrondir en dessous"
+    ],
     "voirAussi": [
       "ARRONDI",
       "ARRONDI.SUP",
@@ -222,6 +255,14 @@
       }
     ],
     "astuce": "Vous pouvez obtenir le même résultat avec l'opérateur ^, par exemple =5^2.",
+    "mots_cles": [
+      "exposant",
+      "élever à la puissance",
+      "carré",
+      "cube",
+      "au carré",
+      "à la puissance"
+    ],
     "voirAussi": [
       "RACINE",
       "EXP"
@@ -262,6 +303,12 @@
       }
     ],
     "astuce": "Pour une racine cubique ou nième, utilisez l'opérateur ^ avec une fraction, par exemple =A1^(1/3).",
+    "mots_cles": [
+      "racine carrée",
+      "sqrt",
+      "radical",
+      "racine"
+    ],
     "voirAussi": [
       "PUISSANCE",
       "ABS"
@@ -307,6 +354,15 @@
       }
     ],
     "astuce": "MOD est très utile combiné à SI pour exécuter une action seulement toutes les N lignes.",
+    "mots_cles": [
+      "reste",
+      "modulo",
+      "reste de division",
+      "division euclidienne",
+      "pair",
+      "impair",
+      "tester parité"
+    ],
     "voirAussi": [
       "QUOTIENT",
       "LIGNE",
@@ -348,6 +404,12 @@
       }
     ],
     "astuce": "EXP est l'inverse de LN (le logarithme népérien).",
+    "mots_cles": [
+      "exponentielle",
+      "e exposant",
+      "croissance exponentielle",
+      "nombre d'Euler"
+    ],
     "voirAussi": [
       "LN",
       "PUISSANCE"
@@ -388,6 +450,12 @@
       }
     ],
     "astuce": "Pour un logarithme dans une autre base, utilisez LOG, ou la formule LN(nombre)/LN(base).",
+    "mots_cles": [
+      "logarithme naturel",
+      "log naturel",
+      "logarithme néperien",
+      "log base e"
+    ],
     "voirAussi": [
       "EXP",
       "LOG",
@@ -419,6 +487,14 @@
       }
     ],
     "astuce": "Aucun argument n'est requis, mais les parenthèses () restent obligatoires.",
+    "mots_cles": [
+      "pi",
+      "3.14",
+      "cercle",
+      "périmètre",
+      "aire cercle",
+      "constante pi"
+    ],
     "voirAussi": [
       "PUISSANCE",
       "RACINE"
@@ -469,6 +545,14 @@
       }
     ],
     "astuce": "Pour appliquer plusieurs critères simultanés, utilisez SOMME.SI.ENS.",
+    "mots_cles": [
+      "somme conditionnelle",
+      "additionner si",
+      "total si condition",
+      "somme avec critère",
+      "filtrer et sommer",
+      "sommer selon condition"
+    ],
     "voirAussi": [
       "SOMME.SI.ENS",
       "SOMME",
@@ -528,6 +612,12 @@
       }
     ],
     "astuce": "Attention à l'ordre : dans SOMME.SI.ENS la plage à additionner vient en premier (l'inverse de SOMME.SI).",
+    "mots_cles": [
+      "somme multicritères",
+      "total plusieurs conditions",
+      "somme si plusieurs critères",
+      "additionner avec plusieurs filtres"
+    ],
     "voirAussi": [
       "SOMME.SI",
       "NB.SI.ENS",
@@ -578,6 +668,13 @@
       }
     ],
     "astuce": "SOUS.TOTAL ignore les autres SOUS.TOTAL présents dans la plage, ce qui évite les doubles comptages.",
+    "mots_cles": [
+      "total filtré",
+      "ignorer lignes masquées",
+      "total visible seulement",
+      "somme tableau filtré",
+      "exclure lignes cachées"
+    ],
     "voirAussi": [
       "SOMME",
       "AGREGAT"
@@ -608,6 +705,13 @@
       }
     ],
     "astuce": "Pour un nombre aléatoire entre deux bornes, utilisez plutôt ALEA.ENTRE.BORNES.",
+    "mots_cles": [
+      "nombre aléatoire",
+      "random",
+      "hasard",
+      "générer nombre aléatoire",
+      "tirage au sort"
+    ],
     "voirAussi": [
       "ALEA.ENTRE.BORNES"
     ]
@@ -652,6 +756,12 @@
       }
     ],
     "astuce": "Comme ALEA, cette fonction est volatile : elle se recalcule à chaque modification de la feuille.",
+    "mots_cles": [
+      "nombre aléatoire entre deux valeurs",
+      "random entre bornes",
+      "hasard entre deux nombres",
+      "tirage aléatoire borné"
+    ],
     "voirAussi": [
       "ALEA",
       "ENT"
@@ -697,6 +807,12 @@
       }
     ],
     "astuce": "Utile pour manipuler des masques binaires (permissions, indicateurs d'état).",
+    "mots_cles": [
+      "et binaire",
+      "AND binaire",
+      "opération bit à bit",
+      "bitwise AND"
+    ],
     "voirAussi": [
       "BITOU",
       "BITDECALG",
@@ -743,6 +859,12 @@
       }
     ],
     "astuce": "Le résultat correspond à la somme des bits à 1 dans l'un ou l'autre des deux nombres.",
+    "mots_cles": [
+      "ou binaire",
+      "OR binaire",
+      "opération bit à bit",
+      "bitwise OR"
+    ],
     "voirAussi": [
       "BITET",
       "BITDECALG",
@@ -789,6 +911,11 @@
       }
     ],
     "astuce": "Un décalage d'un bit vers la gauche équivaut à multiplier le nombre par 2.",
+    "mots_cles": [
+      "décalage bit gauche",
+      "shift left",
+      "bitwise shift"
+    ],
     "voirAussi": [
       "BITDECALD",
       "BITET",
@@ -835,6 +962,11 @@
       }
     ],
     "astuce": "Un décalage d'un bit vers la droite équivaut à une division entière par 2.",
+    "mots_cles": [
+      "décalage bit droite",
+      "shift right",
+      "bitwise shift"
+    ],
     "voirAussi": [
       "BITDECALG",
       "BITET",
@@ -885,6 +1017,16 @@
       }
     ],
     "astuce": "Combinez SI avec ET ou OU pour tester plusieurs conditions à la fois : =SI(ET(...);...;...).",
+    "mots_cles": [
+      "condition",
+      "si alors sinon",
+      "test",
+      "if",
+      "conditionnel",
+      "si vrai sinon",
+      "tester une valeur",
+      "afficher selon condition"
+    ],
     "voirAussi": [
       "ET",
       "OU",
@@ -926,6 +1068,13 @@
       }
     ],
     "astuce": "ET exige que TOUTES les conditions soient vraies. Si une seule suffit, utilisez OU.",
+    "mots_cles": [
+      "et logique",
+      "AND",
+      "toutes les conditions vraies",
+      "les deux conditions",
+      "vérifier plusieurs conditions"
+    ],
     "voirAussi": [
       "OU",
       "NON",
@@ -967,6 +1116,12 @@
       }
     ],
     "astuce": "OU est vraie dès qu'UNE condition est remplie. Pour exiger toutes les conditions, utilisez ET.",
+    "mots_cles": [
+      "ou logique",
+      "OR",
+      "au moins une condition vraie",
+      "l'une ou l'autre condition"
+    ],
     "voirAussi": [
       "ET",
       "NON",
@@ -1003,6 +1158,14 @@
       }
     ],
     "astuce": "NON est souvent évitable : =NON(A1=0) revient à écrire plus simplement =A1<>0.",
+    "mots_cles": [
+      "négation",
+      "NOT",
+      "inverser",
+      "contraire",
+      "inverser vrai faux",
+      "opposé logique"
+    ],
     "voirAussi": [
       "ET",
       "OU",
@@ -1044,6 +1207,16 @@
       }
     ],
     "astuce": "Pour n'intercepter que les valeurs introuvables (et pas les autres erreurs), Excel 365 propose SI.NON.DISP.",
+    "mots_cles": [
+      "gérer erreur",
+      "masquer erreur",
+      "si erreur afficher",
+      "N/A",
+      "VALEUR",
+      "piéger erreur",
+      "éviter affichage erreur",
+      "remplacer erreur"
+    ],
     "voirAussi": [
       "SI",
       "ESTERREUR",
@@ -1102,6 +1275,17 @@
       }
     ],
     "astuce": "Depuis Excel 2021 et Microsoft 365, la fonction RECHERCHEX, plus souple, remplace avantageusement RECHERCHEV.",
+    "mots_cles": [
+      "chercher valeur",
+      "vlookup",
+      "recherche verticale",
+      "trouver valeur dans tableau",
+      "correspondance",
+      "trouver dans colonne",
+      "trouver prix",
+      "trouver nom associé",
+      "lookup"
+    ],
     "voirAussi": [
       "RECHERCHEH",
       "INDEX",
@@ -1157,6 +1341,12 @@
       }
     ],
     "astuce": "RECHERCHEH est l'équivalent horizontal de RECHERCHEV. Beaucoup moins courant, car les données sont rarement organisées en lignes.",
+    "mots_cles": [
+      "recherche horizontale",
+      "hlookup",
+      "trouver dans ligne",
+      "recherche par ligne"
+    ],
     "voirAussi": [
       "RECHERCHEV",
       "INDEX",
@@ -1207,6 +1397,12 @@
       }
     ],
     "astuce": "Combinée à EQUIV, la fonction INDEX devient une alternative très souple à RECHERCHEV : elle peut chercher dans n'importe quel sens, y compris vers la gauche.",
+    "mots_cles": [
+      "extraire valeur",
+      "valeur par position",
+      "récupérer cellule précise",
+      "intersection ligne colonne"
+    ],
     "voirAussi": [
       "EQUIV",
       "RECHERCHEV",
@@ -1257,6 +1453,13 @@
       }
     ],
     "astuce": "EQUIV donne une position, pas une valeur. C'est le compagnon idéal d'INDEX : =INDEX(plage;EQUIV(...)).",
+    "mots_cles": [
+      "trouver position",
+      "numéro de ligne",
+      "position dans liste",
+      "match",
+      "rang d'une valeur"
+    ],
     "voirAussi": [
       "INDEX",
       "RECHERCHEV",
@@ -1302,6 +1505,12 @@
       }
     ],
     "astuce": "Très pratique pour des tableaux de bord multi-feuilles, mais c'est une fonction volatile : à utiliser avec parcimonie sur de gros fichiers, car elle ralentit les recalculs.",
+    "mots_cles": [
+      "référence dynamique",
+      "référence construite en texte",
+      "adresse variable",
+      "référencer feuille dynamiquement"
+    ],
     "voirAussi": [
       "ADRESSE",
       "DECALER",
@@ -1360,6 +1569,13 @@
       }
     ],
     "astuce": "Pour des plages dynamiques, les tableaux structurés (Ctrl + L) sont souvent plus simples et plus rapides que DECALER.",
+    "mots_cles": [
+      "plage dynamique",
+      "décaler référence",
+      "offset",
+      "déplacer plage",
+      "plage variable"
+    ],
     "voirAussi": [
       "INDIRECT",
       "INDEX",
@@ -1414,6 +1630,12 @@
       }
     ],
     "astuce": "ADRESSE est presque toujours utilisée en duo avec INDIRECT pour pointer dynamiquement vers une cellule.",
+    "mots_cles": [
+      "adresse cellule texte",
+      "construire référence",
+      "référence en chaîne",
+      "obtenir adresse"
+    ],
     "voirAussi": [
       "INDIRECT",
       "COLONNE",
@@ -1451,6 +1673,12 @@
       }
     ],
     "astuce": "Soustrayez un nombre (ex. =COLONNE()-1) pour démarrer votre numérotation à 1.",
+    "mots_cles": [
+      "numéro de colonne",
+      "quelle colonne",
+      "indice colonne",
+      "position colonne"
+    ],
     "voirAussi": [
       "LIGNE",
       "ADRESSE"
@@ -1487,6 +1715,12 @@
       }
     ],
     "astuce": "Associée à MOD, la fonction LIGNE permet d'appliquer une mise en forme une ligne sur deux.",
+    "mots_cles": [
+      "numéro de ligne",
+      "quelle ligne",
+      "indice ligne",
+      "position ligne"
+    ],
     "voirAussi": [
       "COLONNE",
       "ADRESSE",
@@ -1532,6 +1766,16 @@
       }
     ],
     "astuce": "Le symbole & fait la même chose en plus court : =A2&\" \"&B2. Dans les versions récentes, JOINDRE.TEXTE permet en plus de définir le séparateur une seule fois.",
+    "mots_cles": [
+      "assembler texte",
+      "joindre texte",
+      "combiner cellules",
+      "fusionner texte",
+      "prénom et nom",
+      "coller texte",
+      "réunir chaînes",
+      "esperluette"
+    ],
     "voirAussi": [
       "GAUCHE",
       "DROITE",
@@ -1577,6 +1821,13 @@
       }
     ],
     "astuce": "Combinez avec TROUVE pour extraire jusqu'à un caractère précis : =GAUCHE(A2;TROUVE(\" \";A2)-1) récupère le premier mot.",
+    "mots_cles": [
+      "premiers caractères",
+      "début du texte",
+      "extraire gauche",
+      "début de chaîne",
+      "n premiers caractères"
+    ],
     "voirAussi": [
       "DROITE",
       "STXT",
@@ -1622,6 +1873,13 @@
       }
     ],
     "astuce": "Si la longueur de la partie à extraire varie, combinez avec NBCAR et TROUVE plutôt que de fixer un nombre en dur.",
+    "mots_cles": [
+      "derniers caractères",
+      "fin du texte",
+      "extraire droite",
+      "fin de chaîne",
+      "n derniers caractères"
+    ],
     "voirAussi": [
       "GAUCHE",
       "STXT",
@@ -1671,6 +1929,13 @@
       }
     ],
     "astuce": "STXT signifie « Sous-TeXTe ». Pour des découpages à position variable, combinez avec TROUVE pour localiser un séparateur.",
+    "mots_cles": [
+      "extraire au milieu",
+      "sous-chaîne",
+      "caractères au milieu",
+      "portion de texte",
+      "extraire depuis position"
+    ],
     "voirAussi": [
       "GAUCHE",
       "DROITE",
@@ -1711,6 +1976,14 @@
       }
     ],
     "astuce": "Très utile pour repérer des espaces parasites : si NBCAR(A2) est plus grand que prévu, comparez avec NBCAR(SUPPRESPACE(A2)).",
+    "mots_cles": [
+      "longueur texte",
+      "nombre de caractères",
+      "compter caractères",
+      "longueur chaîne",
+      "len",
+      "taille texte"
+    ],
     "voirAussi": [
       "SUPPRESPACE",
       "GAUCHE",
@@ -1752,6 +2025,14 @@
       }
     ],
     "astuce": "Réflexe indispensable avant une RECHERCHEV : un espace invisible suffit à provoquer un #N/A.",
+    "mots_cles": [
+      "supprimer espaces",
+      "enlever espaces inutiles",
+      "trim",
+      "nettoyer espaces",
+      "espaces en trop",
+      "double espace"
+    ],
     "voirAussi": [
       "EPURAGE",
       "SUBSTITUE",
@@ -1792,6 +2073,13 @@
       }
     ],
     "astuce": "Pour figer le résultat, copiez la colonne puis « Collage spécial > Valeurs » : la formule disparaît, le texte converti reste.",
+    "mots_cles": [
+      "mettre en majuscules",
+      "upper",
+      "convertir majuscule",
+      "tout en majuscule",
+      "capitaliser tout"
+    ],
     "voirAussi": [
       "MINUSCULE",
       "NOMPROPRE"
@@ -1827,6 +2115,12 @@
       }
     ],
     "astuce": "Pratique avant une comparaison de textes : =MINUSCULE(A2)=MINUSCULE(B2) ignore les différences de casse.",
+    "mots_cles": [
+      "mettre en minuscules",
+      "lower",
+      "convertir minuscule",
+      "tout en minuscule"
+    ],
     "voirAussi": [
       "MAJUSCULE",
       "NOMPROPRE",
@@ -1867,6 +2161,13 @@
       }
     ],
     "astuce": "Idéal en combinaison : =NOMPROPRE(SUPPRESPACE(A2)) nettoie et met en forme en une seule étape.",
+    "mots_cles": [
+      "première lettre majuscule",
+      "proper case",
+      "capitaliser première lettre",
+      "mettre en forme nom",
+      "titre"
+    ],
     "voirAussi": [
       "MAJUSCULE",
       "MINUSCULE",
@@ -1912,6 +2213,14 @@
       }
     ],
     "astuce": "Le format \"0000\" force l'affichage des zéros de tête : =TEXTE(42;\"0000\") renvoie « 0042 ». Pratique pour des numéros de dossier.",
+    "mots_cles": [
+      "formater nombre",
+      "format date en texte",
+      "afficher avec format",
+      "mise en forme personnalisée",
+      "formatter",
+      "convertir en texte formaté"
+    ],
     "voirAussi": [
       "CNUM",
       "CONCATENER",
@@ -1953,6 +2262,13 @@
       }
     ],
     "astuce": "Indice qu'un nombre est en fait du texte : il s'aligne à gauche dans la cellule et la SOMME de la colonne renvoie 0.",
+    "mots_cles": [
+      "convertir texte en nombre",
+      "transformer texte en nombre",
+      "valeur numérique depuis texte",
+      "parse nombre",
+      "texte importé"
+    ],
     "voirAussi": [
       "TEXTE",
       "SUBSTITUE",
@@ -2006,6 +2322,13 @@
       }
     ],
     "astuce": "Pour supprimer un caractère, remplacez-le par du vide : =SUBSTITUE(A2;\" \";\"\") enlève tous les espaces.",
+    "mots_cles": [
+      "remplacer texte",
+      "changer mot",
+      "substitute",
+      "remplacer occurrence",
+      "trouver et remplacer dans formule"
+    ],
     "voirAussi": [
       "REMPLACER",
       "SUPPRESPACE",
@@ -2059,6 +2382,11 @@
       }
     ],
     "astuce": "Pour insérer sans rien écraser, mettez 0 comme nombre de caractères : =REMPLACER(A2;5;0;\"-\") insère un tiret en 5e position.",
+    "mots_cles": [
+      "remplacer à une position",
+      "remplacer n caractères",
+      "modifier caractères spécifiques"
+    ],
     "voirAussi": [
       "SUBSTITUE",
       "TROUVE",
@@ -2108,6 +2436,13 @@
       }
     ],
     "astuce": "TROUVE sert rarement seule : c'est la cheville ouvrière des découpages de texte avec GAUCHE, DROITE et STXT.",
+    "mots_cles": [
+      "position caractère dans texte",
+      "trouver position",
+      "chercher dans chaîne",
+      "find",
+      "indice caractère"
+    ],
     "voirAussi": [
       "CHERCHE",
       "STXT",
@@ -2157,6 +2492,11 @@
       }
     ],
     "astuce": "CHERCHE = souple (ignore la casse, accepte les jokers) ; TROUVE = strict. Dans le doute, CHERCHE convient le plus souvent.",
+    "mots_cles": [
+      "rechercher dans texte sans casse",
+      "position insensible casse",
+      "trouver texte majuscules minuscules"
+    ],
     "voirAussi": [
       "TROUVE",
       "STXT",
@@ -2202,6 +2542,13 @@
       }
     ],
     "astuce": "Avec un nombre décimal, REPT arrondit à l'entier inférieur : REPT(\"x\";2,9) donne « xx ».",
+    "mots_cles": [
+      "répéter texte",
+      "répéter caractère",
+      "repeat",
+      "remplir cellule",
+      "multiplier texte"
+    ],
     "voirAussi": [
       "CONCATENER",
       "TEXTE"
@@ -2246,6 +2593,13 @@
       }
     ],
     "astuce": "Pour rendre le résultat plus lisible, combinez avec SI : =SI(EXACT(B2;C2);\"OK\";\"Différent\").",
+    "mots_cles": [
+      "comparer texte",
+      "texte identique",
+      "égalité stricte texte",
+      "sensible à la casse",
+      "distinguer majuscules"
+    ],
     "voirAussi": [
       "SI",
       "SUPPRESPACE",
@@ -2287,6 +2641,12 @@
       }
     ],
     "astuce": "Le trio gagnant pour nettoyer un import : =SUPPRESPACE(EPURAGE(SUBSTITUE(A2;CAR(160);\" \"))).",
+    "mots_cles": [
+      "nettoyer texte importé",
+      "supprimer caractères non imprimables",
+      "clean",
+      "caractères invisibles"
+    ],
     "voirAussi": [
       "SUPPRESPACE",
       "SUBSTITUE",
@@ -2328,6 +2688,13 @@
       }
     ],
     "astuce": "Codes utiles à retenir : 10 = retour à la ligne, 160 = espace insécable (à traquer dans les imports web).",
+    "mots_cles": [
+      "caractère ascii",
+      "char",
+      "retour à la ligne dans cellule",
+      "saut de ligne cellule",
+      "alt entrée formule"
+    ],
     "voirAussi": [
       "CODE",
       "EPURAGE",
@@ -2368,6 +2735,11 @@
       }
     ],
     "astuce": "CODE est l'inverse de CAR : CODE(\"A\") renvoie 65 et CAR(65) renvoie « A ». Duo précieux pour déboguer les imports.",
+    "mots_cles": [
+      "code ascii caractère",
+      "code numérique lettre",
+      "valeur ascii"
+    ],
     "voirAussi": [
       "CAR",
       "STXT",
@@ -2403,6 +2775,14 @@
       }
     ],
     "astuce": "Excel stocke les dates comme des nombres (jours depuis le 01/01/1900), ce qui permet de les soustraire pour obtenir une durée.",
+    "mots_cles": [
+      "date du jour",
+      "date actuelle",
+      "today",
+      "date courante",
+      "afficher aujourd'hui",
+      "date automatique"
+    ],
     "voirAussi": [
       "MAINTENANT",
       "DATE",
@@ -2438,6 +2818,14 @@
       }
     ],
     "astuce": "Différence clé : AUJOURDHUI() donne la date seule, MAINTENANT() donne la date et l'heure.",
+    "mots_cles": [
+      "heure actuelle",
+      "date et heure",
+      "now",
+      "horodatage",
+      "timestamp",
+      "date heure courante"
+    ],
     "voirAussi": [
       "AUJOURDHUI",
       "TEXTE",
@@ -2486,6 +2874,12 @@
       }
     ],
     "astuce": "Pour ajouter un mois proprement : =DATE(ANNEE(A2);MOIS(A2)+1;JOUR(A2)), DATE gère seule le passage à l'année suivante.",
+    "mots_cles": [
+      "créer date",
+      "construire date",
+      "date depuis année mois jour",
+      "assembler date"
+    ],
     "voirAussi": [
       "ANNEE",
       "MOIS",
@@ -2526,6 +2920,13 @@
       }
     ],
     "astuce": "ANNEE, MOIS et JOUR sont le trio de base pour découper une date et la réagréger comme on veut.",
+    "mots_cles": [
+      "extraire année",
+      "quelle année",
+      "year",
+      "numéro d'année",
+      "année d'une date"
+    ],
     "voirAussi": [
       "MOIS",
       "JOUR",
@@ -2566,6 +2967,13 @@
       }
     ],
     "astuce": "Pour le nom du mois directement : =TEXTE(A2;\"mmmm\") donne « juin », =TEXTE(A2;\"mmm\") donne « juin » abrégé selon la langue.",
+    "mots_cles": [
+      "extraire mois",
+      "quel mois",
+      "month",
+      "numéro du mois",
+      "mois d'une date"
+    ],
     "voirAussi": [
       "ANNEE",
       "JOUR",
@@ -2606,6 +3014,13 @@
       }
     ],
     "astuce": "Pour le tout dernier jour d'un mois, ne devinez pas : FIN.MOIS gère automatiquement les mois de 28, 30 ou 31 jours.",
+    "mots_cles": [
+      "extraire jour",
+      "quel jour du mois",
+      "day",
+      "numéro du jour",
+      "jour d'une date"
+    ],
     "voirAussi": [
       "ANNEE",
       "MOIS",
@@ -2646,6 +3061,12 @@
       }
     ],
     "astuce": "Les pendants existent : MINUTE et SECONDE extraient les autres composantes d'un horaire.",
+    "mots_cles": [
+      "extraire heure",
+      "quelle heure",
+      "hour",
+      "heure depuis horodatage"
+    ],
     "voirAussi": [
       "MAINTENANT",
       "TEXTE"
@@ -2690,6 +3111,13 @@
       }
     ],
     "astuce": "Pour afficher directement le nom du jour, =TEXTE(A2;\"jjjj\") est souvent plus pratique que JOURSEM.",
+    "mots_cles": [
+      "jour de la semaine",
+      "lundi mardi mercredi",
+      "weekday",
+      "quel jour semaine",
+      "numéro jour semaine"
+    ],
     "voirAussi": [
       "JOUR",
       "TEXTE",
@@ -2735,6 +3163,13 @@
       }
     ],
     "astuce": "Pour le premier jour d'un mois, partez de la fin du mois précédent + 1 : =FIN.MOIS(A2;-1)+1.",
+    "mots_cles": [
+      "dernier jour du mois",
+      "fin de mois",
+      "eomonth",
+      "date fin mois",
+      "dernier jour"
+    ],
     "voirAussi": [
       "DATE",
       "AUJOURDHUI",
@@ -2792,6 +3227,15 @@
       }
     ],
     "astuce": "Cohérence des unités : si le taux est mensuel, le nombre de périodes doit l'être aussi (20 ans = 240 mois).",
+    "mots_cles": [
+      "mensualité crédit",
+      "remboursement emprunt",
+      "calcul prêt",
+      "paiement mensuel",
+      "annuité",
+      "prêt immobilier",
+      "échéance crédit"
+    ],
     "voirAussi": [
       "VC",
       "VA",
@@ -2849,6 +3293,14 @@
       }
     ],
     "astuce": "VC (Valeur Capitalisée) répond à « combien aurai-je à la fin ? » ; VA répond à « combien vaut aujourd'hui ? ».",
+    "mots_cles": [
+      "valeur future",
+      "épargne future",
+      "montant final épargne",
+      "capitalisation",
+      "combien aurai-je",
+      "placement futur"
+    ],
     "voirAussi": [
       "VA",
       "VPM",
@@ -2906,6 +3358,13 @@
       }
     ],
     "astuce": "Pour des flux irréguliers (un investissement, des recettes variables), passez à VAN plutôt qu'à VA.",
+    "mots_cles": [
+      "valeur actuelle",
+      "valeur présente",
+      "actualisation",
+      "PV",
+      "combien vaut aujourd'hui"
+    ],
     "voirAussi": [
       "VC",
       "VPM",
@@ -2951,6 +3410,13 @@
       }
     ],
     "astuce": "Règle de décision simple : si le TRI dépasse votre taux d'emprunt, le projet crée de la valeur.",
+    "mots_cles": [
+      "taux de rentabilité interne",
+      "rentabilité investissement",
+      "IRR",
+      "taux de retour",
+      "performance investissement"
+    ],
     "voirAussi": [
       "VAN",
       "VA",
@@ -3000,6 +3466,13 @@
       }
     ],
     "astuce": "VAN (Valeur Actuelle Nette) > 0 = projet rentable au taux choisi. C'est l'indicateur d'investissement le plus courant.",
+    "mots_cles": [
+      "valeur actuelle nette",
+      "NPV",
+      "rentabilité projet",
+      "flux de trésorerie actualisé",
+      "décision investissement"
+    ],
     "voirAussi": [
       "TRI",
       "VA",
@@ -3044,6 +3517,13 @@
       }
     ],
     "astuce": "Pour une moyenne sous condition (ex. uniquement les jours ouvrés), passez à MOYENNE.SI.",
+    "mots_cles": [
+      "calcul moyenne",
+      "average",
+      "valeur moyenne",
+      "moyenne arithmétique",
+      "moyenne des valeurs"
+    ],
     "voirAussi": [
       "MOYENNE.SI",
       "MEDIANE",
@@ -3088,6 +3568,12 @@
       }
     ],
     "astuce": "Trois fonctions à distinguer : NB (nombres seuls), NBVAL (cellules non vides), NB.VIDE (cellules vides).",
+    "mots_cles": [
+      "compter nombres",
+      "count",
+      "combien de nombres",
+      "dénombrer valeurs numériques"
+    ],
     "voirAussi": [
       "NBVAL",
       "NB.SI",
@@ -3132,6 +3618,13 @@
       }
     ],
     "astuce": "NBVAL répond à « combien de cases sont remplies ? », quel que soit le type de contenu.",
+    "mots_cles": [
+      "compter cellules non vides",
+      "counta",
+      "combien de valeurs",
+      "compter tout type",
+      "dénombrer non vide"
+    ],
     "voirAussi": [
       "NB",
       "NB.SI",
@@ -3176,6 +3669,13 @@
       }
     ],
     "astuce": "Pour retrouver QUI a réalisé ce maximum, combinez avec INDEX et EQUIV : =INDEX(A:A;EQUIV(MAX(B:B);B:B;0)).",
+    "mots_cles": [
+      "valeur maximale",
+      "plus grand nombre",
+      "maximum",
+      "valeur la plus haute",
+      "chiffre le plus élevé"
+    ],
     "voirAussi": [
       "MIN",
       "MOYENNE",
@@ -3220,6 +3720,13 @@
       }
     ],
     "astuce": "MAX et MIN encadrent une série ; leur écart (=MAX-MIN) donne l'étendue, un indicateur de dispersion rapide.",
+    "mots_cles": [
+      "valeur minimale",
+      "plus petit nombre",
+      "minimum",
+      "valeur la plus basse",
+      "chiffre le plus faible"
+    ],
     "voirAussi": [
       "MAX",
       "MOYENNE",
@@ -3265,6 +3772,13 @@
       }
     ],
     "astuce": "Pour plusieurs conditions à la fois (statut ET période), passez à NB.SI.ENS.",
+    "mots_cles": [
+      "compter si condition",
+      "countif",
+      "nombre selon critère",
+      "compter avec filtre",
+      "dénombrer selon valeur"
+    ],
     "voirAussi": [
       "NB.SI.ENS",
       "SOMME.SI",
@@ -3314,6 +3828,12 @@
       }
     ],
     "astuce": "Pour plusieurs critères (carburant ET année 2026), utilisez MOYENNE.SI.ENS, qui inverse l'ordre des arguments (plage des valeurs en premier).",
+    "mots_cles": [
+      "moyenne conditionnelle",
+      "averageif",
+      "moyenne si condition",
+      "moyenne selon critère"
+    ],
     "voirAussi": [
       "MOYENNE",
       "NB.SI",
@@ -3367,6 +3887,12 @@
       }
     ],
     "astuce": "NB.SI.ENS additionne des conditions « ET ». Pour un « OU », additionnez plusieurs NB.SI distincts.",
+    "mots_cles": [
+      "compter multicritères",
+      "countifs",
+      "compter plusieurs conditions",
+      "dénombrer selon plusieurs critères"
+    ],
     "voirAussi": [
       "NB.SI",
       "SOMME.SI.ENS",
@@ -3411,6 +3937,14 @@
       }
     ],
     "astuce": "Repère pratique : environ deux tiers des valeurs se situent à moins d'un écart-type de la moyenne.",
+    "mots_cles": [
+      "écart type",
+      "dispersion",
+      "variabilité",
+      "stdev",
+      "déviation standard",
+      "mesure dispersion"
+    ],
     "voirAussi": [
       "MOYENNE",
       "MEDIANE",
@@ -3455,6 +3989,13 @@
       }
     ],
     "astuce": "Sur des données déséquilibrées (salaires, prix), la médiane est souvent plus parlante que la moyenne.",
+    "mots_cles": [
+      "valeur médiane",
+      "median",
+      "milieu",
+      "valeur centrale",
+      "50e percentile"
+    ],
     "voirAussi": [
       "MOYENNE",
       "ECARTYPE",
@@ -3496,6 +4037,14 @@
       }
     ],
     "astuce": "ESTVIDE fait partie de la famille des fonctions « EST » (ESTERREUR, ESTTEXTE, ESTNUM…) qui renvoient toutes VRAI/FAUX.",
+    "mots_cles": [
+      "cellule vide",
+      "vérifier si vide",
+      "est vide",
+      "isblank",
+      "tester si cellule vide",
+      "détecter vide"
+    ],
     "voirAussi": [
       "ESTERREUR",
       "SI",
@@ -3537,6 +4086,13 @@
       }
     ],
     "astuce": "Depuis Excel 2007, SIERREUR remplace avantageusement le couple SI + ESTERREUR dans la majorité des cas.",
+    "mots_cles": [
+      "détecter erreur",
+      "vérifier si erreur",
+      "iserror",
+      "cellule en erreur",
+      "tester erreur"
+    ],
     "voirAussi": [
       "SIERREUR",
       "ESTVIDE",

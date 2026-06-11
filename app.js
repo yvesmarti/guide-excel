@@ -275,7 +275,8 @@ function filtrerParRecherche(elements) {
       correspond(q, e.nom) ||
       correspond(q, e.description) ||
       correspond(q, e.syntaxe) ||
-      correspond(q, e.categorie)
+      correspond(q, e.categorie) ||
+      correspond(q, (e.mots_cles || []).join(" "))
     );
   });
 }
