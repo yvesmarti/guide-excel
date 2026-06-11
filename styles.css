@@ -29,6 +29,9 @@
   --cat-donnees: #16A34A;
   --cat-formules: #4F46E5;
   --cat-feuillesclasseur: #64748B;
+  --cat-importerdesdonnees: #0D9488;
+  --cat-nettoyersesdonnees: #D97706;
+  --cat-powerquery: #9333EA;
 
   --sidebar-largeur: 260px;
   --overlay-bg: rgba(16, 24, 40, .45);
@@ -365,6 +368,39 @@ body {
 .plus { color: var(--texte-doux); font-size: .8rem; }
 .titre-raccourci { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.05rem; }
 
+/* Carte astuce */
+.titre-astuce {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700; font-size: 1.18rem; color: var(--texte);
+  letter-spacing: -.01em; line-height: 1.3;
+}
+.accroche { font-size: .9rem; color: var(--texte-doux); line-height: 1.55; }
+.carte-pied {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.carte-pied .voir-fiche { margin-top: 0; }
+.carte-pied .badge-niveau {
+  font-size: .68rem; font-weight: 700; padding: 3px 9px; border-radius: 999px;
+}
+
+/* ---------- Bandeau d'introduction de section ---------- */
+.section-intro {
+  background: var(--vert-clair);
+  border: 1px solid #CDE8DA;
+  border-radius: var(--rayon);
+  padding: 16px 18px;
+  margin-bottom: 22px;
+  animation: apparition .35s ease both;
+}
+.section-intro[hidden] { display: none; }
+.section-intro-titre {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700; font-size: 1.1rem; color: var(--vert-fonce);
+  letter-spacing: -.01em; margin-bottom: 6px;
+}
+.section-intro-texte { font-size: .92rem; color: var(--texte); line-height: 1.6; }
+
 .vide { text-align: center; color: var(--texte-doux); padding: 60px 20px; font-size: 1rem; }
 
 /* ---------- Séparateurs de section dans la grille ---------- */
@@ -475,6 +511,21 @@ body.sans-defilement { overflow: hidden; }
   letter-spacing: -.02em; margin-top: 14px; word-break: break-word;
 }
 .fiche-description { color: var(--texte); font-size: 1rem; margin-top: 6px; }
+
+/* Modale astuce : le titre n'est pas un nom de fonction → couleur texte */
+.fiche-nom-astuce { color: var(--texte); font-size: 1.7rem; }
+.fiche-accroche {
+  color: var(--texte-doux); font-size: 1.05rem; line-height: 1.55;
+  margin-top: 8px; font-style: italic;
+}
+.probleme-bloc {
+  background: var(--arg-fond);
+  border: 1px solid var(--bordure);
+  border-left: 4px solid var(--texte-doux);
+  border-radius: 10px;
+  padding: 13px 15px;
+  color: var(--texte); font-size: .94rem; line-height: 1.55;
+}
 
 .fiche-section { margin-top: 26px; }
 .fiche-section-titre {
@@ -720,4 +771,11 @@ body.sans-defilement { overflow: hidden; }
 [data-theme="sombre"] .sidebar-lien.actif .compteur-favoris {
   background: rgba(255,255,255,.15);
   color: #fff;
+}
+
+[data-theme="sombre"] .section-intro {
+  border-color: #1E3A2A;
+}
+[data-theme="sombre"] .section-intro-titre {
+  color: #6EE7B7;
 }
