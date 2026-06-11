@@ -170,13 +170,13 @@ for (let c = 0; c < colonnes.length; c++) {
 }
 
 // ─── En-tête page 1 ──────────────────────────────────────────────────────────
-draw(0, { t: "text", x: MARGE, y: 30, s: "Excel Companion FR", font: "B", size: 19, c: TEXTE });
-draw(0, { t: "text", x: MARGE, y: 50, s: "Antiseche — les " + total + " formules les plus courantes", font: "B", size: 11.5, c: VERT });
+draw(0, { t: "text", x: MARGE, y: 32, s: "Antisèche des formules Excel", font: "B", size: 19, c: TEXTE });
+draw(0, { t: "text", x: MARGE, y: 50, s: "Les " + total + " fonctions les plus courantes", font: "B", size: 11.5, c: VERT });
 draw(0, { t: "rect", x: MARGE, y: 58, w: PW - 2 * MARGE, h: 2.2, c: VERT });
 
 // pied de page (chaque page)
 const piedY = PH - MARGE + 6;
-const piedTxt = "Excel FR  ·  separateur d'arguments : point-virgule  ·  Excel Companion FR";
+const piedTxt = "Excel (version française)  ·  séparateur d'arguments : point-virgule";
 for (const p of [0, 1]) {
   draw(p, { t: "line", x1: MARGE, y1: piedY - 4, x2: PW - MARGE, y2: piedY - 4, c: BORD });
   draw(p, { t: "text", x: MARGE, y: piedY + 3, s: piedTxt, font: "R", size: 7, c: DOUX });

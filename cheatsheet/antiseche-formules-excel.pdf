@@ -13,7 +13,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> /Contents 6 0 R >>
 endobj
 5 0 obj
-<< /Length 9294 >>
+<< /Length 9289 >>
 stream
 0.15 0.39 0.92 rg
 34.00 738.89 250.64 15.00 re f
@@ -512,14 +512,14 @@ ET
 BT
 /F2 19 Tf
 0.122 0.161 0.2 rg
-1 0 0 1 34.00 811.89 Tm
-(Excel Companion FR) Tj
+1 0 0 1 34.00 809.89 Tm
+(Antisèche des formules Excel) Tj
 ET
 BT
 /F2 11.5 Tf
 0.063 0.486 0.255 rg
 1 0 0 1 34.00 791.89 Tm
-(Antiseche - les 47 formules les plus courantes) Tj
+(Les 47 fonctions les plus courantes) Tj
 ET
 0.063 0.486 0.255 rg
 34.00 781.69 527.28 2.20 re f
@@ -529,12 +529,12 @@ BT
 /F1 7 Tf
 0.357 0.404 0.439 rg
 1 0 0 1 34.00 25.00 Tm
-(Excel FR  ·  separateur d'arguments : point-virgule  ·  Excel Companion FR) Tj
+(Excel \(version française\)  ·  séparateur d'arguments : point-virgule) Tj
 ET
 endstream
 endobj
 6 0 obj
-<< /Length 9423 >>
+<< /Length 9419 >>
 stream
 BT
 /F2 8.8 Tf
@@ -1084,7 +1084,7 @@ BT
 /F1 7 Tf
 0.357 0.404 0.439 rg
 1 0 0 1 34.00 25.00 Tm
-(Excel FR  ·  separateur d'arguments : point-virgule  ·  Excel Companion FR) Tj
+(Excel \(version française\)  ·  séparateur d'arguments : point-virgule) Tj
 ET
 endstream
 endobj
@@ -1105,12 +1105,12 @@ xref
 0000000127 00000 n 
 0000000279 00000 n 
 0000000431 00000 n 
-0000009777 00000 n 
-0000019252 00000 n 
-0000019349 00000 n 
-0000019451 00000 n 
+0000009772 00000 n 
+0000019243 00000 n 
+0000019340 00000 n 
+0000019442 00000 n 
 trailer
 << /Size 10 /Root 1 0 R >>
 startxref
-19546
+19537
 %%EOF

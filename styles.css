@@ -169,7 +169,8 @@ body {
   padding: 10px 16px 6px;
 }
 
-.sidebar-lien {
+.sidebar-lien,
+.sidebar-telecharger {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -183,11 +184,15 @@ body {
   color: var(--texte);
   padding: 8px 16px;
   text-align: left;
+  text-decoration: none;
   transition: background .12s, color .12s;
   border-radius: 0;
   position: relative;
 }
-.sidebar-lien:hover { background: var(--vert-clair); color: var(--vert-fonce); }
+.sidebar-lien:hover,
+.sidebar-telecharger:hover { background: var(--vert-clair); color: var(--vert-fonce); }
+.sidebar-telecharger { color: var(--vert); font-weight: 600; }
+.sidebar-telecharger svg { flex: 0 0 auto; }
 .sidebar-lien.actif {
   background: var(--vert);
   color: #fff;
