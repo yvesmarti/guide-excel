@@ -1,0 +1,1116 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 7 0 R /F2 8 0 R /F3 9 0 R >> >> /Contents 6 0 R >>
+endobj
+5 0 obj
+<< /Length 9294 >>
+stream
+0.15 0.39 0.92 rg
+34.00 738.89 250.64 15.00 re f
+BT
+/F2 9.2 Tf
+1 1 1 rg
+1 0 0 1 40.00 743.19 Tm
+(Bases & calcul) Tj
+ET
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 723.29 Tm
+(SOMME) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 713.89 Tm
+(SOMME\(nombre1;[nombre2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 704.49 Tm
+(Additionne tous les nombres d'une plage de cellules) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 699.49 m 284.64 699.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 687.89 Tm
+(MOYENNE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 678.49 Tm
+(MOYENNE\(nombre1;[nombre2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 669.09 Tm
+(Calcule la moyenne arithmétique d'un ensemble de valeurs) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 664.09 m 284.64 664.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 652.49 Tm
+(MIN) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 643.09 Tm
+(MIN\(nombre1;[nombre2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 633.69 Tm
+(Renvoie la plus petite valeur d'un ensemble) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 628.69 m 284.64 628.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 617.09 Tm
+(MAX) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 607.69 Tm
+(MAX\(nombre1;[nombre2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 598.29 Tm
+(Renvoie la plus grande valeur d'un ensemble) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 593.29 m 284.64 593.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 581.69 Tm
+(NB) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 572.29 Tm
+(NB\(valeur1;[valeur2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 562.89 Tm
+(Compte le nombre de cellules qui contiennent des nombres) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 557.89 m 284.64 557.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 546.29 Tm
+(NBVAL) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 536.89 Tm
+(NBVAL\(valeur1;[valeur2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 527.49 Tm
+(Compte le nombre de cellules non vides \(texte ou nombre\)) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 522.49 m 284.64 522.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 510.89 Tm
+(ARRONDI) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 501.49 Tm
+(ARRONDI\(nombre;no_chiffres\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 492.09 Tm
+(Arrondit un nombre au nombre de décimales indiqué) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 487.09 m 284.64 487.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 475.49 Tm
+(SOUS.TOTAL) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 466.09 Tm
+(SOUS.TOTAL\(no_fonction;réf1;[réf2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 456.69 Tm
+(Renvoie un total partiel dans une liste, en ignorant les lignes masquées ou) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 447.69 Tm
+(filtrées) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 442.69 m 284.64 442.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 431.09 Tm
+(MOD) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 421.69 Tm
+(MOD\(nombre;diviseur\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 412.29 Tm
+(Renvoie le reste de la division d'un nombre par un diviseur) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 407.29 m 284.64 407.29 l S
+0.49 0.23 0.93 rg
+34.00 385.29 250.64 15.00 re f
+BT
+/F2 9.2 Tf
+1 1 1 rg
+1 0 0 1 40.00 389.59 Tm
+(Conditions & logique) Tj
+ET
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 369.69 Tm
+(SI) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 360.29 Tm
+(SI\(test_logique;valeur_si_vrai;[valeur_si_faux]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 350.89 Tm
+(Renvoie une valeur si une condition est vraie, une autre si elle est fausse) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 345.89 m 284.64 345.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 334.29 Tm
+(ET) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 324.89 Tm
+(ET\(valeur_logique1;[valeur_logique2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 315.49 Tm
+(Renvoie VRAI uniquement si toutes les conditions sont vraies) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 310.49 m 284.64 310.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 749.29 Tm
+(OU) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 739.89 Tm
+(OU\(valeur_logique1;[valeur_logique2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 730.49 Tm
+(Renvoie VRAI si au moins une des conditions est vraie) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 725.49 m 561.28 725.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 713.89 Tm
+(SIERREUR) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 704.49 Tm
+(SIERREUR\(valeur;valeur_si_erreur\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 695.09 Tm
+(Renvoie une valeur de remplacement si une formule génère une erreur) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 690.09 m 561.28 690.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 678.49 Tm
+(SOMME.SI) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 669.09 Tm
+(SOMME.SI\(plage;critère;[plage_somme]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 659.69 Tm
+(Additionne les cellules qui répondent à un critère unique) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 654.69 m 561.28 654.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 643.09 Tm
+(SOMME.SI.ENS) Tj
+ET
+BT
+/F3 5.1572016460905346 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 633.69 Tm
+(SOMME.SI.ENS\(plage_somme;plage_critères1;critère1;[plage_critères2;critère2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 624.29 Tm
+(Additionne les cellules qui répondent à plusieurs critères, dans plusieurs) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 615.29 Tm
+(plages) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 610.29 m 561.28 610.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 598.69 Tm
+(NB.SI) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 589.29 Tm
+(NB.SI\(plage;critère\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 579.89 Tm
+(Compte les cellules qui répondent à un critère) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 574.89 m 561.28 574.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 563.29 Tm
+(NB.SI.ENS) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 553.89 Tm
+(NB.SI.ENS\(plage_critères1;critère1;...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 544.49 Tm
+(Compte les cellules répondant à plusieurs critères simultanés) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 539.49 m 561.28 539.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 527.89 Tm
+(MOYENNE.SI) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 518.49 Tm
+(MOYENNE.SI\(plage;critère;[plage_moyenne]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 509.09 Tm
+(Calcule la moyenne des cellules qui répondent à un critère) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 504.09 m 561.28 504.09 l S
+0.92 0.35 0.05 rg
+310.64 482.09 250.64 15.00 re f
+BT
+/F2 9.2 Tf
+1 1 1 rg
+1 0 0 1 316.64 486.39 Tm
+(Recherche & references) Tj
+ET
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 466.49 Tm
+(RECHERCHEV) Tj
+ET
+BT
+/F3 5.967619047619047 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 457.09 Tm
+(RECHERCHEV\(valeur_cherchée;table_matrice;no_index_col;[valeur_proche]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 447.69 Tm
+(Recherche une valeur dans la première colonne d'un tableau et renvoie une) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 438.69 Tm
+(valeur de la même ligne) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 433.69 m 561.28 433.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 422.09 Tm
+(RECHERCHEH) Tj
+ET
+BT
+/F3 5.967619047619047 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 412.69 Tm
+(RECHERCHEH\(valeur_cherchée;table_matrice;no_index_lig;[valeur_proche]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 403.29 Tm
+(Recherche une valeur dans la première ligne d'un tableau et renvoie une) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 394.29 Tm
+(valeur de la même colonne) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 389.29 m 561.28 389.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 377.69 Tm
+(INDEX) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 368.29 Tm
+(INDEX\(matrice;no_lig;[no_col]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 358.89 Tm
+(Renvoie la valeur de la cellule à l'intersection d'une ligne et d'une colonne) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 349.89 Tm
+(données) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 344.89 m 561.28 344.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 333.29 Tm
+(EQUIV) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 323.89 Tm
+(EQUIV\(valeur_cherchée;matrice_recherche;[type]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 314.49 Tm
+(Renvoie la position \(rang\) d'un élément dans une plage) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 309.49 m 561.28 309.49 l S
+BT
+/F2 19 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 811.89 Tm
+(Excel Companion FR) Tj
+ET
+BT
+/F2 11.5 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 791.89 Tm
+(Antiseche - les 47 formules les plus courantes) Tj
+ET
+0.063 0.486 0.255 rg
+34.00 781.69 527.28 2.20 re f
+0.78 0.8 0.82 RG 0.5 w
+34.00 32.00 m 561.28 32.00 l S
+BT
+/F1 7 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 25.00 Tm
+(Excel FR  ·  separateur d'arguments : point-virgule  ·  Excel Companion FR) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 9423 >>
+stream
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 793.29 Tm
+(DECALER) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 783.89 Tm
+(DECALER\(réf;lignes;colonnes;[hauteur];[largeur]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 774.49 Tm
+(Renvoie une référence décalée d'un nombre de lignes et de colonnes par) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 765.49 Tm
+(rapport à une cellule) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 760.49 m 284.64 760.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 748.89 Tm
+(INDIRECT) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 739.49 Tm
+(INDIRECT\(réf_texte;[a1]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 730.09 Tm
+(Renvoie la référence désignée par une chaîne de texte) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 725.09 m 284.64 725.09 l S
+0.86 0.15 0.47 rg
+34.00 703.09 250.64 15.00 re f
+BT
+/F2 9.2 Tf
+1 1 1 rg
+1 0 0 1 40.00 707.39 Tm
+(Texte) Tj
+ET
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 687.49 Tm
+(CONCATENER) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 678.09 Tm
+(CONCATENER\(texte1;[texte2];...\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 668.69 Tm
+(Assemble plusieurs textes en une seule chaîne) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 663.69 m 284.64 663.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 652.09 Tm
+(GAUCHE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 642.69 Tm
+(GAUCHE\(texte;[no_car]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 633.29 Tm
+(Extrait les premiers caractères d'un texte, en partant de la gauche) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 628.29 m 284.64 628.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 616.69 Tm
+(DROITE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 607.29 Tm
+(DROITE\(texte;[no_car]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 597.89 Tm
+(Extrait les derniers caractères d'un texte, en partant de la droite) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 592.89 m 284.64 592.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 581.29 Tm
+(STXT) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 571.89 Tm
+(STXT\(texte;no_départ;no_car\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 562.49 Tm
+(Extrait un nombre de caractères à partir d'une position donnée) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 557.49 m 284.64 557.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 545.89 Tm
+(NBCAR) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 536.49 Tm
+(NBCAR\(texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 527.09 Tm
+(Renvoie le nombre de caractères d'un texte) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 522.09 m 284.64 522.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 510.49 Tm
+(SUPPRESPACE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 501.09 Tm
+(SUPPRESPACE\(texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 491.69 Tm
+(Supprime les espaces superflus d'un texte \(garde un seul espace entre les) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 482.69 Tm
+(mots\)) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 477.69 m 284.64 477.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 466.09 Tm
+(MAJUSCULE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 456.69 Tm
+(MAJUSCULE\(texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 447.29 Tm
+(Convertit tout le texte en majuscules) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 442.29 m 284.64 442.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 430.69 Tm
+(MINUSCULE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 421.29 Tm
+(MINUSCULE\(texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 411.89 Tm
+(Convertit tout le texte en minuscules) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 406.89 m 284.64 406.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 395.29 Tm
+(NOMPROPRE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 385.89 Tm
+(NOMPROPRE\(texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 376.49 Tm
+(Met une majuscule à la première lettre de chaque mot) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 371.49 m 284.64 371.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 34.00 359.89 Tm
+(TEXTE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 34.00 350.49 Tm
+(TEXTE\(valeur;format_texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 341.09 Tm
+(Convertit une valeur en texte selon un format d'affichage précis) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+34.00 336.09 m 284.64 336.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 793.29 Tm
+(SUBSTITUE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 783.89 Tm
+(SUBSTITUE\(texte;ancien_texte;nouveau_texte;[no_position]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 774.49 Tm
+(Remplace un texte précis par un autre dans une chaîne) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 769.49 m 561.28 769.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 757.89 Tm
+(CHERCHE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 748.49 Tm
+(CHERCHE\(texte_cherché;texte;[no_départ]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 739.09 Tm
+(Renvoie la position d'un texte dans un autre \(insensible à la casse\)) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 734.09 m 561.28 734.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 722.49 Tm
+(CNUM) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 713.09 Tm
+(CNUM\(texte\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 703.69 Tm
+(Convertit un texte représentant un nombre en valeur numérique) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 698.69 m 561.28 698.69 l S
+0.03 0.57 0.7 rg
+310.64 676.69 250.64 15.00 re f
+BT
+/F2 9.2 Tf
+1 1 1 rg
+1 0 0 1 316.64 680.99 Tm
+(Date & heure) Tj
+ET
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 661.09 Tm
+(AUJOURDHUI) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 651.69 Tm
+(AUJOURDHUI\(\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 642.29 Tm
+(Renvoie la date du jour \(sans heure\), mise à jour automatiquement) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 637.29 m 561.28 637.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 625.69 Tm
+(MAINTENANT) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 616.29 Tm
+(MAINTENANT\(\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 606.89 Tm
+(Renvoie la date et l'heure actuelles) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 601.89 m 561.28 601.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 590.29 Tm
+(DATE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 580.89 Tm
+(DATE\(année;mois;jour\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 571.49 Tm
+(Construit une date à partir d'une année, d'un mois et d'un jour) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 566.49 m 561.28 566.49 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 554.89 Tm
+(ANNEE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 545.49 Tm
+(ANNEE\(numéro_série\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 536.09 Tm
+(Extrait l'année d'une date) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 531.09 m 561.28 531.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 519.49 Tm
+(MOIS) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 510.09 Tm
+(MOIS\(numéro_série\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 500.69 Tm
+(Extrait le numéro du mois \(1 à 12\) d'une date) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 495.69 m 561.28 495.69 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 484.09 Tm
+(JOUR) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 474.69 Tm
+(JOUR\(numéro_série\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 465.29 Tm
+(Extrait le jour du mois \(1 à 31\) d'une date) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 460.29 m 561.28 460.29 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 448.69 Tm
+(JOURSEM) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 439.29 Tm
+(JOURSEM\(numéro_série;[type_retour]\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 429.89 Tm
+(Renvoie le jour de la semaine d'une date \(avec le type 2, lundi = 1\)) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 424.89 m 561.28 424.89 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 413.29 Tm
+(FIN.MOIS) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 403.89 Tm
+(FIN.MOIS\(date_départ;mois\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 394.49 Tm
+(Renvoie le dernier jour du mois, éventuellement décalé d'un nombre de) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 385.49 Tm
+(mois) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 380.49 m 561.28 380.49 l S
+0.39 0.45 0.55 rg
+310.64 358.49 250.64 15.00 re f
+BT
+/F2 9.2 Tf
+1 1 1 rg
+1 0 0 1 316.64 362.79 Tm
+(Information) Tj
+ET
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 342.89 Tm
+(ESTVIDE) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 333.49 Tm
+(ESTVIDE\(valeur\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 324.09 Tm
+(Renvoie VRAI si la cellule testée est vide) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 319.09 m 561.28 319.09 l S
+BT
+/F2 8.8 Tf
+0.063 0.486 0.255 rg
+1 0 0 1 310.64 307.49 Tm
+(ESTERREUR) Tj
+ET
+BT
+/F3 7 Tf
+0.122 0.161 0.2 rg
+1 0 0 1 310.64 298.09 Tm
+(ESTERREUR\(valeur\)) Tj
+ET
+BT
+/F1 7.6 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 310.64 288.69 Tm
+(Renvoie VRAI si la valeur testée est une erreur \(#DIV/0!, #N/A, etc.\)) Tj
+ET
+0.78 0.8 0.82 RG 0.5 w
+310.64 283.69 m 561.28 283.69 l S
+0.78 0.8 0.82 RG 0.5 w
+34.00 32.00 m 561.28 32.00 l S
+BT
+/F1 7 Tf
+0.357 0.404 0.439 rg
+1 0 0 1 34.00 25.00 Tm
+(Excel FR  ·  separateur d'arguments : point-virgule  ·  Excel Companion FR) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+9 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000279 00000 n 
+0000000431 00000 n 
+0000009777 00000 n 
+0000019252 00000 n 
+0000019349 00000 n 
+0000019451 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+19546
+%%EOF
