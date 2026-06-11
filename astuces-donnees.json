@@ -1,0 +1,244 @@
+{
+  "section": {
+    "id": "astuces-donnees",
+    "titre": "Trucs & astuces : bien traiter ses données",
+    "intro": "Avant même la première formule, 80 % du travail dans Excel consiste à obtenir des données propres. Un CSV mal importé, des espaces invisibles ou des dates transformées en charabia peuvent ruiner des heures de travail. Cette section vous montre comment importer proprement, nettoyer efficacement... et découvrir Power Query, l'outil méconnu qui automatise tout cela en quelques clics.",
+    "categories": ["Importer des données", "Nettoyer ses données", "Power Query"]
+  },
+  "astuces": [
+    {
+      "id": "import-csv-propre",
+      "titre": "Importer un CSV proprement",
+      "categorie": "Importer des données",
+      "niveau": "Débutant",
+      "accroche": "Double-cliquer sur un fichier CSV est le meilleur moyen d'obtenir des données massacrées. Il existe une méthode officielle, en trois clics, qui garde le contrôle sur tout.",
+      "probleme": "À l'ouverture directe d'un CSV, Excel devine seul le séparateur, le format des colonnes et l'encodage. Résultat fréquent : tout le contenu dans la colonne A, ou des valeurs transformées sans prévenir.",
+      "etapes": [
+        "Ouvrir un classeur Excel vide (ne pas double-cliquer sur le CSV).",
+        "Aller dans l'onglet Données > À partir d'un fichier texte/CSV.",
+        "Sélectionner le fichier : un aperçu s'affiche avec le séparateur détecté (virgule, point-virgule, tabulation).",
+        "Vérifier l'aperçu : si tout est dans une seule colonne, changer le délimiteur dans la liste déroulante.",
+        "Cliquer sur Charger pour importer tel quel, ou sur Transformer les données pour ouvrir Power Query et nettoyer avant l'import."
+      ],
+      "erreurs": [
+        "Tout le contenu apparaît dans la colonne A : mauvais délimiteur (les CSV français utilisent souvent le point-virgule).",
+        "Caractères bizarres à la place des accents : mauvais encodage, choisir UTF-8 dans la liste « Origine du fichier »."
+      ],
+      "astuce": "Le bouton « Transformer les données » est la porte d'entrée vers Power Query : c'est là que la magie commence.",
+      "voirAussi": ["encodage-accents", "formats-massacres", "pq-decouverte"]
+    },
+    {
+      "id": "formats-massacres",
+      "titre": "Éviter les codes postaux et dates massacrés",
+      "categorie": "Importer des données",
+      "niveau": "Débutant",
+      "accroche": "Le code postal 01000 qui devient 1000, la référence 1/2 qui se transforme en 01-févr... Excel veut bien faire, mais il en fait trop. Voici comment reprendre la main.",
+      "probleme": "À l'import, Excel convertit automatiquement ce qui ressemble à un nombre ou une date. Les zéros de tête disparaissent, les longues références numériques passent en notation scientifique (1,23E+12), et certaines valeurs deviennent des dates.",
+      "etapes": [
+        "Importer via Données > À partir d'un fichier texte/CSV (jamais en double-cliquant).",
+        "Cliquer sur Transformer les données pour ouvrir Power Query.",
+        "Cliquer sur l'icône de type en haut de la colonne concernée (123, ABC...).",
+        "Choisir le type Texte pour les codes postaux, références ou numéros de téléphone.",
+        "Cliquer sur Fermer et charger : les zéros et les formats d'origine sont préservés."
+      ],
+      "erreurs": [
+        "Corriger les valeurs après l'import : trop tard, l'information d'origine (le zéro de tête) est déjà perdue.",
+        "Mettre la colonne au format Texte après coup ne restaure pas les données : le type doit être défini avant ou pendant l'import."
+      ],
+      "astuce": "Règle d'or : tout identifiant qui ne sert pas à calculer (code postal, téléphone, référence) doit être importé en Texte.",
+      "voirAussi": ["import-csv-propre", "pq-decouverte"]
+    },
+    {
+      "id": "encodage-accents",
+      "titre": "Accents transformés en caractères bizarres",
+      "categorie": "Importer des données",
+      "niveau": "Débutant",
+      "accroche": "Vos « é » deviennent des « Ã© » ? Ce n'est pas un bug, c'est un problème d'encodage. Et il se règle en un clic.",
+      "probleme": "Un fichier texte peut être enregistré dans différents « encodages » (UTF-8, ANSI/Windows-1252...). Si Excel lit le fichier avec le mauvais encodage, tous les caractères accentués sont déformés.",
+      "etapes": [
+        "Importer via Données > À partir d'un fichier texte/CSV.",
+        "Dans la fenêtre d'aperçu, repérer la liste déroulante « Origine du fichier » en haut à gauche.",
+        "Si les accents sont déformés dans l'aperçu, choisir 65001 : Unicode (UTF-8).",
+        "Si cela ne suffit pas, tester 1252 : Europe occidentale (Windows).",
+        "Vérifier l'aperçu puis cliquer sur Charger."
+      ],
+      "erreurs": [
+        "Corriger les accents un par un avec Rechercher/Remplacer : long, risqué, et à refaire à chaque nouvel import."
+      ],
+      "astuce": "L'aperçu de l'import montre immédiatement si l'encodage est le bon : pas besoin d'importer pour vérifier.",
+      "voirAussi": ["import-csv-propre"]
+    },
+    {
+      "id": "espaces-invisibles",
+      "titre": "Chasser les espaces invisibles",
+      "categorie": "Nettoyer ses données",
+      "niveau": "Débutant",
+      "accroche": "Deux cellules qui semblent identiques mais qu'Excel considère différentes ? Le coupable est presque toujours un espace invisible en début ou fin de texte.",
+      "probleme": "Les données copiées depuis le web ou exportées d'un logiciel contiennent souvent des espaces parasites. Conséquences : RECHERCHEV qui renvoie #N/A, doublons non détectés, tris incohérents.",
+      "etapes": [
+        "Dans une colonne vide, saisir =SUPPRESPACE(A2) pour retirer les espaces en trop (début, fin, doubles espaces).",
+        "Pour les caractères invisibles venus du web, combiner : =SUPPRESPACE(EPURAGE(A2)).",
+        "Recopier la formule vers le bas pour toute la colonne.",
+        "Copier la colonne nettoyée, puis Collage spécial > Valeurs sur la colonne d'origine.",
+        "Supprimer la colonne temporaire."
+      ],
+      "erreurs": [
+        "SUPPRESPACE ne retire pas les espaces insécables (fréquents dans les copier-coller web) : utiliser =SUBSTITUE(A2;CAR(160);\" \") d'abord.",
+        "Oublier le Collage spécial > Valeurs : supprimer la colonne d'origine casserait alors les formules."
+      ],
+      "astuce": "Pour vérifier si un espace se cache quelque part : =NBCAR(A2) compare la longueur avant et après nettoyage.",
+      "voirAussi": ["doublons", "pq-premier-traitement"]
+    },
+    {
+      "id": "doublons",
+      "titre": "Détecter et supprimer les doublons",
+      "categorie": "Nettoyer ses données",
+      "niveau": "Débutant",
+      "accroche": "Un même client saisi deux fois, une ligne importée en double... Excel sait les trouver et les supprimer en deux clics. Encore faut-il connaître le bouton.",
+      "probleme": "Les doublons faussent les totaux, les moyennes et les comptages. Les repérer à l'œil nu dans un tableau de plusieurs centaines de lignes est mission impossible.",
+      "etapes": [
+        "Pour les VOIR sans les supprimer : sélectionner la colonne, puis Accueil > Mise en forme conditionnelle > Règles de mise en surbrillance > Valeurs en double.",
+        "Pour les SUPPRIMER : cliquer dans le tableau, puis Données > Supprimer les doublons.",
+        "Cocher les colonnes qui définissent un doublon (toutes les colonnes = lignes strictement identiques).",
+        "Valider : Excel indique combien de doublons ont été supprimés.",
+        "Toujours travailler sur une copie du fichier avant une suppression de masse."
+      ],
+      "erreurs": [
+        "Ne cocher qu'une colonne (ex. le nom) supprime des lignes légitimes : deux personnes peuvent porter le même nom.",
+        "Des espaces invisibles empêchent la détection : nettoyer avec SUPPRESPACE avant de dédoublonner."
+      ],
+      "astuce": "Pour compter les doublons avant de décider : =NB.SI(A:A;A2)>1 affiche VRAI sur chaque ligne en double.",
+      "voirAussi": ["espaces-invisibles", "tableaux-structures"]
+    },
+    {
+      "id": "convertir-colonnes",
+      "titre": "Découper une colonne en plusieurs",
+      "categorie": "Nettoyer ses données",
+      "niveau": "Débutant",
+      "accroche": "« Dupont Marie » dans une seule cellule alors qu'il vous faut le nom et le prénom séparés ? L'outil Convertir fait le découpage à votre place.",
+      "probleme": "Les exports regroupent souvent plusieurs informations dans une seule colonne (nom + prénom, ville + code postal, date + heure), ce qui empêche de trier ou filtrer correctement.",
+      "etapes": [
+        "Sélectionner la colonne à découper.",
+        "Aller dans Données > Convertir.",
+        "Choisir Délimité, puis Suivant.",
+        "Cocher le séparateur (espace, point-virgule, virgule...) : l'aperçu montre le résultat.",
+        "Cliquer sur Terminer. Attention : les colonnes de droite doivent être vides, sinon elles seront écrasées."
+      ],
+      "erreurs": [
+        "Oublier d'insérer des colonnes vides à droite avant de convertir : les données existantes sont écrasées sans avertissement.",
+        "Un découpage sur l'espace sépare aussi les noms composés (« Le Goff » devient deux colonnes)."
+      ],
+      "astuce": "Depuis Excel 2013, tapez manuellement les deux premiers résultats attendus puis Ctrl+E (Remplissage instantané) : Excel devine le motif et complète tout seul.",
+      "voirAussi": ["pq-premier-traitement"]
+    },
+    {
+      "id": "tableaux-structures",
+      "titre": "Le tableau structuré : la fondation de tout",
+      "categorie": "Nettoyer ses données",
+      "niveau": "Débutant",
+      "accroche": "Un seul raccourci, Ctrl+L, transforme une plage banale en tableau intelligent : filtres automatiques, formules qui se recopient seules, et mise en forme instantanée.",
+      "probleme": "Une simple plage de cellules ne s'agrandit pas automatiquement : les formules, graphiques et tableaux croisés ne suivent pas quand on ajoute des lignes.",
+      "etapes": [
+        "Cliquer n'importe où dans vos données.",
+        "Appuyer sur Ctrl+L (ou Insertion > Tableau).",
+        "Vérifier que la case « Mon tableau comporte des en-têtes » est cochée, puis valider.",
+        "Donner un nom parlant au tableau : onglet Création de tableau > Nom du tableau (ex. : Ventes).",
+        "Désormais, toute nouvelle ligne saisie en bas hérite automatiquement des formats et formules."
+      ],
+      "erreurs": [
+        "Laisser des lignes vides dans les données : Excel ne détecte alors qu'une partie de la plage.",
+        "Fusionner des cellules dans un tableau structuré : à éviter absolument, cela casse les filtres et les tris."
+      ],
+      "astuce": "Les tableaux structurés sont aussi le format idéal pour alimenter Power Query et les tableaux croisés dynamiques.",
+      "voirAussi": ["pq-decouverte", "doublons"]
+    },
+    {
+      "id": "pq-decouverte",
+      "titre": "Power Query, c'est quoi ?",
+      "categorie": "Power Query",
+      "niveau": "Débutant",
+      "accroche": "Imaginez un assistant qui mémorise chaque étape de votre nettoyage de données, et qui les rejoue en un clic sur le fichier du mois suivant. Cet assistant existe, il est déjà dans votre Excel, et il s'appelle Power Query.",
+      "probleme": "Chaque mois, le même rituel : importer le fichier, supprimer les colonnes inutiles, corriger les formats, filtrer les lignes vides... Un travail répétitif, long et source d'erreurs.",
+      "etapes": [
+        "Power Query est intégré à Excel depuis la version 2016 : rien à installer, tout se passe dans l'onglet Données.",
+        "Il enregistre vos manipulations (supprimer une colonne, filtrer, renommer...) sous forme d'étapes visibles et modifiables.",
+        "Vos données d'origine ne sont jamais modifiées : Power Query travaille sur une copie, le fichier source reste intact.",
+        "Quand un nouveau fichier arrive, un simple clic droit > Actualiser rejoue toutes les étapes automatiquement.",
+        "Aucune programmation nécessaire : tout se fait à la souris, par menus."
+      ],
+      "erreurs": [
+        "Croire que c'est réservé aux experts : Power Query est justement conçu pour éviter les formules complexes.",
+        "Confondre avec les macros VBA : pas de code à écrire, et beaucoup moins de risques."
+      ],
+      "astuce": "Le test qui change tout : si vous refaites les mêmes manipulations plus d'une fois par mois, Power Query vous fera gagner des heures.",
+      "voirAussi": ["pq-premier-traitement", "pq-actualiser"]
+    },
+    {
+      "id": "pq-premier-traitement",
+      "titre": "Votre premier traitement Power Query",
+      "categorie": "Power Query",
+      "niveau": "Intermédiaire",
+      "accroche": "Dix minutes suffisent pour créer votre première requête : importer un fichier, le nettoyer, et obtenir un tableau propre qui se mettra à jour tout seul.",
+      "probleme": "On ose rarement ouvrir Power Query car l'interface semble intimidante. En réalité, quatre boutons suffisent pour 90 % des besoins.",
+      "etapes": [
+        "Onglet Données > À partir d'un fichier texte/CSV, choisir le fichier, puis cliquer sur Transformer les données.",
+        "L'éditeur Power Query s'ouvre : les données à gauche, la liste des « Étapes appliquées » à droite.",
+        "Supprimer une colonne inutile : clic droit sur son en-tête > Supprimer. Une étape apparaît dans la liste.",
+        "Filtrer les lignes vides : flèche de filtre sur une colonne > décocher (null) ou (vide).",
+        "Corriger un type : cliquer sur l'icône en haut de colonne (123, ABC) et choisir le bon type.",
+        "Cliquer sur Fermer et charger : le résultat arrive dans Excel sous forme de tableau vert.",
+        "Chaque étape de la liste peut être supprimée ou modifiée à tout moment : rien n'est définitif."
+      ],
+      "erreurs": [
+        "Chercher à modifier les cellules du tableau vert directement dans Excel : les corrections doivent se faire dans l'éditeur Power Query (clic droit sur le tableau > Requête > Modifier).",
+        "S'inquiéter de « casser » quelque chose : il suffit de supprimer la dernière étape (croix dans la liste) pour annuler."
+      ],
+      "astuce": "La liste des « Étapes appliquées » est votre filet de sécurité : cliquez sur une étape pour voir l'état des données à ce moment-là, comme une machine à remonter le temps.",
+      "voirAussi": ["pq-decouverte", "pq-actualiser", "import-csv-propre"]
+    },
+    {
+      "id": "pq-actualiser",
+      "titre": "Actualiser au lieu de tout refaire",
+      "categorie": "Power Query",
+      "niveau": "Intermédiaire",
+      "accroche": "C'est LE superpouvoir de Power Query : le fichier du mois suivant arrive, vous remplacez l'ancien, un clic droit > Actualiser... et tout le nettoyage se rejoue instantanément.",
+      "probleme": "Sans Power Query, chaque nouveau fichier mensuel oblige à refaire l'intégralité du nettoyage : 30 minutes de manipulations identiques, tous les mois, avec un risque d'oubli à chaque fois.",
+      "etapes": [
+        "Créer une fois la requête de nettoyage (voir « Votre premier traitement Power Query »).",
+        "Le mois suivant, enregistrer le nouveau fichier au même endroit et sous le même nom que l'ancien.",
+        "Dans Excel, clic droit sur le tableau vert > Actualiser.",
+        "Toutes les étapes (suppression de colonnes, filtres, types) se rejouent sur les nouvelles données.",
+        "Si le fichier change de nom ou d'emplacement : Données > Requêtes et connexions > double-clic sur la requête > étape Source > modifier le chemin."
+      ],
+      "erreurs": [
+        "Renommer les colonnes dans le fichier source : Power Query ne les retrouve plus et affiche une erreur. La structure du fichier doit rester stable.",
+        "Oublier d'actualiser après avoir remplacé le fichier : le tableau affiche encore les anciennes données."
+      ],
+      "astuce": "L'actualisation peut être automatique : clic droit sur le tableau > Propriétés du tableau croisé/de la requête > « Actualiser lors de l'ouverture du fichier ».",
+      "voirAussi": ["pq-premier-traitement", "pq-dossier"]
+    },
+    {
+      "id": "pq-dossier",
+      "titre": "Combiner tous les fichiers d'un dossier",
+      "categorie": "Power Query",
+      "niveau": "Intermédiaire",
+      "accroche": "Douze fichiers mensuels à empiler dans un seul tableau ? Power Query les fusionne tous d'un coup. Et quand le treizième arrive dans le dossier, un clic suffit pour l'intégrer.",
+      "probleme": "Consolider plusieurs fichiers à la main signifie ouvrir chacun, copier, coller, vérifier... Une heure de travail, et tout est à refaire au fichier suivant.",
+      "etapes": [
+        "Placer tous les fichiers (même structure de colonnes) dans un dossier dédié.",
+        "Dans Excel : Données > Obtenir des données > À partir d'un fichier > À partir d'un dossier.",
+        "Sélectionner le dossier : la liste des fichiers s'affiche.",
+        "Cliquer sur Combiner > Combiner et transformer les données.",
+        "Choisir l'exemple de fichier proposé et valider : Power Query empile tous les fichiers en un seul tableau.",
+        "Bonus : une colonne indique le nom du fichier source de chaque ligne.",
+        "Le mois suivant, déposer le nouveau fichier dans le dossier puis Actualiser : il est intégré automatiquement."
+      ],
+      "erreurs": [
+        "Mélanger des fichiers de structures différentes (colonnes en plus ou renommées) : la combinaison échoue ou produit des colonnes décalées.",
+        "Laisser traîner d'autres fichiers dans le dossier (notes, anciens exports) : ils seront combinés aussi. Le dossier doit être dédié."
+      ],
+      "astuce": "C'est souvent CETTE fonctionnalité qui déclenche le déclic : ce qui prenait une journée par trimestre prend désormais une minute.",
+      "voirAussi": ["pq-actualiser", "pq-premier-traitement"]
+    }
+  ]
+}
